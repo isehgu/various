@@ -1,0 +1,5 @@
+System               | Instance             | Version    | Date       | Server    
+core                 | Other                | 008.000.080 | 2014-01-28 | tc-bat101  | core       | BAT       
+core                 | Other                | 008.000.080 | 2014-01-28 | tc-bat102  | core       | BAT       
+core                 | Other                | 008.000.060 | 2014-01-03 | tc-bat201  | core       | BAT       
+core                 | Other                | 008.000.060 | 2014-01-03 | tc-bat202  | core       | BAT       

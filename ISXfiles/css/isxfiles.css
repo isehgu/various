@@ -1,0 +1,46 @@
+body {
+  font-weight:200;
+}
+#mid {
+  margin-top:30px;
+  width:100%;
+  padding-left:30px;
+  padding-right:30px;
+}
+#logo {
+  display:inline;
+  font-weight: 800;
+  font-size:36px;
+  margin-left: 20px;
+  margin-right:2px;
+}
+#smartcomment {
+  display:inline;
+  color:white;
+  font-size:10px;
+}
+#top {
+  text-align:center;
+}
+#filterbtn {
+  margin-bottom:5px;
+}
+#logo a {
+  text-decoration:none;
+  color:white;
+}
+#logo a:hover{
+  color:gray;
+}
+#searchdiv {
+  width:100%;
+}
+#datediv {
+  width:100%;
+}
+#searchwrapper{
+  margin-top:100px;
+}
+div.testinline, form{
+  display:inline;
+}

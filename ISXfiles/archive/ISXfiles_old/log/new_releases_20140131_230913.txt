@@ -1,0 +1,19 @@
+System               | Instance             | Version    | Date       | Server    
+oqtr                 | OQTR02_01p           | 3.0.0.2    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR02_01s           | 3.0.0.2    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR02_02p           | 3.0.0.2    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR02_02s           | 3.0.0.2    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_01p             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_01s             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_02p             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_02s             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_03p             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_03s             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_04p             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_04s             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_51p             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_51s             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_52p             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_52s             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_53p             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      
+oqtr                 | OQTR_53s             | 6.0.0.5    | 2014-01-31 | PC-QTRS51  | ISEapps    | PROD      

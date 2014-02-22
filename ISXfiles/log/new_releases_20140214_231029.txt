@@ -1,0 +1,7 @@
+System               | Instance             | Version    | Date       | Server    
+mpt_client           | MPTClient            | 8.2.8.2    | 2014-02-14 | PC-CTX17   | ISEapps    | PROD      
+precise_fe           | 5.7.1                | 5.7.1.0    | 2014-02-14 | PC-CTX17   | ISEapps    | PROD      
+mpt_ams              | MPTAlertManagerService_01 | 8.2.1.0    | 2014-02-14 | PC-MPT01   | ISEapps    | PROD      
+mpt_ams              | MPTAlertManagerService_02 | 8.2.1.0    | 2014-02-14 | PC-MPT01   | ISEapps    | PROD      
+mpt_ams              | MPTAlertManagerService_01 | 8.2.1.0    | 2014-02-14 | PC-MPT02   | ISEapps    | PROD      
+mpt_ams              | MPTAlertManagerService_02 | 8.2.1.0    | 2014-02-14 | PC-MPT02   | ISEapps    | PROD      

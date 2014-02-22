@@ -1,0 +1,5 @@
+System               | Instance             | Version    | Date       | Server    
+core                 | MarketData           | 008.000.060 | 2014-01-03 | pc-dd58a   | core      
+core                 | MarketData           | 008.000.060 | 2014-01-03 | pc-dd58b   | core      
+core                 | Pope                 | 008.000.060 | 2014-01-03 | pc-pp58a   | core      
+core                 | Pope                 | 008.000.060 | 2014-01-03 | pc-pp58b   | core      

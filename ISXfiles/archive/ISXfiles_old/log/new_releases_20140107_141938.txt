@@ -1,0 +1,3 @@
+System               | Instance             | Version    | Date       | Server    
+core                 | core                 | 007.000.075 | 2013-10-31 | PC-LOG01   | core      
+core                 | core                 | 007.000.075 | 2013-10-31 | PC-LOG02   | core      

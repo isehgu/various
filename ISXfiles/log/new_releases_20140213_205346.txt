@@ -1,0 +1,23 @@
+System               | Instance             | Version    | Date       | Server    
+mwsb                 | mwsb_01              | 1.0.6.0    | 2014-02-13 | PC-BSI01A  | ISEapps    | PROD      
+mwsb                 | mwsb_02              | 1.0.6.0    | 2014-02-13 | PC-BSI01A  | ISEapps    | PROD      
+mwsb                 | mwsb_01              | 1.0.6.0    | 2014-02-13 | PC-BSI01B  | ISEapps    | PROD      
+mwsb                 | mwsb_02              | 1.0.6.0    | 2014-02-13 | PC-BSI01B  | ISEapps    | PROD      
+mwsb                 | mwsb_01              | 1.0.6.0    | 2014-02-13 | PC-BSI01C  | ISEapps    | PROD      
+mwsb                 | mwsb_02              | 1.0.6.0    | 2014-02-13 | PC-BSI01C  | ISEapps    | PROD      
+mwsb                 | mwsb_01              | 1.0.6.0    | 2014-02-13 | PC-BSI01D  | ISEapps    | PROD      
+mwsb                 | mwsb_02              | 1.0.6.0    | 2014-02-13 | PC-BSI01D  | ISEapps    | PROD      
+mwsb                 | mwsb_01              | 1.0.6.0    | 2014-02-13 | PC-BSI01E  | ISEapps    | PROD      
+mwsb                 | mwsb_02              | 1.0.6.0    | 2014-02-13 | PC-BSI01E  | ISEapps    | PROD      
+mwsb                 | mwsb_01              | 1.0.6.0    | 2014-02-13 | PC-BSI01F  | ISEapps    | PROD      
+mwsb                 | mwsb_02              | 1.0.6.0    | 2014-02-13 | PC-BSI01F  | ISEapps    | PROD      
+mwsb                 | mwsb_01              | 1.0.6.0    | 2014-02-13 | PC-BSI01G  | ISEapps    | PROD      
+mwsb                 | mwsb_02              | 1.0.6.0    | 2014-02-13 | PC-BSI01G  | ISEapps    | PROD      
+core                 | AuditTrail           | 008.000.080 | 2014-01-28 | pc-at53    | core       | PROD      
+core                 | PerfMon              | 008.000.080 | 2014-01-28 | pc-cpm03   | core       | PROD      
+core                 | PerfMon              | 008.000.080 | 2014-01-28 | pc-cpm06   | core       | PROD      
+core                 | Matcher              | 008.000.080 | 2014-01-28 | pc-me57a   | core       | PROD      
+core                 | Gateway              | 008.000.080 | 2014-01-28 | pc-mgw11   | core       | PROD      
+core                 | Gateway              | 008.000.080 | 2014-01-28 | pc-mgw12   | core       | PROD      
+core                 | OutboundFeedInterface | 008.000.080 | 2014-01-28 | pc-ofi09   | core       | PROD      
+core                 | Pope                 | 008.000.080 | 2014-01-28 | pc-pp03b   | core       | PROD      

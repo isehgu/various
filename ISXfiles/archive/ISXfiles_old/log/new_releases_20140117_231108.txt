@@ -1,0 +1,6 @@
+System               | Instance             | Version    | Date       | Server    
+lvc                  | mdcx_lvc2            | 8.0.1.0    | 2014-01-17 | PC-OVCP51  | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 8.0.1.0    | 2014-01-17 | PC-OVCP51  | ISEapps   
+marketwatch          | marketwatch          | 8.0.3.0    | 2014-01-10 | PC-OBE02   | ISEapps   
+lvc                  | mdcx_lvc2            | 8.0.1.0    | 2014-01-17 | PC-OVCP52  | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 8.0.1.0    | 2014-01-17 | PC-OVCP52  | ISEapps   

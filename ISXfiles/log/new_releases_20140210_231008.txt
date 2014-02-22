@@ -1,0 +1,5 @@
+System               | Instance             | Version    | Date       | Server    
+core                 | AuditTrail           | 008.000.080 | 2014-01-28 | pc-at02    | core       | PROD      
+core                 | MarketData           | 008.000.080 | 2014-01-28 | pc-dd02a   | core       | PROD      
+core                 | Matcher              | 008.000.080 | 2014-01-28 | pc-me02a   | core       | PROD      
+core                 | Pope                 | 008.000.080 | 2014-01-28 | pc-pp02a   | core       | PROD      

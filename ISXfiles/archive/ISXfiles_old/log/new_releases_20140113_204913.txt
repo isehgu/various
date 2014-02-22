@@ -1,0 +1,2 @@
+System               | Instance             | Version    | Date       | Server    
+core                 | ActiveMQ             | 008.000.060 | 2014-01-03 | pc-amq01a  | core      

@@ -1,0 +1,25 @@
+System               | Instance             | Version    | Date       | Server    
+lvc                  | mdcx_lvc2            | 7.0.1.0    | 2014-01-09 | PC-LVC02   | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 7.0.1.0    | 2014-01-09 | PC-LVC02   | ISEapps   
+lvc                  | mdcx_lvc2            | 7.0.1.0    | 2014-01-09 | PC-LVC12   | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 7.0.1.0    | 2014-01-09 | PC-LVC12   | ISEapps   
+lvc                  | mdcx_lvc2            | 7.0.1.0    | 2014-01-09 | PC-LVC01   | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 7.0.1.0    | 2014-01-09 | PC-LVC01   | ISEapps   
+lvc                  | mdcx_lvc2            | 7.0.1.0    | 2014-01-09 | PC-LVC03   | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 7.0.1.0    | 2014-01-09 | PC-LVC03   | ISEapps   
+lvc                  | mdcx_lvc2            | 7.0.1.0    | 2014-01-09 | PC-LVC04   | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 7.0.1.0    | 2014-01-09 | PC-LVC04   | ISEapps   
+lvc                  | mdcx_lvc2            | 7.0.1.0    | 2014-01-09 | PC-LVC05   | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 7.0.1.0    | 2014-01-09 | PC-LVC05   | ISEapps   
+lvc                  | mdcx_lvc2            | 7.0.1.0    | 2014-01-09 | PC-LVC06   | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 7.0.1.0    | 2014-01-09 | PC-LVC06   | ISEapps   
+lvc                  | mdcx_lvc2            | 7.0.1.0    | 2014-01-09 | PC-LVC07   | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 7.0.1.0    | 2014-01-09 | PC-LVC07   | ISEapps   
+lvc                  | mdcx_lvc2            | 7.0.1.0    | 2014-01-09 | PC-LVC08   | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 7.0.1.0    | 2014-01-09 | PC-LVC08   | ISEapps   
+lvc                  | mdcx_lvc2            | 7.0.1.0    | 2014-01-09 | PC-LVC09   | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 7.0.1.0    | 2014-01-09 | PC-LVC09   | ISEapps   
+lvc                  | mdcx_lvc2            | 7.0.1.0    | 2014-01-09 | PC-LVC10   | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 7.0.1.0    | 2014-01-09 | PC-LVC10   | ISEapps   
+lvc                  | mdcx_lvc2            | 7.0.1.0    | 2014-01-09 | PC-LVC11   | ISEapps   
+lvc                  | mdcx_lvc2_gem        | 7.0.1.0    | 2014-01-09 | PC-LVC11   | ISEapps   

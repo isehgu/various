@@ -1,0 +1,3 @@
+System               | Instance             | Version    | Date       | Server    
+core                 | Other                | 008.001.010 | 2014-02-12 | tc-oat01   | core       | OAT       
+core                 | Other                | 008.001.010 | 2014-02-12 | tc-oat02   | core       | OAT       

@@ -1,0 +1,2 @@
+System               | Instance             | Version    | Date       | Server    
+rtp_atlr             | ATLineReader_01      | 2.7.3.0    | 2014-01-07 | PC-XX01    | ISEapps   

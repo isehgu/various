@@ -1,0 +1,2 @@
+System               | Instance             | Version    | Date       | Server    
+ttuc                 | TTUC_Gemini          | 2.1.0.0    | 12/09/2013 06:35 PM | PC-TR98    | ISEapps  

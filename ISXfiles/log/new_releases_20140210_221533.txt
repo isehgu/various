@@ -1,0 +1,4 @@
+System               | Instance             | Version    | Date       | Server    
+config_wcf           | ConfigurationWebService | 7.0.1.0    | 2014-02-10 | TC-BAT251  | ISEapps    | BAT       
+rtp_atlr             | ATLineReader_51      | 2.8.3.0    | 2014-02-07 | TC-BAT252  | ISEapps    | BAT       
+rtp_etslr            | ETSLineReader_51     | 2.8.3.0    | 2014-02-07 | TC-BAT252  | ISEapps    | BAT       

@@ -1,0 +1,17 @@
+System               | Instance             | Version    | Date       | Server    
+msm                  | MSM02_01p            | 2.4.2.0    | 2014-01-28 | PC-MSM03   | ISEapps    | PROD      
+msm                  | MSM02_01s            | 2.4.2.0    | 2014-01-28 | PC-MSM03   | ISEapps    | PROD      
+msm                  | MSM02_02p            | 2.4.2.0    | 2014-01-28 | PC-MSM03   | ISEapps    | PROD      
+msm                  | MSM02_02s            | 2.4.2.0    | 2014-01-28 | PC-MSM03   | ISEapps    | PROD      
+msm                  | MSM02_03p            | 2.4.2.0    | 2014-01-28 | PC-MSM03   | ISEapps    | PROD      
+msm                  | MSM02_03s            | 2.4.2.0    | 2014-01-28 | PC-MSM03   | ISEapps    | PROD      
+msm                  | MSM02_04p            | 2.4.2.0    | 2014-01-28 | PC-MSM03   | ISEapps    | PROD      
+msm                  | MSM02_04s            | 2.4.2.0    | 2014-01-28 | PC-MSM03   | ISEapps    | PROD      
+msm                  | MSM02_01p            | 2.4.2.0    | 2014-01-28 | PC-MSM04   | ISEapps    | PROD      
+msm                  | MSM02_01s            | 2.4.2.0    | 2014-01-28 | PC-MSM04   | ISEapps    | PROD      
+msm                  | MSM02_02p            | 2.4.2.0    | 2014-01-28 | PC-MSM04   | ISEapps    | PROD      
+msm                  | MSM02_02s            | 2.4.2.0    | 2014-01-28 | PC-MSM04   | ISEapps    | PROD      
+msm                  | MSM02_03p            | 2.4.2.0    | 2014-01-28 | PC-MSM04   | ISEapps    | PROD      
+msm                  | MSM02_03s            | 2.4.2.0    | 2014-01-28 | PC-MSM04   | ISEapps    | PROD      
+msm                  | MSM02_04p            | 2.4.2.0    | 2014-01-28 | PC-MSM04   | ISEapps    | PROD      
+msm                  | MSM02_04s            | 2.4.2.0    | 2014-01-28 | PC-MSM04   | ISEapps    | PROD      

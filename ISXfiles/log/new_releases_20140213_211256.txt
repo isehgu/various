@@ -1,0 +1,4 @@
+System               | Instance             | Version    | Date       | Server    
+core                 | Matcher              | 008.000.080 | 2014-01-28 | pc-me01a   | core       | PROD      
+core                 | Matcher              | 008.000.080 | 2014-01-28 | pc-me03b   | core       | PROD      
+core                 | OutboundFeedInterface | 008.000.080 | 2014-01-28 | pc-ofi01   | core       | PROD      

@@ -1,0 +1,2 @@
+System               | Instance             | Version    | Date       | Server    
+iors_ora             | iors_bsi_ora_01      | 3.30.0.7   | 2014-02-19 | TC-BAT158  | ISEapps    | BAT       

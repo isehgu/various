@@ -1,0 +1,7 @@
+System               | Instance             | Version    | Date       | Server    
+iors_dca             | iors_bsi_dca_01      | 3.28.1.0   | 2013-12-26 | PD-BSI02A  | ISEapps    | DR        
+IORS.BSI.DCA_01      | 3.28.1.0             |            | 2013-11-20 | PD-SDA02   | ISEapps    | DR        
+IORS.BSI.DCA_02      | 3.28.1.0             |            | 2013-11-20 | PD-SDA02   | ISEapps    | DR        
+IORS.BSI.DCA_03      | 3.28.1.0             |            | 2013-11-20 | PD-SDA02   | ISEapps    | DR        
+IORS.BSI.DCA_04      | 3.30.0.0             |            | 2013-11-20 | PD-SDA02   | ISEapps    | DR        
+IORS.BSI.DCA_05      | 3.28.1.0             |            | 2013-11-20 | PD-SDA02   | ISEapps    | DR        

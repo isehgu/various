@@ -1,0 +1,20 @@
+System               | Instance             | Version    | Date       | Server    
+mpt_client           | MPTClient            | 8.2.5.0    | 2014-02-04 | TC-BAT151  | ISEapps    | BAT       
+mdr_wcf              | GEMINIMdrQueryService | 1.13.0.0   | 2014-02-04 | TC-BAT159  | ISEapps    | BAT       
+mdr_wcf              | MdrQueryService      | 1.13.0.0   | 2014-02-04 | TC-BAT159  | ISEapps    | BAT       
+config_client        | ConfigurationClient  | 3.5.1.0    | 2014-02-04 | TC-BAT255  | ISEapps    | BAT       
+iors_dca             | iors_bsi_dca_01      | 3.28.0.1   | 2014-02-04 | TC-BAT255  | ISEapps    | BAT       
+iors_ora             | iors_bsi_ora_01      | 3.28.1.0   | 2014-02-04 | TC-BAT255  | ISEapps    | BAT       
+iors_gct             | iors_gct_ora         | 1.2.0.0    | 2014-02-04 | TC-BAT255  | ISEapps    | BAT       
+iors_irc             | iors_irc_sqm_p       | 3.30.0.0   | 2014-02-04 | TC-BAT255  | ISEapps    | BAT       
+iors_irc             | iors_irc_sqm_s       | 3.30.0.0   | 2014-02-04 | TC-BAT255  | ISEapps    | BAT       
+iors_ldc             | iors_ldc             | 6.0.2.0    | 2014-02-04 | TC-BAT255  | ISEapps    | BAT       
+iors_moe             | iors_moe             | 3.30.0.0   | 2014-02-04 | TC-BAT255  | ISEapps    | BAT       
+config_client        | ConfigurationClient  | 3.5.1.0    | 2014-02-04 | TC-BAT256  | ISEapps    | BAT       
+dms_wcf              | DataManagerService   | 1.9.3.0    | 2014-02-04 | TC-BAT256  | ISEapps    | BAT       
+mdr_wcf              | GEMINIMdrQueryService | 1.12.2.0   | 2014-02-04 | TC-BAT256  | ISEapps    | BAT       
+mdr_wcf              | MdrQueryService      | 1.12.2.0   | 2014-02-04 | TC-BAT256  | ISEapps    | BAT       
+rdcx_refdatamanager  | RefDataMan           | 8.0.0.0    | 2014-02-04 | TC-BAT256  | ISEapps    | BAT       
+rdcx_refdataservice  | RefDataSer           | 8.0.0.0    | 2014-02-04 | TC-BAT256  | ISEapps    | BAT       
+core                 | Other                | 008.001.200 | 2014-02-04 | tc-bat101  | core       | BAT       
+core                 | Other                | 008.001.200 | 2014-02-04 | tc-bat102  | core       | BAT       
