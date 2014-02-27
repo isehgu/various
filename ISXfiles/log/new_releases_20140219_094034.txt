@@ -1,2 +1,0 @@
-System               | Instance             | Version    | Date       | Server    
-mdr_processor        | MDRProcessor         | 1.13.2.0   | 2014-02-18 | PD-SDA02   | ISEapps    | DR        

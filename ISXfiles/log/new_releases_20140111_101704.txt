@@ -1,3 +1,0 @@
-System               | Instance             | Version    | Date       | Server    
-obe_client           | OBE                  | 8.0.4.0    | 2014-01-10 | PC-OBE01   | ISEapps   
-obe_client           | OBE                  | 8.0.4.0    | 2014-01-10 | PC-OBE02   | ISEapps   

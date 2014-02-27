@@ -1,9 +1,0 @@
-System               | Instance             | Version    | Date       | Server    
-order_deviation      | OrderDeviationAlert_01 | 1.0.3.0    | 2014-01-13 | PC-MPT01   | ISEapps   
-order_deviation      | OrderDeviationAlert_02 | 1.0.3.0    | 2014-01-13 | PC-MPT01   | ISEapps   
-order_deviation      | OrderDeviationAlert_51 | 1.0.3.0    | 2014-01-13 | PC-MPT01   | ISEapps   
-order_deviation      | OrderDeviationAlert_52 | 1.0.3.0    | 2014-01-13 | PC-MPT01   | ISEapps   
-order_deviation      | OrderDeviationAlert_01 | 1.0.3.0    | 2014-01-13 | PC-MPT02   | ISEapps   
-order_deviation      | OrderDeviationAlert_02 | 1.0.3.0    | 2014-01-13 | PC-MPT02   | ISEapps   
-order_deviation      | OrderDeviationAlert_51 | 1.0.3.0    | 2014-01-13 | PC-MPT02   | ISEapps   
-order_deviation      | OrderDeviationAlert_52 | 1.0.3.0    | 2014-01-13 | PC-MPT02   | ISEapps   

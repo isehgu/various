@@ -1,7 +1,0 @@
-System               | Instance             | Version    | Date       | Server    
-mpt_client           | MPTClient            | 8.2.5.0    | 2014-02-13 | TC-MAT351  | ISEapps    | MAT       
-obe_wcf              | WCFService           | 8.2.0.0    | 2014-02-13 | TC-MAT351  | ISEapps    | MAT       
-core                 | Other                | 008.001.010 | 2014-02-12 | tc-mat201  | core       | MAT       
-core                 | Other                | 008.001.010 | 2014-02-12 | tc-mat202  | core       | MAT       
-core                 | Other                | 008.001.010 | 2014-02-12 | tc-mat203  | core       | MAT       
-core                 | Other                | 008.001.010 | 2014-02-12 | tc-mat204  | core       | MAT       

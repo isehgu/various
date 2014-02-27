@@ -1,5 +1,0 @@
-System               | Instance             | Version    | Date       | Server    
-core                 | Other                | 008.000.080 | 2014-01-28 | tc-mat201  | core       | MAT       
-core                 | Other                | 008.000.080 | 2014-01-28 | tc-mat202  | core       | MAT       
-core                 | Other                | 008.000.080 | 2014-01-28 | tc-mat203  | core       | MAT       
-core                 | Other                | 008.000.080 | 2014-01-28 | tc-mat204  | core       | MAT       

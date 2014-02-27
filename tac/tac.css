@@ -1,0 +1,11 @@
+body{
+    font-weight: 200;
+    padding-top:70px;
+}
+
+#topbar {
+  position: fixed;
+  left:20px;
+  border:1px solid;
+  text-align: center;
+}

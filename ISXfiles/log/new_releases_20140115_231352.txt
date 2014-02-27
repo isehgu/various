@@ -1,3 +1,0 @@
-System               | Instance             | Version    | Date       | Server    
-lor                  | LOR_01               | 1.0.0.37   | 2014-01-15 | PC-SR01A   | ISEapps   
-lor                  | LOR_01               | 1.0.0.37   | 2014-01-15 | PC-SR01B   | ISEapps   

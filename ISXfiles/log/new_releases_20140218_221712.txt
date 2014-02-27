@@ -1,6 +1,0 @@
-System               | Instance             | Version    | Date       | Server    
-iors_irc             | iors_irc_sqm_p       | 3.28.0.0   | 2014-02-18 | TC-BAT255  | ISEapps    | BAT       
-iors_irc             | iors_irc_sqm_s       | 3.28.0.0   | 2014-02-18 | TC-BAT255  | ISEapps    | BAT       
-iors_moe             | iors_moe             | 3.28.1.0   | 2014-02-18 | TC-BAT255  | ISEapps    | BAT       
-core                 | Other                | 008.001.020 | 2014-02-18 | tc-bat101  | core       | BAT       
-core                 | Other                | 008.001.020 | 2014-02-18 | tc-bat102  | core       | BAT       

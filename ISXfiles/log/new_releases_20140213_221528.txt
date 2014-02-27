@@ -1,5 +1,0 @@
-System               | Instance             | Version    | Date       | Server    
-mpt_client           | MPTClient            | 8.2.8.2    | 2014-02-13 | TC-BAT151  | ISEapps    | BAT       
-obe_wcf              | WCFService           | 8.2.0.0    | 2014-02-13 | TC-BAT159  | ISEapps    | BAT       
-core                 | Other                | 008.001.010 | 2014-02-12 | tc-bat101  | core       | BAT       
-core                 | Other                | 008.001.010 | 2014-02-12 | tc-bat102  | core       | BAT       

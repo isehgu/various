@@ -1,7 +1,0 @@
-System               | Instance             | Version    | Date       | Server    
-core                 | MarketData           | 008.000.090 | 2014-02-14 | pc-dd51a   | core       | PROD      
-core                 | InboundFeedInterface | 008.000.090 | 2014-02-14 | pc-efi07   | core       | PROD      
-core                 | Gateway              | 008.000.090 | 2014-02-14 | pc-mgw153  | core       | PROD      
-core                 | Gateway              | 008.000.090 | 2014-02-14 | pc-mgw154  | core       | PROD      
-core                 | Gateway              | 008.000.090 | 2014-02-14 | pc-mgw260  | core       | PROD      
-core                 | Gateway              | 008.000.090 | 2014-02-14 | pc-mgw29   | core       | PROD      

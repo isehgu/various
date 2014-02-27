@@ -1,2 +1,0 @@
-System               | Instance             | Version    | Date       | Server    
-ttuc                 | TTUC_Gemini          | 2.1.0.0    | 2014-01-06 | PC-TR91    | ISEapps   

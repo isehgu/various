@@ -1,2 +1,0 @@
-System               | Instance             | Version    | Date       | Server    
-core                 | Other                | 008.001.200 | 2014-02-04 | tc-oat01   | core       | OAT       
