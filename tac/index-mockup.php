@@ -1,6 +1,6 @@
 <?php
-	require_once "base_function.php";
-	f_dbConnect();
+	//require_once "base_function.php";
+	//f_dbConnect();
 ?>
 	
 
@@ -17,14 +17,11 @@
 
             <script src="js/jquery-1.11.0.min.js"></script>
             <script src="js/bootstrap.min.js"></script>
-						<script src="tac.js"></script>
     </head>	
     <body>
 	<nav id="topnav" class="navbar navbar-default navbar-fixed-top navbar-inverse">
 		<div class="container-fluid">
-			<p class="text-center" id="slogan">
-				<button id="runbtn" class="btn btn-primary btn-lg navbar-btn">Run</button> T.A.C Run!
-			</p>
+			<p class="text-center" id="slogan"><button id="runbtn" class="btn btn-primary btn-lg navbar-btn">Run</button> Tac Run!</p>
 		</div>
 	</nav>
 	<div class="container-fluid">
@@ -38,7 +35,7 @@
 			</div>
 		</div>
 		<div id="main" class="col-sm-9 col-sm-offset-3 col-md10 col-md-offset-2">
-			<form id="test_request" method="get" action="test_request.php">
+			<form>
 				<h2 class="sub-header">Test Suites</h2>
 				<table class="table">
 						<thead>
@@ -47,9 +44,7 @@
 									<th>Description</th>
 								</tr>			
 						</thead>
-						<tbody id="test_suite_table">
-							
-							<!--
+						<tbody>
 							<tr>
 								<td><input type="checkbox"> PAT IORS</td>
 								<td>PAT Regression for IORS that includes rampup, steady load, and various BSI setup</td>
@@ -59,7 +54,7 @@
 								<td><input type="checkbox"> OAT ISEApps</td>
 								<td>All ISEApps related OAT test cases</td>
 							</tr>
-						-->
+				
 						</tbody>
 					</table>
 				
@@ -71,9 +66,7 @@
 									<th>Description</th>
 								</tr>					
 						</thead>
-						<tbody id="test_table">
-							
-							<!--
+						<tbody>
 							<tr>
 								<td><input type="checkbox"> PAT-PT101</td>
 								<td>This is a very long description of this test case.</td>
@@ -81,8 +74,7 @@
 							<tr>
 								<td><input type="checkbox"> PAT-PT102 Long name</td>
 								<td>this is a a description</td>
-							</tr>
-							-->
+							</tr>		
 						</tbody>
 					</table>
 			</form>
