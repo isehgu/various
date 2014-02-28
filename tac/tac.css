@@ -20,7 +20,7 @@ body{
         position: fixed;
         top:70px;
         left:0;
-        bottom:200px;
+        bottom:0px;
         display:block;
         padding:20px;
         overflow-x:hidden;
@@ -31,6 +31,13 @@ body{
 
     }
 }
+@media (max-width:768px)
+{
+    .sidebar{
+        display:none;
+    }
+}
+
 .nav-sidebar{
 
 }
