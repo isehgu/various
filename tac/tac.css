@@ -58,3 +58,10 @@ body{
 .navbar-btn{
     font-size:40px;
 }
+#main,#progress,#queue,#history,#env{
+    padding-top:120px;
+}
+
+.inline_header{
+    display:inline;
+}

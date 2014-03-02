@@ -48,7 +48,8 @@
     return json_encode($output_array);
   } //End of f_tableDisplay
 	
-	
+	//Input: an array of suite IDs
+	//Output: an array of test IDs that associate with the provide suite IDs
 	function f_suitesToTests($suites)
 	{
 		global $db;
@@ -63,7 +64,138 @@
 			$output_array[] = $test_id;
 		}
 		return $output_array;
-	}
+	}//End of f_suitesToTests
+	
+
+	//Input:	none
+	//Output:	echo out the html needed to display a table of tests that are in progress.
+	//				These fields are displayed -- RequestID,Label,TestName,ProcessID,StartTime
+	function f_tableProgress()
+	{
+		global $db;
+		$sql_query = "select tr.request_id,tr.process_id,tr.label,tc.test_name,tr.start_timestamp
+								from test_request as tr,test_case as tc where tr.status = 1 and tr.test_id = tc.test_id order by tr.request_id";
+		$result = $db->query($sql_query) or die($db->error);
+    while($row = $result->fetch_assoc())
+		{
+			$rid='';
+			$label='';
+			$name='';
+			$pid='';
+			$stime='';
+			$rid = $row['request_id'];
+			$label = $row['label'];
+			$name = $row['test_name'];
+			$pid = $row['process_id'];
+			$stime = $row['start_timestamp'];
+			echo "<tr>
+							<td><a id='$rid' href='action.php?action=kill&rid=$rid' class='btn btn-danger btn-xs test_kill_btn'><span class='glyphicon glyphicon-remove'></span></a></td>
+							<td>$rid</td>
+							<td>$label</td>
+							<td>$name</td>
+							<td>$pid</td>
+							<td>$stime</td>
+						</tr>";
+		}//End of while
+	}//End of f_tableProgress
+	
+	//Input:	none
+	//Output:	echo out the html needed to display a table of tests that are in queue.
+	//				These fields are displayed -- RequestID,Label,TestName,RequestTime
+	function f_tableQueue()
+	{
+		global $db;
+		$sql_query = "select tr.request_id,tr.label,tc.test_name,tr.request_timestamp
+								from test_request as tr,test_case as tc where tr.status = 0 and tr.test_id = tc.test_id order by tr.request_id";
+		$result = $db->query($sql_query) or die($db->error);
+    while($row = $result->fetch_assoc())
+		{
+			$rid='';
+			$label='';
+			$name='';
+			$rtime='';
+			$rid = $row['request_id'];
+			$label = $row['label'];
+			$name = $row['test_name'];
+			$rtime = $row['request_timestamp'];
+			echo "<tr>
+							<td><a id='$rid' href='action.php?action=cancel&rid=$rid' class='btn btn-warning btn-xs test_cancel_btn'><span class='glyphicon glyphicon-remove'></span></a></td>
+							<td>$rid</td>
+							<td>$label</td>
+							<td>$name</td>
+							<td>$rtime</td>
+						</tr>";
+		}//End of while
+	}//End of f_tableQueue
+	
+	//Input:	none
+	//Output:	echo out the html needed to display a table of test history, those not in queue, or in progress.
+	//				These fields are displayed -- RequestID,Label,TestName,Status,RequestTime,StartTime,EndTime,Report
+	function f_tableHistory()
+	{
+		global $db;
+		$stat_array = array(2=>'Completed-pass',3=>'Completed-fail',4=>'killed',5=>'Sys Error',6=>'Cancelled');
+		$sql_query = "select tr.request_id,tr.label,tc.test_name,tr.status,tr.request_timestamp,tr.start_timestamp,tr.end_timestamp,tr.report
+								from test_request as tr,test_case as tc where tr.status not in (0,1) and tr.test_id = tc.test_id order by tr.request_id";
+		$result = $db->query($sql_query) or die($db->error);
+    while($row = $result->fetch_assoc())
+		{
+			$rid='';
+			$label='';
+			$name='';
+			$rtime='';
+			$stime='';
+			$etime='';
+			$status='';
+			$report='';
+			$rid = $row['request_id'];
+			$label = $row['label'];
+			$name = $row['test_name'];
+			$status = $row['status'];
+			$rtime = $row['request_timestamp'];
+			$stime = $row['start_timestamp'];
+			$etime = $row['end_timestamp'];
+			$report = $row['report'];
+			echo "<tr>
+							<td>$rid</td>
+							<td>$label</td>
+							<td>$name</td>
+							<td>$stat_array[$status]</td>
+							<td>$rtime</td>
+							<td>$stime</td>
+							<td>$etime</td>
+							<td><a href='$report'>$report</a></td>
+						</tr>";
+		}//End of while
+	}//End of f_tableHistory
+	
+	//Input:	none
+	//Output:	echo out the html needed to display a table of env, and a button to either lock or unlock it base on env_status
+	function f_tableEnv()
+	{
+		global $db;
+
+		$sql_query = "select * from test_env order by env_name";
+		$result = $db->query($sql_query) or die($db->error);
+    while($row = $result->fetch_assoc())
+		{
+			$name='';
+			$eid='';
+			$status='';
+
+			$eid = $row['env_id'];
+			$name = $row['env_name'];
+			$status = $row['status'];
+			if($status == 0) $action_button = "<a id='$eid' href='env_action.php?eid=$eid&action=lock' class='btn btn-danger btn-xs env_lock_btn'>Lock it</a>";
+			else $action_button = "<a id='$eid' href='env_action.php?eid=$eid&action=unlock' class='btn btn-success btn-xs env_unlock_btn'>Unlock it</a>";
+			echo "<tr>
+							<td>$action_button</td>
+							<td>$name</td>
+						</tr>";
+		}//End of while
+	}//End of f_tableEnv
+	
+	
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////

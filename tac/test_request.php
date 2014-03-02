@@ -3,6 +3,7 @@
   f_dbConnect();
   $suites = $_GET['suites'];
   $tests = $_GET['tests'];
+	$label = $_GET['label'];
   
   if(count($suites)<=0 && count($tests)<=0)//when no suites nor tests are chosen
   {
@@ -29,20 +30,24 @@
 	$port = "42448";
 	
   $temp_test = array();
-  $test_stream = array();
+  $message = array();
+	$message['header'][] = array('type'=>'test request','label'=>$label);
   foreach($complete_tests as $test)
   {
     $temp_test['test_id'] = $test;
-    $test_stream[] = $temp_test;
+    $message['body'][] = $temp_test;
     $temp_test = array();
     
   }
   
-  
+  $send_msg = json_encode($message);
+	
+	echo $send_msg;
+	/*
 	$socket = socket_create(AF_INET,SOCK_STREAM,0) or die("Could not create socket\n");
 	$result = socket_connect($socket,$host,$port) or die("Could not connect to T.A.C Server\n");
   
-  $send_msg = json_encode($test_stream);
+  
   socket_write($socket,$send_msg,strlen($send_msg)) or die("Could not send json data to T.A.C Server\n");
 	
 	$result = socket_read($socket,1024) or die("Could not read from T.A.C Server\n");
@@ -50,7 +55,7 @@
 	socket_close($socket);
   if($result == 'ok'){header('Location: index.php');}
   else {echo "Test Request unsuccessful: $result";}
-  
+	*/
   /*
   foreach($complete_tests as $test)
   {

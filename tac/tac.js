@@ -44,8 +44,55 @@ $(document).ready(function(){
   }); //End of ajax foo test_table
   
   $('#runbtn').click(function(){
+    var label = prompt("Please enter a Label for the test run");
+    var label_input = "<input type='hidden' name='label' value='"+escapeHtml(label)+"'>";
+    $('#test_request').append(label_input);
     $('#test_request').submit();  
   });
   
+  function escapeHtml(text) {
+    var characters = {
+      '&': '&amp;',
+      '"': '&quot;',
+      "'": '&#039;',
+      '<': '&lt;',
+      '>': '&gt;'
+    };
+    return (text + "").replace(/[<>&"']/g, function(m){
+      return characters[m];
+    });
+  };
+  
+  $('#test_request_search').on('keyup', function(){
+    var rex = new RegExp($(this).val(),'i');
+    $('.test_request_searchable tr').hide();
+    $('.test_request_searchable tr').filter(function(){
+      return rex.test($(this).text());
+    }).show();
+  });
+  
+  $('#progress_search').on('keyup', function(){
+    var rex = new RegExp($(this).val(),'i');
+    $('.progress_searchable tr').hide();
+    $('.progress_searchable tr').filter(function(){
+      return rex.test($(this).text());
+    }).show();
+  });
+  
+  $('#queue_search').on('keyup', function(){
+    var rex = new RegExp($(this).val(),'i');
+    $('.queue_searchable tr').hide();
+    $('.queue_searchable tr').filter(function(){
+      return rex.test($(this).text());
+    }).show();
+  });
+  
+  $('#history_search').on('keyup', function(){
+    var rex = new RegExp($(this).val(),'i');
+    $('.history_searchable tr').hide();
+    $('.history_searchable tr').filter(function(){
+      return rex.test($(this).text());
+    }).show();
+  });
   
 });

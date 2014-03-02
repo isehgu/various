@@ -52,10 +52,9 @@
 		-->
 		
 				<h2 class="sub-header inline_header">Test Suites</h2>
-					<div class="pull-right col-xs-5">
-						<input id="test_request_search" class="form-control" placeholder="Search Test Suite and Test Cases">
-					</div>
-					<br><br><br>
+				
+						<!--<input id="test_request_search" class="form-control" placeholder="Filter for Test Suite and Test Cases">-->
+
 				<table class="table">
 						<thead>
 								<tr>
@@ -80,7 +79,6 @@
 					</table>
 				
 				<h2 class="sub-header">Test Cases</h2>
-				<br>
 					<table class="table">
 						<thead>
 								<tr>
@@ -107,10 +105,7 @@
 			
 			<div id="progress">
 				<h2 class="sub-header inline_header">Test in Progress</h2>
-				<div class="pull-right col-xs-5">
-						<input id="progress_search" class="form-control" placeholder="Search Tests in Progress">
-					</div>
-					<br><br><br>
+
 				<table class="table">
 					<thead>
 						<tr>
@@ -122,7 +117,7 @@
 							<th>Start Time</th>
 						</tr>
 					</thead>
-					<tbody class="progress_searchable">
+					<tbody>
 						<?php f_tableProgress(); ?>
 					</tbody>
 				</table>
@@ -131,10 +126,9 @@
 			
 			<div id="queue">
 				<h2 class="sub-header inline_header">Test in Queue</h2>
-				<div class="pull-right col-xs-5">
-						<input id="queue_search" class="form-control" placeholder="Filter for Test Queue">
-					</div>
-					<br><br><br>
+				<form>
+						<input id="history_search" class="form-control" placeholder="Filter Test History">
+				</form>
 				<table class="table">
 					<thead>
 						<tr>
@@ -145,7 +139,7 @@
 							<th>Request Time</th>
 						</tr>
 					</thead>
-					<tbody class="queue_searchable">
+					<tbody>
 						<?php f_tableQueue(); ?>
 					</tbody>
 				</table>
@@ -154,10 +148,9 @@
 			
 			<div id="history">
 				<h2 class="sub-header inline_header">Test History</h2>
-				<div class="pull-right col-xs-5">
+				<form>
 						<input id="history_search" class="form-control" placeholder="Filter Test History">
-					</div>
-					<br><br><br>
+				</form>
 				<table class="table">
 					<thead>
 						<tr>
@@ -171,7 +164,7 @@
 							<th>Report</th>
 						</tr>
 					</thead>
-					<tbody class="history_searchable">
+					<tbody>
 						<?php f_tableHistory(); ?>
 					</tbody>
 				</table>
