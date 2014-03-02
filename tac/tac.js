@@ -43,7 +43,7 @@ $(document).ready(function(){
           }
   }); //End of ajax foo test_table
   
-  //Somehow double quotes in label will show up with \ in front of it.
+  
   $('#runbtn').click(function(){
     var label = prompt("Please enter a Label for the test run");
     var label_input = "<input type='hidden' name='label' value='"+escapeHtml(label)+"'>";
