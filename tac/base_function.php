@@ -88,7 +88,7 @@
 			$name = $row['test_name'];
 			$pid = $row['process_id'];
 			$stime = $row['start_timestamp'];
-			echo "<tr>
+			echo "<tr id='p_$rid'>
 							<td><a id='$rid' href='action.php?action=kill&rid=$rid' class='btn btn-danger btn-xs test_kill_btn'><span class='glyphicon glyphicon-remove'></span></a></td>
 							<td>$rid</td>
 							<td>$label</td>
@@ -118,7 +118,7 @@
 			$label = $row['label'];
 			$name = $row['test_name'];
 			$rtime = $row['request_timestamp'];
-			echo "<tr>
+			echo "<tr id='q_$rid'>
 							<td><a id='$rid' href='action.php?action=cancel&rid=$rid' class='btn btn-warning btn-xs test_cancel_btn'><span class='glyphicon glyphicon-remove'></span></a></td>
 							<td>$rid</td>
 							<td>$label</td>

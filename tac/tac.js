@@ -63,6 +63,8 @@ $(document).ready(function(){
     });
   };
   
+  //Filtering all 4 tables
+  
   $('#test_request_search').on('keyup', function(){
     var rex = new RegExp($(this).val(),'i');
     $('.test_request_searchable tr').hide();
@@ -94,5 +96,78 @@ $(document).ready(function(){
       return rex.test($(this).text());
     }).show();
   });
+  
+  //Hiding rows in progress table
+  
+  //progress table
+  $('tbody').on('click','.test_kill_btn',function(){
+    var rid = $(this).attr('id');
+    var tr_selector = '#p_'+rid;
+    $.ajax({
+      type: 'get',
+      url:  'action.php',
+      data: 'action=kill&rid='+rid,
+      success: function(data){
+        if(data == 'ok'){$(tr_selector).hide();}
+        else{console.log(data);}
+      }
+    });//end of ajax
+    return false;
+  });
+  
+  //queue table
+  $('tbody').on('click','.test_cancel_btn',function(){
+    var rid = $(this).attr('id');
+    var tr_selector = '#q_'+rid;
+    $.ajax({
+      type: 'get',
+      url:  'action.php',
+      data: 'action=cancel&rid='+rid,
+      success: function(data){
+        if(data == 'ok'){$(tr_selector).hide();}
+        else{console.log(data);}
+      }
+    });//end of ajax
+    return false;
+  });
+  
+  //env table -- lock
+  $('tbody').on('click','.env_lock_btn',function(){
+    var eid = $(this).attr('id');
+    var current_selector = $(this);
+    $.ajax({
+      type: 'get',
+      url:  'env_action.php',
+      data: 'action=lock&eid='+eid,
+      success: function(data){
+        if(data == 'ok')
+        {
+          current_selector.removeClass('env_lock_btn btn-danger').addClass('env_unlock_btn btn-success').text('Unlock it');
+        }
+        else{console.log(data);}
+      }
+    });//end of ajax
+    return false;
+  });
+  
+  //env table -- unlock
+  $('tbody').on('click','.env_unlock_btn',function(){
+    var eid = $(this).attr('id');
+    var current_selector = $(this);
+    $.ajax({
+      type: 'get',
+      url:  'env_action.php',
+      data: 'action=unlock&eid='+eid,
+      success: function(data){
+        if(data == 'ok')
+        {
+          current_selector.removeClass('env_unlock_btn btn-success').addClass('env_lock_btn btn-danger').text('Lock it');
+        }
+        else{console.log(data);}
+      }
+    });//end of ajax
+    return false;
+  });
+  
   
 });

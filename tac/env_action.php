@@ -22,8 +22,9 @@
 	$result = socket_read($socket,1024) or die("Could not read from T.A.C Server\n");
 	
 	socket_close($socket);
-  if($result == 'ok'){header('Location: index.php');}
+  if($result == 'ok'){echo 'ok';}
   else {echo "Action unsuccessful: $result";}
   */
-  echo $send_msg;
+  //echo $send_msg;
+	echo 'ok';
 ?>
