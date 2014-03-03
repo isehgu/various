@@ -92,7 +92,6 @@
 						-->
 						</tbody>
 					</table>
-				
 				<h2 class="sub-header">Test Cases</h2>
 				<br>
 					<table class="table">
@@ -117,7 +116,6 @@
 						</tbody>
 					</table>
 			</form>
-			<hr/>
 			
 			<div id="progress">
 				<h2 class="sub-header inline_header">Test in Progress</h2>
@@ -141,12 +139,12 @@
 					</tbody>
 				</table>
 			</div>
-			<hr/>
+			
 			
 			<div id="queue">
 				<h2 class="sub-header inline_header">Test in Queue</h2>
 				<div class="pull-right col-xs-5">
-						<input id="queue_search" class="form-control" placeholder="Filter for Test Queue">
+						<input id="queue_search" class="form-control" placeholder="Search for Test Queue">
 					</div>
 					<br><br><br>
 				<table class="table">
@@ -164,12 +162,12 @@
 					</tbody>
 				</table>
 			</div>
-			<hr/>
+		
 			
 			<div id="history">
 				<h2 class="sub-header inline_header">Test History</h2>
 				<div class="pull-right col-xs-5">
-						<input id="history_search" class="form-control" placeholder="Filter Test History">
+						<input id="history_search" class="form-control" placeholder="Search Test History">
 					</div>
 					<br><br><br>
 				<table class="table">
@@ -190,7 +188,7 @@
 					</tbody>
 				</table>
 			</div>
-			<hr/>
+	
 			
 			<div id="env">
 				<h2 class="sub-header">Env Setting</h2>
