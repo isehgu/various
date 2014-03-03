@@ -43,8 +43,8 @@
   
   $send_msg = json_encode($message);
 	
-	echo $send_msg;
-	/*
+	//echo $send_msg;
+	
 	$socket = socket_create(AF_INET,SOCK_STREAM,0) or die("Could not create socket\n");
 	$result = socket_connect($socket,$host,$port) or die("Could not connect to T.A.C Server\n");
   
@@ -56,7 +56,7 @@
 	socket_close($socket);
   if($result == 'ok'){header('Location: index.php');}
   else {echo "Test Request unsuccessful: $result";}
-	*/
+	
   /*
   foreach($complete_tests as $test)
   {

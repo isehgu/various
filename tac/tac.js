@@ -109,34 +109,38 @@ $(document).ready(function(){
       url:  'action.php',
       data: 'action=kill&rid='+rid,
       success: function(data){
-        if(data == 'ok'){$(tr_selector).hide();}
+        if(data == 'ok')
+        {
+          $(tr_selector).hide();
+          //Stat Count update
+          $.ajax({
+            type: 'get',
+            url:  'stat_count.php',
+            data: 'type=progress',
+            success: function(count){
+              $('#progress_stat').text(count);
+              //console.log(data);
+            }
+          });//end of progress count ajax
+      
+          $.ajax({
+            type: 'get',
+            url:  'stat_count.php',
+            data: 'type=history',
+            success: function(count){
+              $('#history_stat').text(count);
+              //console.log(data);
+            }
+          });//end of history count ajax
+        }//end of if
         else{console.log(data);}
       }
     });//end of ajax
     
-    //Stat Count update
-    $.ajax({
-      type: 'get',
-      url:  'stat_count.php',
-      data: 'type=progress',
-      success: function(data){
-        $('#progress_stat').text(data);
-        //console.log(data);
-      }
-    });//end of progress count ajax
     
-    $.ajax({
-      type: 'get',
-      url:  'stat_count.php',
-      data: 'type=history',
-      success: function(data){
-        $('#history_stat').text(data);
-        //console.log(data);
-      }
-    });//end of history count ajax
     return false;//On the test_kill_btn click
-  });
-  
+  });//End of test_kill_btn ajax
+  //////////////////////////////////////////////////////////////////////////
   //queue table
   $('tbody').on('click','.test_cancel_btn',function(){
     var rid = $(this).attr('id');
@@ -146,34 +150,36 @@ $(document).ready(function(){
       url:  'action.php',
       data: 'action=cancel&rid='+rid,
       success: function(data){
-        if(data == 'ok'){$(tr_selector).hide();}
+        if(data == 'ok')
+        {
+          $(tr_selector).hide();
+          //Stat Count update    
+          $.ajax({
+            type: 'get',
+            url:  'stat_count.php',
+            data: 'type=history',
+            success: function(count){
+              $('#history_stat').text(count);
+              //console.log(data);
+            }
+          });//end of history count ajax
+          
+          $.ajax({
+            type: 'get',
+            url:  'stat_count.php',
+            data: 'type=queue',
+            success: function(count){
+              $('#queue_stat').text(count);
+              //console.log(data);
+            }
+          });//end of queue count ajax
+        }//end of if
         else{console.log(data);}
       }
     });//end of ajax
-    
-    //Stat Count update    
-    $.ajax({
-      type: 'get',
-      url:  'stat_count.php',
-      data: 'type=history',
-      success: function(data){
-        $('#history_stat').text(data);
-        //console.log(data);
-      }
-    });//end of history count ajax
-    
-    $.ajax({
-      type: 'get',
-      url:  'stat_count.php',
-      data: 'type=queue',
-      success: function(data){
-        $('#queue_stat').text(data);
-        //console.log(data);
-      }
-    });//end of queue count ajax
     return false;
   });
-  
+  ////////////////////////////////////////////////////////////////////////////
   //env table -- lock
   $('tbody').on('click','.env_lock_btn',function(){
     var eid = $(this).attr('id');
@@ -188,21 +194,22 @@ $(document).ready(function(){
         if(data == 'ok')
         {
           current_selector.removeClass('env_lock_btn btn-danger').addClass('env_unlock_btn btn-success').text('Unlock it');
-        }
+           //Stat Count update
+          $.ajax({
+            type: 'get',
+            url:  'stat_count.php',
+            data: 'type=env',
+            success: function(count){
+              $('#env_stat').text(count);
+              console.log(count);
+            }
+          });//end of env count ajax
+        }//end of if
         else{console.log(data);}
       }
     });//end of ajax
     
-    //Stat Count update
-    $.ajax({
-      type: 'get',
-      url:  'stat_count.php',
-      data: 'type=env',
-      success: function(data){
-        $('#env_stat').text(data);
-        //console.log(data);
-      }
-    });//end of env count ajax
+   
     return false;
   });
   
@@ -218,21 +225,22 @@ $(document).ready(function(){
         if(data == 'ok')
         {
           current_selector.removeClass('env_unlock_btn btn-success').addClass('env_lock_btn btn-danger').text('Lock it');
-        }
+          //Stat Count update
+          $.ajax({
+            type: 'get',
+            url:  'stat_count.php',
+            data: 'type=env',
+            success: function(count){
+              $('#env_stat').text(count);
+              console.log(count);
+            }
+          });//end of env count ajax
+        }//end of if
         else{console.log(data);}
       }
     });//end of ajax
     
-    //Stat Count update
-    $.ajax({
-      type: 'get',
-      url:  'stat_count.php',
-      data: 'type=env',
-      success: function(data){
-        $('#env_stat').text(data);
-        //console.log(data);
-      }
-    });//end of env count ajax
+    
     
     return false;
   });
