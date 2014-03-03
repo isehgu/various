@@ -195,7 +195,21 @@
 		}//End of while
 	}//End of f_tableEnv
 	
-	
+	function f_statCount($type)
+	{
+		global $db;
+		if($type == 'progress')
+		{
+			$sql_query = "select count(*)	as count from test_request as tr where tr.status = 1";
+		}
+		elseif($type == 'queue') $sql_query = "select count(*)	as count from test_request as tr where tr.status = 0";
+		elseif($type == 'history') $sql_query = "select count(*)	as count from test_request as tr where tr.status not in (0,1)";
+		else $sql_query = "select count(*) as count from test_env where status = 0";
+		$result = $db->query($sql_query) or die($db->error);
+		$row = $result->fetch_assoc();
+		//$count = $row['count'];
+		return $row['count'];
+	}//End of f_statCount
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////

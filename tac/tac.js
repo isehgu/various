@@ -98,7 +98,7 @@ $(document).ready(function(){
     }).show();
   });
   
-  //Hiding rows in progress table
+  //Interact with table -- ajax, and hide
   
   //progress table
   $('tbody').on('click','.test_kill_btn',function(){
@@ -113,7 +113,28 @@ $(document).ready(function(){
         else{console.log(data);}
       }
     });//end of ajax
-    return false;
+    
+    //Stat Count update
+    $.ajax({
+      type: 'get',
+      url:  'stat_count.php',
+      data: 'type=progress',
+      success: function(data){
+        $('#progress_stat').text(data);
+        //console.log(data);
+      }
+    });//end of progress count ajax
+    
+    $.ajax({
+      type: 'get',
+      url:  'stat_count.php',
+      data: 'type=history',
+      success: function(data){
+        $('#history_stat').text(data);
+        //console.log(data);
+      }
+    });//end of history count ajax
+    return false;//On the test_kill_btn click
   });
   
   //queue table
@@ -129,6 +150,27 @@ $(document).ready(function(){
         else{console.log(data);}
       }
     });//end of ajax
+    
+    //Stat Count update    
+    $.ajax({
+      type: 'get',
+      url:  'stat_count.php',
+      data: 'type=history',
+      success: function(data){
+        $('#history_stat').text(data);
+        //console.log(data);
+      }
+    });//end of history count ajax
+    
+    $.ajax({
+      type: 'get',
+      url:  'stat_count.php',
+      data: 'type=queue',
+      success: function(data){
+        $('#queue_stat').text(data);
+        //console.log(data);
+      }
+    });//end of queue count ajax
     return false;
   });
   
@@ -148,6 +190,17 @@ $(document).ready(function(){
         else{console.log(data);}
       }
     });//end of ajax
+    
+    //Stat Count update
+    $.ajax({
+      type: 'get',
+      url:  'stat_count.php',
+      data: 'type=env',
+      success: function(data){
+        $('#env_stat').text(data);
+        //console.log(data);
+      }
+    });//end of env count ajax
     return false;
   });
   
@@ -167,6 +220,18 @@ $(document).ready(function(){
         else{console.log(data);}
       }
     });//end of ajax
+    
+    //Stat Count update
+    $.ajax({
+      type: 'get',
+      url:  'stat_count.php',
+      data: 'type=env',
+      success: function(data){
+        $('#env_stat').text(data);
+        //console.log(data);
+      }
+    });//end of env count ajax
+    
     return false;
   });
   

@@ -31,10 +31,10 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li><a id="progress_link" href="#progress">Test in Progress</a></li>
-					<li><a href="#queue">Test in Queue</a></li>
-					<li><a href="#history">Test History</a></li>
-					<li><a href="#env">Env Setting</a></li>
+					<li><a href="#progress">Test in Progress <span id="progress_stat" class="badge"><?php echo f_statCount('progress');?></span></a></li>
+					<li><a href="#queue">Test in Queue <span id="queue_stat" class="badge"><?php echo f_statCount('queue');?></span></a></li>
+					<li><a href="#history">Test History <span id="history_stat" class="badge"><?php echo f_statCount('history');?></span></a></li>
+					<li><a href="#env">Env Setting <span id="env_stat" class="badge"><?php echo f_statCount('env');?></span></a></li>
 					<li><a href="#main">Back to Top</a></li>
 				</ul>
 			</div>
