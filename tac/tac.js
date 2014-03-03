@@ -204,6 +204,7 @@ $(document).ready(function(){
               console.log(count);
             }
           });//end of env count ajax
+          $('#e_'+eid).text(escapeHtml(reason));
         }//end of if
         else{console.log(data);}
       }
@@ -235,6 +236,7 @@ $(document).ready(function(){
               console.log(count);
             }
           });//end of env count ajax
+          $('#e_'+eid).text('');
         }//end of if
         else{console.log(data);}
       }

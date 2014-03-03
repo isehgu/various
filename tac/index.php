@@ -197,6 +197,7 @@
 						<tr>
 							<th>Action</th>
 							<th>Env Name</th>
+							<th>Lock Reason</th>
 						</tr>
 					</thead>
 					<tbody>

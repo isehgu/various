@@ -186,11 +186,13 @@
 			$eid = $row['env_id'];
 			$name = $row['env_name'];
 			$status = $row['status'];
+			$reason = $row['reason'];
 			if($status == 0) $action_button = "<a id='$eid' href='env_action.php?eid=$eid&action=lock' class='btn btn-danger btn-xs env_lock_btn'>Lock it</a>";
 			else $action_button = "<a id='$eid' href='env_action.php?eid=$eid&action=unlock' class='btn btn-success btn-xs env_unlock_btn'>Unlock it</a>";
 			echo "<tr>
 							<td>$action_button</td>
 							<td>$name</td>
+							<td id='e_$eid'>$reason</td>
 						</tr>";
 		}//End of while
 	}//End of f_tableEnv
@@ -208,7 +210,7 @@
 		$result = $db->query($sql_query) or die($db->error);
 		$row = $result->fetch_assoc();
 		//$count = $row['count'];
-		return $row['count'];
+		return $row['count']; 
 	}//End of f_statCount
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
