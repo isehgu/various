@@ -1,12 +1,14 @@
 <?php
   $eid = $_GET['eid'];
   $action = $_GET['action'];
+	$reason = $_GET['reason'];
   
   //echo $rid ."----".$action;
   
   $message = array();
   $message['header']['type'] = 'env action';
-  $message['body'] = array('env_id'=>$eid,'action'=>$action);
+	$message['header']['reason'] = $reason;
+  $message['body'][] = array('env_id'=>$eid,'action'=>$action);
   
   $host = "172.21.5.121";
 	$port = "42448";
@@ -25,6 +27,6 @@
   if($result == 'ok'){echo 'ok';}
   else {echo "Action unsuccessful: $result";}
   */
-  //echo $send_msg;
-	echo 'ok';
+  echo $send_msg;
+	//echo 'ok';
 ?>

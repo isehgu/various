@@ -31,7 +31,8 @@
 	
   $temp_test = array();
   $message = array();
-	$message['header'][] = array('type'=>'test request','label'=>$label);
+	$message['header'] = array('type'=>'test request','label'=>$label);
+
   foreach($complete_tests as $test)
   {
     $temp_test['test_id'] = $test;

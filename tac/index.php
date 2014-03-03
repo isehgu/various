@@ -39,7 +39,21 @@
 				</ul>
 			</div>
 		</div>
+	
 		<div id="main" class="col-sm-9 col-sm-offset-3 col-md10 col-md-offset-2">
+			<div id="banner" class="jumbotron">
+			<h2>Test Automation Controller (T.A.C)</h2>
+			<ol>
+				<li><strong>Make sure you view this page in Firefox or Chrome</strong></li>
+				<li>Check the test suite or test case you wish to run.</li>
+				<li>Hit <button class="btn btn-primary">Run</button> on top to put them in test queue.</li>
+				<li>View test or env stats and results -- in progress, in queue, history, env setting.</li>
+			</ol>
+			<blockquote id="disney" class="blockquote-reverse">
+				<p>It's kind of fun to do the impossible.</p>
+				<footer>Walt Disney</footer>
+			</blockquote>
+		</div>
 			<form id="test_request" method="get" action="test_request.php">
 				
 		<!-- Label as input field

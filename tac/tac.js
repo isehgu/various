@@ -178,10 +178,12 @@ $(document).ready(function(){
   $('tbody').on('click','.env_lock_btn',function(){
     var eid = $(this).attr('id');
     var current_selector = $(this);
+    var reason = prompt("Enter a reason for locking env:");
+
     $.ajax({
       type: 'get',
       url:  'env_action.php',
-      data: 'action=lock&eid='+eid,
+      data: 'action=lock&eid='+eid+'&reason='+escapeHtml(reason),
       success: function(data){
         if(data == 'ok')
         {

@@ -164,7 +164,7 @@
 							<td>$rtime</td>
 							<td>$stime</td>
 							<td>$etime</td>
-							<td><a href='$report'>$report</a></td>
+							<td><a href='file:///$report'>$report</a></td>
 						</tr>";
 		}//End of while
 	}//End of f_tableHistory

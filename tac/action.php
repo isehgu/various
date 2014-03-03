@@ -7,7 +7,7 @@
   $message = array();
   $message['header']['type'] = 'test action';
   $content = array('request_id'=>$rid,'action'=>$action);
-  $message['body'] = $content;
+  $message['body'][] = $content;
   
   $host = "172.21.5.121";
 	$port = "42448";
@@ -26,6 +26,6 @@
   if($result == 'ok'){echo 'ok';}
   else {echo "Action unsuccessful: $result";}
   */
-  //echo $send_msg;
-  echo 'ok';
+  echo $send_msg;
+  //echo 'ok';
 ?>
