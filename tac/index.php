@@ -23,7 +23,7 @@
 	<nav id="topnav" class="navbar navbar-default navbar-fixed-top navbar-inverse">
 		<div class="container-fluid">
 			<p class="text-center" id="slogan">
-				<button id="runbtn" class="btn btn-primary btn-lg navbar-btn">Run</button> T.A.C Run!
+				<button id="runbtn" class="btn btn-primary btn-lg navbar-btn">Run</button> T.A.C. Run!
 			</p>
 		</div>
 	</nav>
@@ -31,18 +31,18 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
+					<li><a href="#main">Test Selection <span id="test_stat" class="badge"><?php echo f_statCount('test');?></span></a></li>
 					<li><a href="#progress">Test in Progress <span id="progress_stat" class="badge"><?php echo f_statCount('progress');?></span></a></li>
 					<li><a href="#queue">Test in Queue <span id="queue_stat" class="badge"><?php echo f_statCount('queue');?></span></a></li>
 					<li><a href="#history">Test History <span id="history_stat" class="badge"><?php echo f_statCount('history');?></span></a></li>
 					<li><a href="#env">Env Setting <span id="env_stat" class="badge"><?php echo f_statCount('env');?></span></a></li>
-					<li><a href="#main">Back to Top</a></li>
 				</ul>
 			</div>
 		</div>
 	
 		<div id="main" class="col-sm-9 col-sm-offset-3 col-md10 col-md-offset-2">
 			<div id="banner" class="jumbotron">
-			<h2>Test Automation Controller (T.A.C)</h2>
+			<h2>Test Automation Controller (T.A.C.)</h2>
 			<ol>
 				<li><strong>Make sure you view this page in Firefox or Chrome</strong></li>
 				<li>Check the test suite or test case you wish to run.</li>

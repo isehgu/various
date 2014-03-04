@@ -134,9 +134,9 @@
 	function f_tableHistory()
 	{
 		global $db;
-		$stat_array = array(2=>'Completed-pass',3=>'Completed-fail',4=>'killed',5=>'Sys Error',6=>'Cancelled');
+		$stat_array = array(2=>'Completed-pass',3=>'Completed-fail',4=>'Killed',5=>'Sys Error',6=>'Cancelled');
 		$sql_query = "select tr.request_id,tr.label,tc.test_name,tr.status,tr.request_timestamp,tr.start_timestamp,tr.end_timestamp,tr.report
-								from test_request as tr,test_case as tc where tr.status not in (0,1) and tr.test_id = tc.test_id order by tr.request_id";
+								from test_request as tr,test_case as tc where tr.status not in (0,1) and tr.test_id = tc.test_id order by tr.end_timestamp desc";
 		$result = $db->query($sql_query) or die($db->error);
     while($row = $result->fetch_assoc())
 		{
@@ -206,12 +206,51 @@
 		}
 		elseif($type == 'queue') $sql_query = "select count(*)	as count from test_request as tr where tr.status = 0";
 		elseif($type == 'history') $sql_query = "select count(*)	as count from test_request as tr where tr.status not in (0,1)";
+		elseif($type == 'test') $sql_query = "select count(*) as count from test_case";
 		else $sql_query = "select count(*) as count from test_env where status = 0";
 		$result = $db->query($sql_query) or die($db->error);
 		$row = $result->fetch_assoc();
 		//$count = $row['count'];
 		return $row['count']; 
 	}//End of f_statCount
+	
+	//return a table row on that rid. This row will be inserted into history table via ajax
+	function f_history($rid)
+	{
+		global $db;
+		$stat_array = array(2=>'Completed-pass',3=>'Completed-fail',4=>'Killed',5=>'Sys Error',6=>'Cancelled');
+		$sql_query = "select tr.request_id,tr.label,tc.test_name,tr.status,tr.request_timestamp,tr.start_timestamp,tr.end_timestamp,tr.report
+								from test_request as tr,test_case as tc where request_id = $rid";
+		$result = $db->query($sql_query) or die($db->error);
+
+		$rid='';
+		$label='';
+		$name='';
+		$rtime='';
+		$stime='';
+		$etime='';
+		$status='';
+		$report='';
+		$rid = $row['request_id'];
+		$label = $row['label'];
+		$name = $row['test_name'];
+		$status = $row['status'];
+		$rtime = $row['request_timestamp'];
+		$stime = $row['start_timestamp'];
+		$etime = $row['end_timestamp'];
+		$report = $row['report'];
+		return "<tr>
+						<td>$rid</td>
+						<td>$label</td>
+						<td>$name</td>
+						<td>$stat_array[$status]</td>
+						<td>$rtime</td>
+						<td>$stime</td>
+						<td>$etime</td>
+						<td><a href='file:///$report'>$report</a></td>
+					</tr>";
+
+	}//end of f_history
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////

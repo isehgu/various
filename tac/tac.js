@@ -104,41 +104,53 @@ $(document).ready(function(){
   $('tbody').on('click','.test_kill_btn',function(){
     var rid = $(this).attr('id');
     var tr_selector = '#p_'+rid;
-    $.ajax({
-      type: 'get',
-      url:  'action.php',
-      data: 'action=kill&rid='+rid,
-      success: function(data){
-        if(data == 'ok')
-        {
-          $(tr_selector).hide();
-          //Stat Count update
-          $.ajax({
-            type: 'get',
-            url:  'stat_count.php',
-            data: 'type=progress',
-            success: function(count){
-              $('#progress_stat').text(count);
-              //console.log(data);
-            }
-          });//end of progress count ajax
-      
-          $.ajax({
-            type: 'get',
-            url:  'stat_count.php',
-            data: 'type=history',
-            success: function(count){
-              $('#history_stat').text(count);
-              //console.log(data);
-            }
-          });//end of history count ajax
-        }//end of if
-        else{console.log(data);}
-      }
-    });//end of ajax
-    
-    
-    return false;//On the test_kill_btn click
+    var answer = confirm("Really kill this test?");
+    var pwd = prompt("Enter Admin Password");
+    if (answer) {
+      $.ajax({
+        type: 'get',
+        url:  'action.php',
+        data: 'action=kill&rid='+rid+'&pwd='+pwd,
+        success: function(data){
+          if(data == 'ok')
+          {
+            $(tr_selector).hide();
+            //Stat Count update
+            $.ajax({ //progress count ajax
+              type: 'get',
+              url:  'stat_count.php',
+              data: 'type=progress',
+              success: function(count){
+                $('#progress_stat').text(count);
+                //console.log(data);
+              }
+            });//end of progress count ajax
+        
+            $.ajax({ //history count ajax
+              type: 'get',
+              url:  'stat_count.php',
+              data: 'type=history',
+              success: function(count){
+                $('#history_stat').text(count);
+                //console.log(data);
+              }
+            });//end of history count ajax
+            
+            $.ajax({ //update history table
+              type: 'get',
+              url:  'history_update.php',
+              data: 'rid='+rid,
+              success: function(row){
+                $('#history_searchable').prepend(row);
+                //console.log(data);
+              }
+            });//end of history table update ajax
+          }//end of if
+          else{console.log(data);}
+        }
+      });//end of ajax
+    }//end of if(answer)
+    return false;//On the test_kill_btn click 
   });//End of test_kill_btn ajax
   //////////////////////////////////////////////////////////////////////////
   //queue table
@@ -154,7 +166,7 @@ $(document).ready(function(){
         {
           $(tr_selector).hide();
           //Stat Count update    
-          $.ajax({
+          $.ajax({ //history count ajax
             type: 'get',
             url:  'stat_count.php',
             data: 'type=history',
@@ -164,7 +176,7 @@ $(document).ready(function(){
             }
           });//end of history count ajax
           
-          $.ajax({
+          $.ajax({ //queue count ajax
             type: 'get',
             url:  'stat_count.php',
             data: 'type=queue',
@@ -173,6 +185,16 @@ $(document).ready(function(){
               //console.log(data);
             }
           });//end of queue count ajax
+          
+          $.ajax({ //update history table
+              type: 'get',
+              url:  'history_update.php',
+              data: 'rid='+rid,
+              success: function(row){
+                $('#history_searchable').prepend(row);
+                //console.log(data);
+              }
+          });//end of history table update ajax
         }//end of if
         else{console.log(data);}
       }
@@ -209,8 +231,7 @@ $(document).ready(function(){
         else{console.log(data);}
       }
     });//end of ajax
-    
-   
+
     return false;
   });
   
@@ -241,9 +262,7 @@ $(document).ready(function(){
         else{console.log(data);}
       }
     });//end of ajax
-    
-    
-    
+
     return false;
   });
   
