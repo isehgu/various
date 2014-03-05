@@ -146,7 +146,7 @@ $(document).ready(function(){
               }
             });//end of history table update ajax
           }//end of if
-          else{console.log(data);}
+          else{alert(data);}
         }
       });//end of ajax
     }//end of if(answer)
@@ -196,7 +196,7 @@ $(document).ready(function(){
               }
           });//end of history table update ajax
         }//end of if
-        else{console.log(data);}
+        else{alert(data);}
       }
     });//end of ajax
     return false;
