@@ -76,24 +76,24 @@ $(document).ready(function(){
   
   $('#progress_search').on('keyup', function(){
     var rex = new RegExp($(this).val(),'i');
-    $('.progress_searchable tr').hide();
-    $('.progress_searchable tr').filter(function(){
+    $('#progress_searchable tr').hide();
+    $('#progress_searchable tr').filter(function(){
       return rex.test($(this).text());
     }).show();
   });
   
   $('#queue_search').on('keyup', function(){
     var rex = new RegExp($(this).val(),'i');
-    $('.queue_searchable tr').hide();
-    $('.queue_searchable tr').filter(function(){
+    $('#queue_searchable tr').hide();
+    $('#queue_searchable tr').filter(function(){
       return rex.test($(this).text());
     }).show();
   });
   
   $('#history_search').on('keyup', function(){
     var rex = new RegExp($(this).val(),'i');
-    $('.history_searchable tr').hide();
-    $('.history_searchable tr').filter(function(){
+    $('#history_searchable tr').hide();
+    $('#history_searchable tr').filter(function(){
       return rex.test($(this).text());
     }).show();
   });
@@ -197,7 +197,7 @@ $(document).ready(function(){
           });//end of history table update ajax
         }//end of if
         else{alert(data);}
-      }
+      }//end of success
     });//end of ajax
     return false;
   });

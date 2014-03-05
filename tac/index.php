@@ -134,7 +134,7 @@
 							<th>Start Time</th>
 						</tr>
 					</thead>
-					<tbody class="progress_searchable">
+					<tbody id="progress_searchable">
 						<?php f_tableProgress(); ?>
 					</tbody>
 				</table>
@@ -157,7 +157,7 @@
 							<th>Request Time</th>
 						</tr>
 					</thead>
-					<tbody class="queue_searchable">
+					<tbody id="queue_searchable">
 						<?php f_tableQueue(); ?>
 					</tbody>
 				</table>
@@ -183,7 +183,7 @@
 							<th>Report</th>
 						</tr>
 					</thead>
-					<tbody class="history_searchable">
+					<tbody id="history_searchable">
 						<?php f_tableHistory(); ?>
 					</tbody>
 				</table>

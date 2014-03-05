@@ -215,14 +215,14 @@
 	}//End of f_statCount
 	
 	//return a table row on that rid. This row will be inserted into history table via ajax
-	function f_history($rid)
+	function f_historyRow($rid)
 	{
 		global $db;
 		$stat_array = array(2=>'Completed-pass',3=>'Completed-fail',4=>'Killed',5=>'Sys Error',6=>'Cancelled');
 		$sql_query = "select tr.request_id,tr.label,tc.test_name,tr.status,tr.request_timestamp,tr.start_timestamp,tr.end_timestamp,tr.report
 								from test_request as tr,test_case as tc where request_id = $rid";
 		$result = $db->query($sql_query) or die($db->error);
-
+		$row = $result->fetch_assoc();
 		$rid='';
 		$label='';
 		$name='';

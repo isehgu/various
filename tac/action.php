@@ -4,7 +4,7 @@
 	$pwd = $_GET['pwd'];
   
   //echo $rid ."----".$action;
-  if($pwd == 'scroller')
+  if(($action == 'cancel') || ($pwd == 'scroller'))
 	{
 		$message = array();
 		$message['header']['type'] = 'test action';
