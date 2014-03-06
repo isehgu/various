@@ -50,11 +50,11 @@
   
   
   socket_write($socket,$send_msg,strlen($send_msg)) or die("Could not send json data to T.A.C Server\n");
-	echo "Prepare to send data<br>";
+	//echo "Prepare to send data<br>";
 	$result = socket_read($socket,1024) or die("Could not read from T.A.C Server\n");
 	
 	socket_close($socket);
-  echo "data sent and response received<br>";
+  //echo "data sent and response received<br>";
   if($result == 'ok'){header('Location: index.php');}
   else {echo "Test Request unsuccessful: $result";}
 	
