@@ -10,7 +10,7 @@
 	$message['header']['reason'] = $reason;
   $message['body'][] = array('env_id'=>$eid,'action'=>$action);
   
-  $host = "172.21.5.121";
+  $host = "localhost";
 	$port = "42448";
   
   $send_msg = json_encode($message);

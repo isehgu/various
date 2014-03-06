@@ -146,7 +146,10 @@ $(document).ready(function(){
               }
             });//end of history table update ajax
           }//end of if
-          else{alert(data);}
+          else{
+            alert(data);
+            console.log(data);
+          }
         }
       });//end of ajax
     }//end of if(answer)
@@ -196,7 +199,10 @@ $(document).ready(function(){
               }
           });//end of history table update ajax
         }//end of if
-        else{alert(data);}
+        else{
+            alert(data);
+            console.log(data);
+        }
       }//end of success
     });//end of ajax
     return false;
@@ -228,7 +234,10 @@ $(document).ready(function(){
           });//end of env count ajax
           $('#e_'+eid).text(escapeHtml(reason));
         }//end of if
-        else{console.log(data);}
+        else{
+            alert(data);
+            console.log(data);
+        }
       }
     });//end of ajax
 
@@ -259,7 +268,10 @@ $(document).ready(function(){
           });//end of env count ajax
           $('#e_'+eid).text('');
         }//end of if
-        else{console.log(data);}
+        else{
+            alert(data);
+            console.log(data);
+        }
       }
     });//end of ajax
 

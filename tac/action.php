@@ -11,7 +11,7 @@
 		$content = array('request_id'=>$rid,'action'=>$action);
 		$message['body'][] = $content;
 		
-		$host = "172.21.5.121";
+		$host = "localhost";
 		$port = "42448";
 		
 		$send_msg = json_encode($message);
