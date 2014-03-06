@@ -164,8 +164,19 @@
 							<td>$rtime</td>
 							<td>$stime</td>
 							<td>$etime</td>
-							<td><a href='file:///$report'>Link to Report</a></td>
-						</tr>";
+			";
+			if(!$report || $report == 'None')
+			{
+				echo "<td>$report</td>";
+			}
+			else
+			{
+				$report = 'http://asg.ise.com/reports/' . $report;
+				echo "
+					<td><a href='$report' target='_blank'>Link to Report</a></td>
+					</tr>
+				";
+			}
 		}//End of while
 	}//End of f_tableHistory
 	
@@ -239,7 +250,7 @@
 		$stime = $row['start_timestamp'];
 		$etime = $row['end_timestamp'];
 		$report = $row['report'];
-		return "<tr>
+		$output = "<tr>
 						<td>$rid</td>
 						<td>$label</td>
 						<td>$name</td>
@@ -247,10 +258,32 @@
 						<td>$rtime</td>
 						<td>$stime</td>
 						<td>$etime</td>
-						<td><a href='file:///$report'>$report</a></td>
-					</tr>";
-
+						";
+			if(!$report || $report == 'None')
+			{
+				 $output .= "<td>$report</td>";
+			}
+			else
+			{
+				$report = 'http://asg.ise.com/reports/' . $report;
+				$output .= "
+					<td><a href='$report' target='_blank'>Link to Report</a></td>
+					</tr>
+				";
+			}
+		return $output;
 	}//end of f_history
+	
+	//Get report path using rid
+	function f_getReport($rid)
+	{
+		global $db;
+		$sql_query = "select report from test_request where request_id = $rid";
+		$result = $db->query($sql_query) or die($db->error);
+		$row = $result->fetch_assoc();
+		
+		return $row['report'];
+	}
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
