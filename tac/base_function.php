@@ -170,6 +170,8 @@
 			$test_id='';
 			$env='';
 			
+			$color_class = '';
+			
 			$rid = $row['request_id'];
 			$label = $row['label'];
 			$name = $row['test_name'];
@@ -179,6 +181,11 @@
 			$etime = $row['end_timestamp'];
 			$report = $row['report'];
 			
+			if($status == 2) $color_class = 'bg-success';
+			elseif ($status == 3) $color_class = 'bg-danger';
+			elseif ($status == 5) $color_class = 'bg-warning';
+			else $color_class = 'bg-info';
+			
 			$test_id = $row['test_id'];
 			$env = f_getEnv($test_id);
 			echo "<tr>
@@ -186,7 +193,7 @@
 							<td>$rid</td>
 							<td>$label</td>
 							<td>$name</td>
-							<td>$stat_array[$status]</td>
+							<td class='$color_class'>$stat_array[$status]</td>
 							<td>$rtime</td>
 							<td>$stime</td>
 							<td>$etime</td>
@@ -272,6 +279,8 @@
 		$test_id='';
 		$env='';
 		
+		$color_class = '';
+		
 		$rid = $row['request_id'];
 		$label = $row['label'];
 		$name = $row['test_name'];
@@ -283,12 +292,18 @@
 		
 		$test_id = $row['test_id'];
 		$env = f_getEnv($test_id);
+		
+		if($status == 2) $color_class = 'bg-success';
+		elseif ($status == 3) $color_class = 'bg-danger';
+		elseif ($status == 5) $color_class = 'bg-warning';
+		else $color_class = 'bg-info';
+		
 		$output = "<tr>
 						<td>$env</td>
 						<td>$rid</td>
 						<td>$label</td>
 						<td>$name</td>
-						<td>$stat_array[$status]</td>
+						<td class='$color_class'>$stat_array[$status]</td>
 						<td>$rtime</td>
 						<td>$stime</td>
 						<td>$etime</td>
