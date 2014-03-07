@@ -73,7 +73,7 @@
 	function f_tableProgress()
 	{
 		global $db;
-		$sql_query = "select tr.request_id,tr.process_id,tr.label,tc.test_name,tr.start_timestamp
+		$sql_query = "select tr.test_id,tr.request_id,tr.process_id,tr.label,tc.test_name,tr.start_timestamp
 								from test_request as tr,test_case as tc where tr.status = 1 and tr.test_id = tc.test_id order by tr.request_id";
 		$result = $db->query($sql_query) or die($db->error);
     while($row = $result->fetch_assoc())
@@ -83,12 +83,21 @@
 			$name='';
 			$pid='';
 			$stime='';
+			
+			$test_id='';
+			$env='';
+			
 			$rid = $row['request_id'];
 			$label = $row['label'];
 			$name = $row['test_name'];
 			$pid = $row['process_id'];
 			$stime = $row['start_timestamp'];
+			
+			$test_id = $row['test_id'];
+			$env = f_getEnv($test_id);
+			
 			echo "<tr id='p_$rid'>
+							<td>$env</td>
 							<td><a title='Kill' id='$rid' href='action.php?action=kill&rid=$rid' class='btn btn-danger btn-xs test_kill_btn'><span class='glyphicon glyphicon-remove'></span></a></td>
 							<td>$rid</td>
 							<td>$label</td>
@@ -105,7 +114,7 @@
 	function f_tableQueue()
 	{
 		global $db;
-		$sql_query = "select tr.request_id,tr.label,tc.test_name,tr.request_timestamp
+		$sql_query = "select tr.test_id, tr.request_id,tr.label,tc.test_name,tr.request_timestamp
 								from test_request as tr,test_case as tc where tr.status = 0 and tr.test_id = tc.test_id order by tr.request_id";
 		$result = $db->query($sql_query) or die($db->error);
     while($row = $result->fetch_assoc())
@@ -114,11 +123,20 @@
 			$label='';
 			$name='';
 			$rtime='';
+			
+			$test_id='';
+			$env='';
+			
 			$rid = $row['request_id'];
 			$label = $row['label'];
 			$name = $row['test_name'];
 			$rtime = $row['request_timestamp'];
+			
+			$test_id = $row['test_id'];
+			$env = f_getEnv($test_id);
+			
 			echo "<tr id='q_$rid'>
+							<td>$env</td>
 							<td><a title='Cancel' id='$rid' href='action.php?action=cancel&rid=$rid' class='btn btn-warning btn-xs test_cancel_btn'><span class='glyphicon glyphicon-remove'></span></a></td>
 							<td>$rid</td>
 							<td>$label</td>
@@ -135,7 +153,7 @@
 	{
 		global $db;
 		$stat_array = array(2=>'Completed-pass',3=>'Completed-fail',4=>'Killed',5=>'Sys Error',6=>'Cancelled');
-		$sql_query = "select tr.request_id,tr.label,tc.test_name,tr.status,tr.request_timestamp,tr.start_timestamp,tr.end_timestamp,tr.report
+		$sql_query = "select tr.test_id,tr.request_id,tr.label,tc.test_name,tr.status,tr.request_timestamp,tr.start_timestamp,tr.end_timestamp,tr.report
 								from test_request as tr,test_case as tc where tr.status not in (0,1) and tr.test_id = tc.test_id order by tr.end_timestamp desc";
 		$result = $db->query($sql_query) or die($db->error);
     while($row = $result->fetch_assoc())
@@ -148,6 +166,10 @@
 			$etime='';
 			$status='';
 			$report='';
+			
+			$test_id='';
+			$env='';
+			
 			$rid = $row['request_id'];
 			$label = $row['label'];
 			$name = $row['test_name'];
@@ -156,7 +178,11 @@
 			$stime = $row['start_timestamp'];
 			$etime = $row['end_timestamp'];
 			$report = $row['report'];
+			
+			$test_id = $row['test_id'];
+			$env = f_getEnv($test_id);
 			echo "<tr>
+							<td>$env</td>
 							<td>$rid</td>
 							<td>$label</td>
 							<td>$name</td>
@@ -230,7 +256,7 @@
 	{
 		global $db;
 		$stat_array = array(2=>'Completed-pass',3=>'Completed-fail',4=>'Killed',5=>'Sys Error',6=>'Cancelled');
-		$sql_query = "select tr.request_id,tr.label,tc.test_name,tr.status,tr.request_timestamp,tr.start_timestamp,tr.end_timestamp,tr.report
+		$sql_query = "select tr.test_id,tr.request_id,tr.label,tc.test_name,tr.status,tr.request_timestamp,tr.start_timestamp,tr.end_timestamp,tr.report
 								from test_request as tr,test_case as tc where request_id = $rid";
 		$result = $db->query($sql_query) or die($db->error);
 		$row = $result->fetch_assoc();
@@ -242,6 +268,10 @@
 		$etime='';
 		$status='';
 		$report='';
+		
+		$test_id='';
+		$env='';
+		
 		$rid = $row['request_id'];
 		$label = $row['label'];
 		$name = $row['test_name'];
@@ -250,7 +280,11 @@
 		$stime = $row['start_timestamp'];
 		$etime = $row['end_timestamp'];
 		$report = $row['report'];
+		
+		$test_id = $row['test_id'];
+		$env = f_getEnv($test_id);
 		$output = "<tr>
+						<td>$env</td>
 						<td>$rid</td>
 						<td>$label</td>
 						<td>$name</td>
@@ -283,6 +317,23 @@
 		$row = $result->fetch_assoc();
 		
 		return $row['report'];
+	}
+	
+	//Get related env on a test_id
+	function f_getEnv($test_id)
+	{
+		global	$db;
+		$output = '';
+		$sql_query = "select te.env_name as name from env_relation as er,test_env as te where er.test_id = $test_id and er.env_id = te.env_id";
+		//echo $sql_query;
+		$result = $db->query($sql_query) or die($db->error);
+		while($row = $result->fetch_assoc())
+		{
+			$env = '';
+			$env = $row['name'];
+			$output = $env . ' ';
+		}
+		return $output;
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
