@@ -1,0 +1,25 @@
+body {
+  font-weight:300;
+  padding-top:45px;
+}
+
+.wrapper {
+  border:1px solid;
+  margin:0;
+
+}
+
+#wrapper1{
+  text-align: center;
+  padding-top:50px;
+  padding-bottom:30px;
+}
+
+#wrapper2,#wrapper3{
+  background-image: url('bg.png');
+}
+
+#wrapper2{
+  background-color: #fafafa;
+  text-shadow: 1px 1px 0px #fff;
+}
