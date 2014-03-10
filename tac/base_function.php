@@ -14,7 +14,48 @@
 
   //Input:  type can have two values: test=display test table, suite=display suite table
   //Output: JSON encode array of dictionaries containing name and description
-  function f_tableDisplay($type)
+	
+	function f_tableDisplay($type)
+  {
+		global $db;
+    $output_array = array();
+    $temp_dict = array();
+    if($type == 'test')
+    {
+      $sql_query = "select test_id as id,test_name as name,description from test_case order by test_name";
+    }
+    else
+    {
+      $sql_query = "select suite_id as id,suite_name as name,description from test_suite order by suite_name";
+    }
+    $result = $db->query($sql_query) or die($db->error);
+    while($row = $result->fetch_assoc())
+		{
+			$id = '';
+      $name = ''; //resetting name
+      $description = ''; //resettting description
+			$id = $row['id'];
+      $name = $row['name'];
+      $description = $row['description'];
+
+			if($type == 'test')
+			{
+				echo "<tr><td><input type='checkbox' name='tests[]' value='$id'>
+              $name</td>
+              <td>$description</td></tr>";
+			}
+			else //it's a suite
+			{
+				echo "<tr><td><input type='checkbox' name='suites[]' value='$id'>
+              $name</td>
+              <td>$description</td></tr>";
+			}
+    } //end of while
+    
+
+  } //End of f_tableDisplay
+	
+ /* function f_tableDisplay($type)
   {
 		global $db;
     $output_array = array();
@@ -47,7 +88,7 @@
     //json encode that and return it
     return json_encode($output_array);
   } //End of f_tableDisplay
-	
+ */
 	//Input: an array of suite IDs
 	//Output: an array of test IDs that associate with the provide suite IDs
 	function f_suitesToTests($suites)

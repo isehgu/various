@@ -1,5 +1,7 @@
 
 $(document).ready(function(){
+    
+    /*
   //First populating the test suite table
   $.ajax({
           type: 'post',
@@ -42,8 +44,7 @@ $(document).ready(function(){
             $('#test_table').html(result_html);
           }
   }); //End of ajax foo test_table
-  
-  
+    */
   $('#runbtn').click(function(){
     var label = prompt("Please enter a Label for the test run");
     var label_input = "<input type='hidden' name='label' value='"+escapeHtml(label)+"'>";
@@ -278,5 +279,14 @@ $(document).ready(function(){
     return false;
   });
   
+  //Testing page reload on side navbar links
+  
+  $('.sidelink').click(function(){
+    //event.preventDefault();
+    var target = $(this).attr('href');
+    console.log(target);
+    window.location.assign(target);
+    window.location.reload(true);
+  });
   
 });
