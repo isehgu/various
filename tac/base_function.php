@@ -11,7 +11,17 @@
 		if(!$db) echo "Connection failed: ".$db->connect_error; //if condition here can also be -- if !$mysqli
 		
 	}
-
+	
+	//User authentication
+	function f_userAuthen($user)
+	{
+		global $db;
+		$sql_query = "select * from user where user_name = '$user'";
+		$result = $db->query($sql_query) or die($db->error);
+		if(($result->num_rows) > 0) return true;
+		
+		return false;
+	}
   //Input:  type can have two values: test=display test table, suite=display suite table
   //Output: JSON encode array of dictionaries containing name and description
 	

@@ -55,7 +55,7 @@
 	
 	socket_close($socket);
   //echo "data sent and response received<br>";
-  if($result == 'ok'){header('Location: index.php');}
+  if($result == 'ok'){header('Location: index.php#progress');}
   else {echo "Test Request unsuccessful: $result";}
 	
   /*

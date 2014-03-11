@@ -43,9 +43,9 @@ body{
 
 }
 .nav>li{
-    position: relative;
-    display:block;
-    font-size:15px;
+    position: relative !important;
+    display:block !important;
+    font-size:15px !important;
 }
 .sub-header{
     margin-top:50px;
@@ -76,4 +76,11 @@ body{
 #disney{
     margin-bottom:0;
     padding-bottom: 0;
+}
+
+#name_btn{
+    font-size:18px;
+}
+#greeting{
+    margin-left:15px;
 }

@@ -1,7 +1,7 @@
 <?php
 	require_once "base_function.php";
 	f_dbConnect();
-	$randnumber = rand();
+	//if(!isset($_COOKIE['user'])){header('Location: tac_stats.php');}
 ?>
 	
 
@@ -31,13 +31,22 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div id="greeting" class="btn-group">
+					<button id="name_btn" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						Welcome <?php echo $_COOKIE['user'];?> <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu pull-right" role="menu">
+						<li><a href="logout.php">Logout</a></li>
+					</ul>
+				</div>
 				<ul class="nav nav-sidebar">
-					
 					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#main">Test Selection <span id="test_stat" class="badge"><?php echo f_statCount('test');?></span></a></li>
 					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#progress">Test in Progress <span id="progress_stat" class="badge"><?php echo f_statCount('progress');?></span></a></li>
 					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#queue">Test in Queue <span id="queue_stat" class="badge"><?php echo f_statCount('queue');?></span></a></li>
 					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#history">Test History <span id="history_stat" class="badge"><?php echo f_statCount('history');?></span></a></li>
 					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#env">Env Setting <span id="env_stat" class="badge"><?php echo f_statCount('env');?></span></a></li>
+					<li><a href="http://asg.ise.com/tac/tac_stats.php">Accolades</a></li>
 					<li><a href="http://ic-aoc01/isxfiles/">Release Register</a></li>
 					
 					<!--
