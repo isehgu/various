@@ -28,17 +28,17 @@
           </div>
           
           <ul class="nav navbar-nav text-center">
-            <li><a href="#">Overall</a></li>
-            <li><a href="#">Weekly</a></li>
-            <li><a href="#">Monthly</a></li>
-            <li><a href="#">Yearly</a></li>
+            <li><a href="#overall">Overall</a></li>
+            <li><a href="#weekly">Weekly</a></li>
+            <li><a href="#monthly">Monthly</a></li>
+            <li><a href="#yearly">Yearly</a></li>
           </ul>
         </div>
       </nav>
       
       <div id="stat_container" class="container-fluid">
         <div class="row">
-          <div class="wrapper" id="wrapper1">
+          <div class="" id="wrapper1">
             <h1 id="title_header">T.A.C. launched on 3/6/14</h1>
             <p>Below is a report card of the impact TAC made since then</p>
             <br/>
@@ -63,8 +63,8 @@
           </div>
         </div>
         
-        <div class="wrapper" id="wrapper2">
-          <div class="row" id="overall">
+        <div class="wrapper" id="overall">
+          <div class="row">
             <div class="col-sm-4 col-md-4 text-center">
               <div id="box1" class="box">
                 <h3><strong>8686 minutes were rescued</strong></h3>
@@ -103,7 +103,6 @@
             
         <div class="wrapper" id="wrapper3">
           <div id="weekly" class="stat_box">
-            
             <table class="table table-hover">
               <thead>
                 <tr>
@@ -112,6 +111,7 @@
                   <th>Decrease in Lync</th>
                   <th>Decrease in Call</th>
                   <th>Decrease in Conversation</th>
+									<th>Total minute rescued</th>
                 </tr>
               </thead>
               <tbody>
@@ -121,6 +121,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>3/10/14</td>
@@ -128,6 +129,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>3/10/14</td>
@@ -135,6 +137,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>3/10/14</td>
@@ -142,6 +145,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>3/10/14</td>
@@ -149,6 +153,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>3/10/14</td>
@@ -156,6 +161,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>3/10/14</td>
@@ -163,6 +169,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
               </tbody>
             </table>
@@ -178,6 +185,7 @@
                   <th>Decrease in Lync</th>
                   <th>Decrease in Call</th>
                   <th>Decrease in Conversation</th>
+									<th>Total minute rescued</th>
                 </tr>
               </thead>
               <tbody>
@@ -187,6 +195,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>March 2014</td>
@@ -194,6 +203,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>March 2014</td>
@@ -201,6 +211,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>March 2014</td>
@@ -208,6 +219,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>March 2014</td>
@@ -215,6 +227,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>March 2014</td>
@@ -222,6 +235,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>March 2014</td>
@@ -229,6 +243,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>March 2014</td>
@@ -236,12 +251,13 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
               </tbody>
             </table>
           </div>
           
-          <div id="Year" class="stat_box">
+          <div id="yearly" class="stat_box">
             
             <table class="table table-hover">
               <thead>
@@ -251,6 +267,7 @@
                   <th>Decrease in Lync</th>
                   <th>Decrease in Call</th>
                   <th>Decrease in Conversation</th>
+									<th>Total minute rescued</th>
                 </tr>
               </thead>
               <tbody>
@@ -260,6 +277,7 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>2014</td>
@@ -267,9 +285,11 @@
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
+									<td>32423</td>
                 </tr>
                 <tr>
                   <td>2014</td>
+									<td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
@@ -277,6 +297,7 @@
                 </tr>
                 <tr>
                   <td>2014</td>
+									<td>32423</td>
                   <td>32423</td>
                   <td>32423</td>
                   <td>32423</td>

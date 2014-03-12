@@ -36,7 +36,7 @@
 					<button id="name_btn" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 						Welcome <?php echo $_COOKIE['user'];?> <span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu pull-right" role="menu">
+					<ul class="dropdown-menu" role="menu" style="right: 0; left: 0;">
 						<li><a href="logout.php">Logout</a></li>
 					</ul>
 				</div>
