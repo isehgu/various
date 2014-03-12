@@ -94,3 +94,13 @@ body{
 #instruction{
     font-size: 15px;
 }
+
+#lock_checkbox{
+	padding-left:44px !important;
+}
+#test_with_lock{
+	margin-bottom:40px;
+}
+#lock_reason_input{
+	padding-top:2px;
+}

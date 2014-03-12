@@ -75,22 +75,25 @@
 				<footer>Walt Disney</footer>
 			</blockquote>
 		</div>
-			<form id="test_request" method="get" action="test_request.php">
+			
 				
-		<!-- Label as input field
-				<div class="row">
-					<div class='col-xs-5'>
-						<h2 id='test_label'>Test Rquest Label</h2>
-						<input class='form-control input-lg' type='text' name='label' placeholder='Label Your Test Request'>
-					</div>
+			<div id="test_with_lock" class="row">
+				<div id="lock_checkbox" class="col-md-5 col-sm-5 checkbox">
+					<label><input type='checkbox' name='env_lock' value='1' placeholder='Label Your Test Request'> Lock env with test</label>
 				</div>
-		-->
+				<div id="lock_reason_input" class='col-md-7 col-sm-7 pull-left'>
+					<input class='form-control' type='text' name='lock_reason' placeholder='Lock Reason'>
+				</div>
+			</div>
+			<hr>
+			<br>
 		
 				<h2 class="sub-header inline_header">Test Suites</h2>
 					<div class="pull-right col-xs-5">
 						<input id="test_request_search" class="form-control" placeholder="Search Test Suite and Test Cases">
 					</div>
 					<br><br><br>
+				<form id="test_request" method="get" action="test_request.php">
 				<table class="table">
 						<thead>
 								<tr>
