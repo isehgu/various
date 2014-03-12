@@ -87,5 +87,7 @@ body{
     margin-bottom:20px;
 }
 .dropdown-menu{
-    min-width: 0 !important;
+    /*min-width: 0 !important;*/
+    right: auto;
+    left: 0;
 }

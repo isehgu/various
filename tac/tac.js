@@ -46,11 +46,30 @@ $(document).ready(function(){
   }); //End of ajax foo test_table
     */
   $('#runbtn').click(function(){
-    var label = prompt("Please enter a Label for the test run");
-    var label_input = "<input type='hidden' name='label' value='"+escapeHtml(label)+"'>";
-    $('#test_request').append(label_input);
-    $('#test_request').submit();  
-  });
+    var suites = [];
+    var tests = [];
+    $("input[name='suites[]']:checked").each(function(){
+      suites.push($(this).val());
+      console.log($(this).val());
+    });
+    
+    $("input[name='tests[]']:checked").each(function(){
+      tests.push($(this).val());
+      console.log($(this).val());
+    });
+    
+    if(suites.length == 0 && tests.length == 0)
+    {
+      alert("You did NOT select any test. Please select test to run.");
+    }
+    else
+    {
+      var label = prompt("Please enter a Label for the test run");
+      var label_input = "<input type='hidden' name='label' value='"+escapeHtml(label)+"'>";
+      $('#test_request').append(label_input);
+      $('#test_request').submit();
+    }
+  }); //end of runbtn click
   
   function escapeHtml(text) {
     var characters = {
