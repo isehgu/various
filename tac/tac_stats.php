@@ -28,10 +28,8 @@
           </div>
           
           <ul class="nav navbar-nav text-center">
-            <li><a href="#overall">Overall</a></li>
-            <li><a href="#weekly">Weekly</a></li>
-            <li><a href="#monthly">Monthly</a></li>
-            <li><a href="#yearly">Yearly</a></li>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#detail">Detail</a></li>
           </ul>
         </div>
       </nav>
@@ -63,7 +61,7 @@
           </div>
         </div>
         
-        <div class="wrapper" id="overall">
+        <div class="wrapper" id="summary">
           <div class="row">
             <div class="col-sm-4 col-md-4 text-center">
               <div id="box1" class="box">
@@ -101,7 +99,7 @@
         </div>
           
             
-        <div class="wrapper" id="wrapper3">
+        <div class="wrapper" id="detail">
           <div id="weekly" class="stat_box">
             <table class="table table-hover">
               <thead>
