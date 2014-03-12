@@ -1,7 +1,7 @@
 <?php
 	require_once "base_function.php";
 	f_dbConnect();
-	//if(!isset($_COOKIE['user'])){header('Location: tac_stats.php');}
+	if(!isset($_COOKIE['user'])){header('Location: tac_stats.php');}
 ?>
 	
 
@@ -64,7 +64,7 @@
 		<div id="main" class="col-sm-9 col-sm-offset-3 col-md10 col-md-offset-2">
 			<div id="banner" class="jumbotron">
 			<h2>Test Automation Controller (T.A.C.)</h2>
-			<ol>
+			<ol id="instruction">
 				<li><strong>Make sure you view this page in Firefox or Chrome</strong></li>
 				<li>Check the test suite or test case you wish to run.</li>
 				<li>Hit <button class="btn btn-primary disabled">Run</button> on top to put them in test queue.</li>
@@ -154,6 +154,7 @@
 							<th>Test Name</th>
 							<th>Process ID</th>
 							<th>Start Time</th>
+							<th>Requester</th>
 						</tr>
 					</thead>
 					<tbody id="progress_searchable">
@@ -178,6 +179,7 @@
 							<th>Label</th>
 							<th>Test Name</th>
 							<th>Request Time</th>
+							<th>Requester</th>
 						</tr>
 					</thead>
 					<tbody id="queue_searchable">
@@ -222,6 +224,7 @@
 							<th>Action</th>
 							<th>Env Name</th>
 							<th>Lock Reason</th>
+							<th>User</th>
 						</tr>
 					</thead>
 					<tbody>

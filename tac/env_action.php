@@ -1,13 +1,21 @@
 <?php
+	require_once "base_function.php";
+  f_dbConnect();
+	
   $eid = $_GET['eid'];
   $action = $_GET['action'];
 	$reason = $_GET['reason'];
+	if(!isset($_COOKIE['user'])){header('Location: tac_stats.php');}
+  
+  $user = $_COOKIE['user'];
+  $uid = f_getIdfromUser($user);
   
   //echo $rid ."----".$action;
   
   $message = array();
   $message['header']['type'] = 'env action';
 	$message['header']['reason'] = $reason;
+	$message['header']['uid'] = $uid;
   $message['body'][] = array('env_id'=>$eid,'action'=>$action);
   
   $host = "localhost";

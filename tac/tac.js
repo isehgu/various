@@ -50,12 +50,12 @@ $(document).ready(function(){
     var tests = [];
     $("input[name='suites[]']:checked").each(function(){
       suites.push($(this).val());
-      console.log($(this).val());
+      //console.log($(this).val());
     });
     
     $("input[name='tests[]']:checked").each(function(){
       tests.push($(this).val());
-      console.log($(this).val());
+      //console.log($(this).val());
     });
     
     if(suites.length == 0 && tests.length == 0)
@@ -286,7 +286,9 @@ $(document).ready(function(){
               console.log(count);
             }
           });//end of env count ajax
-          $('#e_'+eid).text('');
+          $('.e_'+eid).each(function(){
+            $(this).text('');
+          });
         }//end of if
         else{
             alert(data);

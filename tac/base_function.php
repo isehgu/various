@@ -124,7 +124,7 @@
 	function f_tableProgress()
 	{
 		global $db;
-		$sql_query = "select tr.test_id,tr.request_id,tr.process_id,tr.label,tc.test_name,tr.start_timestamp
+		$sql_query = "select tr.user_id,tr.test_id,tr.request_id,tr.process_id,tr.label,tc.test_name,tr.start_timestamp
 								from test_request as tr,test_case as tc where tr.status = 1 and tr.test_id = tc.test_id order by tr.request_id";
 		$result = $db->query($sql_query) or die($db->error);
     while($row = $result->fetch_assoc())
@@ -134,6 +134,8 @@
 			$name='';
 			$pid='';
 			$stime='';
+			$uid='';
+			$user_name='';
 			
 			$test_id='';
 			$env='';
@@ -143,6 +145,8 @@
 			$name = $row['test_name'];
 			$pid = $row['process_id'];
 			$stime = $row['start_timestamp'];
+			$uid = $row['user_id'];
+			$user_name = f_getUserFromId($uid);
 			
 			$test_id = $row['test_id'];
 			$env = f_getEnv($test_id);
@@ -155,6 +159,7 @@
 							<td>$name</td>
 							<td>$pid</td>
 							<td>$stime</td>
+							<td>$user_name</td>
 						</tr>";
 		}//End of while
 	}//End of f_tableProgress
@@ -165,7 +170,7 @@
 	function f_tableQueue()
 	{
 		global $db;
-		$sql_query = "select tr.test_id, tr.request_id,tr.label,tc.test_name,tr.request_timestamp
+		$sql_query = "select tr.user_id, tr.test_id, tr.request_id,tr.label,tc.test_name,tr.request_timestamp
 								from test_request as tr,test_case as tc where tr.status = 0 and tr.test_id = tc.test_id order by tr.request_id";
 		$result = $db->query($sql_query) or die($db->error);
     while($row = $result->fetch_assoc())
@@ -174,6 +179,8 @@
 			$label='';
 			$name='';
 			$rtime='';
+			$uid='';
+			$user_name='';
 			
 			$test_id='';
 			$env='';
@@ -182,6 +189,8 @@
 			$label = $row['label'];
 			$name = $row['test_name'];
 			$rtime = $row['request_timestamp'];
+			$uid = $row['user_id'];
+			$user_name = f_getUserFromId($uid);
 			
 			$test_id = $row['test_id'];
 			$env = f_getEnv($test_id);
@@ -193,6 +202,7 @@
 							<td>$label</td>
 							<td>$name</td>
 							<td>$rtime</td>
+							<td>$user_name</td>
 						</tr>";
 		}//End of while
 	}//End of f_tableQueue
@@ -277,17 +287,23 @@
 			$name='';
 			$eid='';
 			$status='';
+			$uid='';
+			$user='';
 
 			$eid = $row['env_id'];
 			$name = $row['env_name'];
 			$status = $row['status'];
 			$reason = $row['reason'];
+			$uid = $row['user_id'];
+			$user = f_getUserFromId($uid);
+			
 			if($status == 0) $action_button = "<a id='$eid' href='env_action.php?eid=$eid&action=lock' class='btn btn-danger btn-xs env_lock_btn'>Lock it</a>";
 			else $action_button = "<a id='$eid' href='env_action.php?eid=$eid&action=unlock' class='btn btn-success btn-xs env_unlock_btn'>Unlock it</a>";
 			echo "<tr>
 							<td>$action_button</td>
 							<td>$name</td>
-							<td id='e_$eid'>$reason</td>
+							<td class='e_$eid'>$reason</td>
+							<td class='e_$eid'>$user</td>
 						</tr>";
 		}//End of while
 	}//End of f_tableEnv
@@ -400,6 +416,26 @@
 			$output = $env . ' ';
 		}
 		return $output;
+	}
+	
+	//Get user name from user id
+	function f_getUserFromId($uid)
+	{
+		global $db;
+		$sql_query = "select user_name as name from user where user_id = $uid limit 1";
+		$result = $db->query($sql_query) or die($db->error);
+		$row = $result->fetch_assoc();
+		return $row['name'];
+	}
+	
+	//Get user id from user name
+	function f_getIdfromUser($name)
+	{
+		global $db;
+		$sql_query = "select user_id from user where user_name = '$name' limit 1";
+		$result = $db->query($sql_query) or die($db->error);
+		$row = $result->fetch_assoc();
+		return $row['user_id'];
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////

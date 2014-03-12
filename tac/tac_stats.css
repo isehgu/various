@@ -36,11 +36,11 @@ body {
   border:2px solid #428bca !important;
   background-image: none !important;
   background-color: #fff;
-  padding:5px;
+  padding:5px 15px 5px 15px;
   border-radius: 8px 8px 8px 8px;
   -moz-border-radius: 8px 8px 8px 8px;
   -webkit-border-radius: 8px 8px 8px 8px;
-  height:350px;
+  height:380px;
   
   -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
@@ -80,4 +80,7 @@ table{
 }
 .navbar-brand{
   font-size:26px !important;
+}
+#sub_title{
+  font-size:15px;
 }

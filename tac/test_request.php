@@ -1,9 +1,15 @@
 <?php
+
   require_once "base_function.php";
   f_dbConnect();
+  if(!isset($_COOKIE['user'])){header('Location: tac_stats.php');}
   $suites = $_GET['suites'];
   $tests = $_GET['tests'];
 	$label = $_GET['label'];
+  
+  $user = $_COOKIE['user'];
+  $uid = f_getIdfromUser($user);
+  
   
   if(count($suites)<=0 && count($tests)<=0)//when no suites nor tests are chosen
   {
@@ -31,7 +37,8 @@
 	
   $temp_test = array();
   $message = array();
-	$message['header'] = array('type'=>'test request','label'=>$label);
+	//$message['header'] = array('type'=>'test request','label'=>$label);
+  $message['header'] = array('type'=>'test request','label'=>$label,'uid'=>$uid);
 
   foreach($complete_tests as $test)
   {

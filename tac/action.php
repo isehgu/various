@@ -2,12 +2,17 @@
   $rid = $_GET['rid'];
   $action = $_GET['action'];
 	$pwd = $_GET['pwd'];
-  
+  if(!isset($_COOKIE['user'])){header('Location: tac_stats.php');}
+	
+	$user = $_COOKIE['user'];
+  $uid = f_getIdfromUser($user);
+	
   //echo $rid ."----".$action;
   if(($action == 'cancel') || ($pwd == 'scroller'))
 	{
 		$message = array();
 		$message['header']['type'] = 'test action';
+		$message['header']['uid'] = $uid;
 		$content = array('request_id'=>$rid,'action'=>$action);
 		$message['body'][] = $content;
 		

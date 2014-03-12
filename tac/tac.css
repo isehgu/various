@@ -91,3 +91,6 @@ body{
     right: auto;
     left: 0;
 }
+#instruction{
+    font-size: 15px;
+}

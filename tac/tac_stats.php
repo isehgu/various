@@ -38,7 +38,7 @@
         <div class="row">
           <div class="" id="wrapper1">
             <h1 id="title_header">T.A.C. launched on 3/6/14</h1>
-            <p>Below is a report card of the impact TAC made since then</p>
+            <p id="sub_title">Below is a report card of the impact TAC made since then</p>
             <br/>
             <?php
               if(!isset($_COOKIE['user']))
