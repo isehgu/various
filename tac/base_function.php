@@ -124,7 +124,7 @@
 	function f_tableProgress()
 	{
 		global $db;
-		$sql_query = "select tr.user_id,tr.test_id,tr.request_id,tr.process_id,tr.label,tc.test_name,tr.start_timestamp
+		$sql_query = "select tc.avg_duration, tr.user_id,tr.test_id,tr.request_id,tr.process_id,tr.label,tc.test_name,tr.start_timestamp
 								from test_request as tr,test_case as tc where tr.status = 1 and tr.test_id = tc.test_id order by tr.request_id";
 		$result = $db->query($sql_query) or die($db->error);
     while($row = $result->fetch_assoc())
@@ -136,6 +136,7 @@
 			$stime='';
 			$uid='';
 			$user_name='';
+			$duration='';
 			
 			$test_id='';
 			$env='';
@@ -147,6 +148,7 @@
 			$stime = $row['start_timestamp'];
 			$uid = $row['user_id'];
 			$user_name = f_getUserFromId($uid);
+			$duration = $row['avg_duration'];
 			
 			$test_id = $row['test_id'];
 			$env = f_getEnv($test_id);
@@ -160,6 +162,7 @@
 							<td>$pid</td>
 							<td>$stime</td>
 							<td>$user_name</td>
+							<td>$duration</td>
 						</tr>";
 		}//End of while
 	}//End of f_tableProgress
@@ -170,7 +173,7 @@
 	function f_tableQueue()
 	{
 		global $db;
-		$sql_query = "select tr.user_id, tr.test_id, tr.request_id,tr.label,tc.test_name,tr.request_timestamp
+		$sql_query = "select tc.avg_duration,tr.user_id, tr.test_id, tr.request_id,tr.label,tc.test_name,tr.request_timestamp
 								from test_request as tr,test_case as tc where tr.status = 0 and tr.test_id = tc.test_id order by tr.request_id";
 		$result = $db->query($sql_query) or die($db->error);
     while($row = $result->fetch_assoc())
@@ -181,6 +184,7 @@
 			$rtime='';
 			$uid='';
 			$user_name='';
+			$duration='';
 			
 			$test_id='';
 			$env='';
@@ -191,6 +195,7 @@
 			$rtime = $row['request_timestamp'];
 			$uid = $row['user_id'];
 			$user_name = f_getUserFromId($uid);
+			$duration = $row['avg_duration'];
 			
 			$test_id = $row['test_id'];
 			$env = f_getEnv($test_id);
@@ -203,6 +208,7 @@
 							<td>$name</td>
 							<td>$rtime</td>
 							<td>$user_name</td>
+							<td>$duration</td>
 						</tr>";
 		}//End of while
 	}//End of f_tableQueue
@@ -302,8 +308,8 @@
 			echo "<tr>
 							<td>$action_button</td>
 							<td>$name</td>
-							<td class='e_$eid'>$reason</td>
-							<td class='e_$eid'>$user</td>
+							<td class='e_$eid' id='lock_reason_display_$eid'>$reason</td>
+							<td class='e_$eid' id='lock_user_display_$eid'>$user</td>
 						</tr>";
 		}//End of while
 	}//End of f_tableEnv

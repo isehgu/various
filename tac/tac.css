@@ -79,7 +79,7 @@ body{
 }
 
 #name_btn{
-    font-size:18px;
+    font-size:16px;
 }
 #greeting{
     margin-left:15px;
@@ -103,4 +103,7 @@ body{
 }
 #lock_reason_input{
 	padding-top:2px;
+}
+.search_input{
+    padding-right:0;
 }

@@ -48,6 +48,7 @@ $(document).ready(function(){
   $('#runbtn').click(function(){
     var suites = [];
     var tests = [];
+    
     $("input[name='suites[]']:checked").each(function(){
       suites.push($(this).val());
       //console.log($(this).val());
@@ -64,11 +65,40 @@ $(document).ready(function(){
     }
     else
     {
-      var label = prompt("Please enter a Label for the test run");
-      var label_input = "<input type='hidden' name='label' value='"+escapeHtml(label)+"'>";
-      $('#test_request').append(label_input);
-      $('#test_request').submit();
-    }
+      //Get lock checkbox, and reason
+      var lock_check = $("input[name=env_lock]:checked").val();
+      var lock_reason = $("input[name=lock_reason]").val();
+      var lock_reason = escapeHtml(lock_reason);
+      
+      if(lock_check == 1) //if lock requested
+      {
+        //if lock is enabled, then if more than one test is submited, alert and do not submit data
+        if((suites.length > 0 || tests.length > 1))
+        {
+          alert("ONLY test request with SINGLE test case can have env lock enabled. Please uncheck additional tests.");
+        }
+        else //if only one test submited with lock, then proceed
+        {
+          var lock_check_input = "<input type='hidden' name='real_env_lock' value='1'>";
+          var lock_reason_input = "<input type='hidden' name='real_lock_reason' value='"+lock_reason+"'>";
+          $('#test_request').append(lock_check_input);
+          $('#test_request').append(lock_reason_input);
+          
+          var label = prompt("Please enter a Label for the test run");
+          var label_input = "<input type='hidden' name='label' value='"+escapeHtml(label)+"'>";
+          $('#test_request').append(label_input);
+          $('#test_request').submit();
+        }//end of if((suites.length > 0 || tests.length > 1))
+      }
+      else //If lock is not enabled, just proceed normally
+      {
+        var label = prompt("Please enter a Label for the test run");
+        var label_input = "<input type='hidden' name='label' value='"+escapeHtml(label)+"'>";
+        $('#test_request').append(label_input);
+        $('#test_request').submit();
+      }//end of if(lock_check == 1)
+      
+    }//end of if(suites.length == 0 && tests.length == 0)
   }); //end of runbtn click
   
   function escapeHtml(text) {
@@ -233,6 +263,7 @@ $(document).ready(function(){
     var eid = $(this).attr('id');
     var current_selector = $(this);
     var reason = prompt("Enter a reason for locking env:");
+    var user = $.cookie('user');
 
     $.ajax({
       type: 'get',
@@ -252,7 +283,8 @@ $(document).ready(function(){
               console.log(count);
             }
           });//end of env count ajax
-          $('#e_'+eid).text(escapeHtml(reason));
+          $('#lock_reason_display_'+eid).text(escapeHtml(reason));
+          $('#lock_user_display_'+eid).text(user);
         }//end of if
         else{
             alert(data);

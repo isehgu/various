@@ -82,6 +82,7 @@
               <div class="box">
                 <h3><strong>345790 tests executed since launch</strong></h3>
                 <br/>
+								<p>5658 tests were requested by non-testers</p>
                 <p>More tests are being
                 executed than ever because we've removed ourselves as the bottleneck!
                 </p>

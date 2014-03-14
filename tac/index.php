@@ -18,6 +18,7 @@
 
             <script src="js/jquery-1.11.0.min.js"></script>
             <script src="js/bootstrap.min.js"></script>
+						<script src="js/jquery.cookie.js"></script>
 						<script src="tac.js"></script>
     </head>	
     <body>
@@ -41,11 +42,11 @@
 					</ul>
 				</div>
 				<ul class="nav nav-sidebar">
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#main">Test Selection <span id="test_stat" class="badge"><?php echo f_statCount('test');?></span></a></li>
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#progress">Test in Progress <span id="progress_stat" class="badge"><?php echo f_statCount('progress');?></span></a></li>
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#queue">Test in Queue <span id="queue_stat" class="badge"><?php echo f_statCount('queue');?></span></a></li>
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#history">Test History <span id="history_stat" class="badge"><?php echo f_statCount('history');?></span></a></li>
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#env">Env Setting <span id="env_stat" class="badge"><?php echo f_statCount('env');?></span></a></li>
+					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#main">Test Selection <span id="test_stat" class="badge pull-right"><?php echo f_statCount('test');?></span></a></li>
+					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#progress">Test in Progress <span id="progress_stat" class="badge pull-right"><?php echo f_statCount('progress');?></span></a></li>
+					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#queue">Test in Queue <span id="queue_stat" class="badge pull-right"><?php echo f_statCount('queue');?></span></a></li>
+					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#history">Test History <span id="history_stat" class="badge pull-right"><?php echo f_statCount('history');?></span></a></li>
+					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#env">Env Setting <span id="env_stat" class="badge pull-right"><?php echo f_statCount('env');?></span></a></li>
 					<li><a href="http://asg.ise.com/tac/tac_stats.php">Accolades</a></li>
 					<li><a href="http://ic-aoc01/isxfiles/">Release Register</a></li>
 					
@@ -79,7 +80,9 @@
 				
 			<div id="test_with_lock" class="row">
 				<div id="lock_checkbox" class="col-md-5 col-sm-5 checkbox">
-					<label><input type='checkbox' name='env_lock' value='1' placeholder='Label Your Test Request'> Lock env with test</label>
+					<label><input type='checkbox' name='env_lock' value='1' placeholder='Label Your Test Request' title='Feature not yet available'>
+                        Lock env with test
+                    </label>
 				</div>
 				<div id="lock_reason_input" class='col-md-7 col-sm-7 pull-left'>
 					<input class='form-control' type='text' name='lock_reason' placeholder='Lock Reason'>
@@ -89,7 +92,7 @@
 			<br>
 		
 				<h2 class="sub-header inline_header">Test Suites</h2>
-					<div class="pull-right col-xs-5">
+					<div class="search_input pull-right col-xs-5">
 						<input id="test_request_search" class="form-control" placeholder="Search Test Suite and Test Cases">
 					</div>
 					<br><br><br>
@@ -143,7 +146,7 @@
 			
 			<div id="progress">
 				<h2 class="sub-header inline_header">Test in Progress</h2>
-				<div class="pull-right col-xs-5">
+				<div class="search_input pull-right col-xs-5">
 						<input id="progress_search" class="form-control" placeholder="Search Tests in Progress">
 					</div>
 					<br><br><br>
@@ -158,6 +161,7 @@
 							<th>Process ID</th>
 							<th>Start Time</th>
 							<th>Requester</th>
+							<th>Avg Duration</th>
 						</tr>
 					</thead>
 					<tbody id="progress_searchable">
@@ -169,7 +173,7 @@
 			
 			<div id="queue">
 				<h2 class="sub-header inline_header">Test in Queue</h2>
-				<div class="pull-right col-xs-5">
+				<div class="search_input pull-right col-xs-5">
 						<input id="queue_search" class="form-control" placeholder="Search for Test Queue">
 					</div>
 					<br><br><br>
@@ -183,6 +187,7 @@
 							<th>Test Name</th>
 							<th>Request Time</th>
 							<th>Requester</th>
+							<th>Avg Duration</th>
 						</tr>
 					</thead>
 					<tbody id="queue_searchable">
@@ -194,7 +199,7 @@
 			
 			<div id="history">
 				<h2 class="sub-header inline_header">Test History</h2>
-				<div class="pull-right col-xs-5">
+				<div class="search_input pull-right col-xs-5">
 						<input id="history_search" class="form-control" placeholder="Search Test History">
 					</div>
 					<br><br><br>

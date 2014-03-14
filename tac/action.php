@@ -1,4 +1,6 @@
 <?php
+	require_once "base_function.php";
+  f_dbConnect();
   $rid = $_GET['rid'];
   $action = $_GET['action'];
 	$pwd = $_GET['pwd'];

@@ -6,10 +6,12 @@
   $suites = $_GET['suites'];
   $tests = $_GET['tests'];
 	$label = $_GET['label'];
-  
+
+  $lock_flag = $_GET['real_env_lock'];
+  $lock_reason = $_GET['real_lock_reason'];
+
   $user = $_COOKIE['user'];
   $uid = f_getIdfromUser($user);
-  
   
   if(count($suites)<=0 && count($tests)<=0)//when no suites nor tests are chosen
   {
@@ -38,8 +40,13 @@
   $temp_test = array();
   $message = array();
 	//$message['header'] = array('type'=>'test request','label'=>$label);
-  $message['header'] = array('type'=>'test request','label'=>$label,'uid'=>$uid);
-
+  //$message['header'] = array('type'=>'test request','label'=>$label,'uid'=>$uid);
+  
+  //With Lock -- comment out the line above when enabling lock code
+  if($lock_flag == 1) $message['header'] = array('type'=>'test request with lock','label'=>$label,'uid'=>$uid,'reason'=>$lock_reason);
+  else $message['header'] = array('type'=>'test request','label'=>$label,'uid'=>$uid);
+  //
+  
   foreach($complete_tests as $test)
   {
     $temp_test['test_id'] = $test;
