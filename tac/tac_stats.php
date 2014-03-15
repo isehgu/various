@@ -30,6 +30,7 @@
           <ul class="nav navbar-nav text-center">
             <li><a href="#summary">Summary</a></li>
             <li><a href="#detail">Detail</a></li>
+						<li><a href="#overview">Overview</a></li>
           </ul>
         </div>
       </nav>
@@ -37,17 +38,24 @@
       <div id="stat_container" class="container-fluid">
         <div class="row">
           <div class="" id="wrapper1">
-            <h1 id="title_header">T.A.C. launched on 3/6/14</h1>
+						<h1 id="title_header">Test Automation Controller(T.A.C.)</h1>
+						<h3><a href="#overview">Learn more</a> about how T.A.C can make testing bottleneck-free. </h3>
+						
+            <!--
+						<h1 id="title_header">T.A.C. launched on 3/6/14</h1>
             <p id="sub_title">Below is a report card of the impact TAC made since then</p>
+						-->
             <br/>
+						<br/>
+
             <?php
               if(!isset($_COOKIE['user']))
               {
                 echo "<form class='form-inline' role='form' method='post' action='authen.php'>
                         <div class='form-group'>
-                          <input type='text' class='form-control' name='username' placeholder='User Name'>
+                          <input type='text' class='form-control input-lg' name='username' placeholder='User Name'>
                         </div>
-                        <button type='submit' class='btn btn-primary'>Sign In</button>
+                        <button type='submit' class='btn btn-lg btn-primary'>Sign In</button>
                 ";
               }
 							else{
@@ -309,6 +317,41 @@
         </div>
         
         
-      </div>
+				
+				<div class="wrapper" id="overview">
+					<h3>TAC aims to help turn test automation into a completely bottleneck-free
+					workflow, in the easiest, simplest, and most user-friendly fashion possible.
+					</h3>
+					<br>
+					<div class="overview_list">
+						<p>Given that focus, TAC is implemented as a web application using html, php, and a python based back-end with a MySQL database.
+Within TAC's own realm, it focuses on 4 ANYs -- <strong id="any">ANYONE, ANYTHING, ANYWHERE and ANYTIME.</strong>
+						</p>
+						
+						<ul>
+							<li>Test Request -- Make it so easy and simple that test request can be initiated by anyone or anything, from anywhere.</li>
+							<li>Tester -- Remove tester from test execution as a bottleneck. No need to wait for someone to run a test. Request test anytime and have it run.</li>
+							<li>Test Environment -- No more downtime. Tests are run anywhere as long as there's available environment that meets test requirement.</li>
+							<li>Test Result -- Make all test results accessible by anyone, from anywhere.</li>
+						</ul>
+						
+					</div>	
+					
+					<br><br>
+					<h3>As young as TAC is (2 weeks old), it already made significant progress on all of the objectives.</h3>
+					<br>
+						
+					<div class="overview_list">
+						<ul>
+							<li>Test Requester -- Be it your desk, you home pc, or a laptop in a conference room, as long as you can access TAC website, you can put in test request. For external tools or scripts, TAC aims to be RESTful. A simple GET is all that it takes to put in a test request.</li>
+							<li>Tester -- No more tester involvement in test execution itself. Test requests are first come first serve. We (the testers) don't dedicate when your tests get run, you do.</li>
+							<li>Test Environment -- Tests for OAT and PAT can run simultaneously. Tests for the same environment would queue if there's ongoing test. All tests are automatically queued if environment is locked (upgrade/downgrade, config change, etc), and released once environment is unlocked.</li>
+							<li>Test Result -- Test result summaries are emailed to requester and displayed on TAC website. (canceled, killed, complete-fail, complete-pass) Links to detailed test reports are provided, and accessible on TAC website as well.</li>
+						</ul>
+						
+					</div>
+					
+				</div>
+			</div>
     </body>
   </html>
