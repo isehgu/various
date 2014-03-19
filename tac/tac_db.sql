@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 14, 2014 at 02:42 PM
+-- Generation Time: Mar 19, 2014 at 10:12 AM
 -- Server version: 5.1.30
 -- PHP Version: 5.2.8
 
@@ -197,6 +197,99 @@ INSERT INTO `notifications` (`notification_id`, `tag`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `stats_daily`
+--
+
+CREATE TABLE IF NOT EXISTS `stats_daily` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `test_count` int(11) NOT NULL,
+  `is_weekend_date` tinyint(1) NOT NULL,
+  `email_count_savings` decimal(7,2) NOT NULL,
+  `email_time_savings` decimal(7,2) NOT NULL,
+  `lync_count_savings` decimal(7,2) NOT NULL,
+  `lync_time_savings` decimal(7,2) NOT NULL,
+  `total_minutes_saved` decimal(7,2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `stats_daily`
+--
+
+INSERT INTO `stats_daily` (`id`, `date`, `test_count`, `is_weekend_date`, `email_count_savings`, `email_time_savings`, `lync_count_savings`, `lync_time_savings`, `total_minutes_saved`) VALUES
+(1, '2014-03-05', 13, 0, 16.12, 14.69, 16.38, 4.03, 18.72),
+(2, '2014-03-06', 15, 0, 18.60, 16.95, 18.90, 4.65, 21.60),
+(3, '2014-03-07', 25, 0, 31.00, 28.25, 31.50, 7.75, 36.00),
+(4, '2014-03-10', 23, 0, 28.52, 25.99, 28.98, 7.13, 33.12),
+(5, '2014-03-11', 22, 0, 27.28, 24.86, 27.72, 6.82, 31.68),
+(6, '2014-03-12', 5, 0, 6.20, 5.65, 6.30, 1.55, 7.20),
+(7, '2014-03-13', 6, 0, 7.44, 6.78, 7.56, 1.86, 8.64),
+(8, '2014-03-14', 22, 0, 27.28, 24.86, 27.72, 6.82, 31.68),
+(9, '2014-03-15', 17, 1, 21.08, 19.21, 21.42, 5.27, 24.48),
+(10, '2014-03-17', 30, 0, 37.20, 33.90, 37.80, 9.30, 43.20),
+(11, '2014-03-18', 6, 0, 7.44, 6.78, 7.56, 1.86, 8.64);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stats_for_web`
+--
+
+CREATE TABLE IF NOT EXISTS `stats_for_web` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `num_tests_executed` int(11) NOT NULL,
+  `busiest_count` int(11) NOT NULL,
+  `busiest_date` date NOT NULL,
+  `avg_daily_requests` decimal(4,2) NOT NULL,
+  `total_coverage` int(11) NOT NULL,
+  `pat_coverage` int(11) NOT NULL,
+  `oat_coverage` int(11) NOT NULL,
+  `email_time_multiplier` decimal(4,2) NOT NULL COMMENT 'Savings in email time per test case',
+  `lync_time_multiplier` decimal(4,2) NOT NULL COMMENT 'Savings in Lync time per test case',
+  `email_count_multiplier` decimal(4,2) NOT NULL COMMENT 'Savings in emails per test run',
+  `lync_count_multiplier` decimal(4,2) NOT NULL COMMENT 'Savings in lyncs per test run',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `stats_for_web`
+--
+
+INSERT INTO `stats_for_web` (`id`, `num_tests_executed`, `busiest_count`, `busiest_date`, `avg_daily_requests`, `total_coverage`, `pat_coverage`, `oat_coverage`, `email_time_multiplier`, `lync_time_multiplier`, `email_count_multiplier`, `lync_count_multiplier`) VALUES
+(1, 0, 0, '0000-00-00', 0.00, 0, 0, 0, 1.13, 0.31, 1.24, 1.26),
+(2, 187, 30, '2014-03-17', 16.73, 95, 100, 91, 1.13, 0.31, 1.24, 1.26);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stats_weekly`
+--
+
+CREATE TABLE IF NOT EXISTS `stats_weekly` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `test_count` int(11) NOT NULL,
+  `email_count_savings` decimal(7,2) NOT NULL,
+  `email_time_savings` decimal(7,2) NOT NULL,
+  `lync_count_savings` decimal(7,2) NOT NULL,
+  `lync_time_savings` decimal(7,2) NOT NULL,
+  `total_minutes_saved` decimal(7,2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `stats_weekly`
+--
+
+INSERT INTO `stats_weekly` (`id`, `start_date`, `end_date`, `test_count`, `email_count_savings`, `email_time_savings`, `lync_count_savings`, `lync_time_savings`, `total_minutes_saved`) VALUES
+(1, '2014-03-03', '2014-03-09', 53, 65.72, 59.89, 66.78, 16.43, 76.32),
+(2, '2014-03-10', '2014-03-16', 95, 117.80, 107.35, 119.70, 29.45, 136.80);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tags`
 --
 
@@ -236,15 +329,15 @@ INSERT INTO `test_case` (`test_id`, `test_name`, `description`, `avg_duration`) 
 (1, 'Another Test', 'Troubleshooting Test', '00:00:11'),
 (2, 'Fake PAT Test', 'Troubleshooting PAT Test', '00:00:01'),
 (3, 'Another Test2', 'Another troubleshooting test', '00:00:31'),
-(4, '16 Adapter 20 TPS Mod Del', '', NULL),
-(5, '16 Adapter 40tps Prod Throttle', '', NULL),
-(6, '16 Adapter Rampup No Throttle 1000tps', '', NULL),
-(7, '16 Adapter Steady 40tps', '', NULL),
-(8, '16 IOC Adapter Rampup No Throttle 1000tps', '', NULL),
-(9, '18 Adapter 3 BSI Rampup No Throttle 1000tps', '', NULL),
-(10, '1 Adapter RampUp 1000tps', '', NULL),
-(11, '1 Adapter Rampup 100tps', '', NULL),
-(12, '8 Adapter Rampup No Throttle 1000tps', '', NULL),
+(4, '16 Adapter 20 TPS Mod Del', 'This test will feed a mix of Order deletions/Modifications as well as New Order Singles for 16 adapters on 1 BSI at 25 TPS', NULL),
+(5, '16 Adapter 40tps Prod Throttle', 'This test will feed New Order Singles for 16 adapters on 1 BSI at a rate of 40 TPS with Production Gateway Throttling.', NULL),
+(6, '16 Adapter Rampup No Throttle 1000tps', 'This test will feed New Order Singles on 16 adapter for 1 BSI at a rate of 25 tps ramping up every 20 seconds until 1000 tps is reached. ', '00:37:00'),
+(7, '16 Adapter Steady 40tps', 'This test will feed New Order Singles for 16 Adapters on 1 BSI at a rate of 40 TPS with No Gateway Throttling.', NULL),
+(8, '16 IOC Adapter Rampup No Throttle 1000tps', 'This test will feed IOC Orders on 16 adapter for 1 BSI at a rate of 25 tps ramping up every 20 seconds until 1000 tps is reached.', NULL),
+(9, '18 Adapter 3 BSI Rampup No Throttle 1000tps', 'This test will feed New Order Singles on 18 adapter for 3 BSI at a rate of 25 tps ramping up every 20 seconds until 1000 tps is reached.', NULL),
+(10, '1 Adapter RampUp 1000tps', 'This test will feed New Order Singles on 1 adapter for 1 BSI at a rate of 25 tps ramping up every 20 seconds until 1000 tps is reached. ', '00:36:00'),
+(11, '1 Adapter Rampup 100tps', 'This test will feed New Order Singles on 1 adapter for 1 BSI at a rate of 25 tps ramping up every 20 seconds until 100 tps is reached.', NULL),
+(12, '8 Adapter Rampup No Throttle 1000tps', 'This test will feed New Order Singles on 8 adapters for 1 BSI at a rate of 25 tps ramping up every 20 seconds until 1000 tps is reached.', NULL),
 (13, 'GEMINI PT101', '', NULL),
 (14, 'GEMINI PT102', '', NULL),
 (15, 'GEMINI PT103', '', NULL),
@@ -352,8 +445,8 @@ INSERT INTO `test_case` (`test_id`, `test_name`, `description`, `avg_duration`) 
 (117, 'OAT Full Core Rotation', 'Shut down and restart of OAT''s Core.', '00:40:01'),
 (118, 'OAT Morning Rotation', 'Complete shut down and start up of OAT''s Core. Events are run, databases are cleaned, etc.', '00:50:48'),
 (119, 'OAT ISE Apps Rotate All', 'Complete shutdown and restart of all ISE Apps in OAT, including configuration services and ActiveMQ. All files in D:\\ise\\log are deleted. IISReset is performed on each server.', '00:18:54'),
-(120, '24 Adapter 3 BSI Rampup No Throttle 1000tps', 'Ramp-up to 1000 tps for 24 adapters spread across 3 BSIs', NULL),
-(121, '24 Adapter 3 BSI Steady No Throttle 40tps', 'Runs a steady feed of Order Adds for 24 Adapters across 3 BSI at a rate of 40 tps per adapter', NULL);
+(120, '24 Adapter 3 BSI Rampup No Throttle 1000tps', 'Ramp-up to 1000 tps for 24 adapters spread across 3 BSIs', '00:35:00'),
+(121, '24 Adapter 3 BSI Steady No Throttle 40tps', 'Runs a steady feed of Order Adds for 24 Adapters across 3 BSI at a rate of 40 tps per adapter', '00:35:00');
 
 -- --------------------------------------------------------
 
@@ -376,7 +469,7 @@ CREATE TABLE IF NOT EXISTS `test_env` (
 
 INSERT INTO `test_env` (`env_id`, `env_name`, `status`, `reason`, `user_id`) VALUES
 (1, 'OAT', 0, '', 0),
-(2, 'PAT', 1, 'PAT213 Server Crashed - Locked until node is restored', 2);
+(2, 'PAT', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -488,7 +581,7 @@ CREATE TABLE IF NOT EXISTS `test_request` (
   `lock_env_with_launch` tinyint(1) DEFAULT NULL,
   `lock_env_with_launch_reason` varchar(100) DEFAULT NULL,
   KEY `request_id` (`request_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=184 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=255 ;
 
 --
 -- Dumping data for table `test_request`
@@ -613,14 +706,75 @@ INSERT INTO `test_request` (`request_id`, `process_id`, `status`, `test_id`, `st
 (145, 2000, 2, 37, '2014-03-13 17:04:54', '2014-03-13 17:20:46', '2014-03-13 17:04:54', 'ISE_PT105_report_20140313_170454.html', '8.1.210 PT105', 3, NULL, NULL),
 (146, 5076, 2, 118, '2014-03-14 07:49:41', '2014-03-14 08:40:33', '2014-03-14 07:49:41', 'OAT_Morning_Rotation_report_20140314_074943.html', 'OAT Morning Rotation', 2, NULL, NULL),
 (156, 4252, 3, 10, '2014-03-14 11:08:09', '2014-03-14 11:44:41', '2014-03-14 11:08:09', '1_Adapter_RampUp_1000tps_report_20140314_110809.html', 'ORA 3.31.0.2 - 1 Adapter Rampup', 3, 0, ''),
-(183, 0, 0, 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2014-03-14 14:06:00', '', 'IORS gtsapi mapped drive', 1, 0, 'None'),
+(192, 3508, 3, 120, '2014-03-14 16:37:56', '2014-03-14 17:11:49', '2014-03-14 16:37:56', '24_Adapter_3_BSI_Rampup_No_Throttle_1000tps_report_20140314_163757.html', 'IORS gtsapi mapped drive', 3, 0, 'None'),
+(191, 0, 6, 120, '0000-00-00 00:00:00', '2014-03-14 16:37:19', '2014-03-14 16:09:02', 'None', 'IORS gtsapi mapped drive', 3, 0, 'None'),
+(190, 784, 3, 120, '2014-03-14 16:08:48', '2014-03-14 16:31:05', '2014-03-14 16:08:48', '24_Adapter_3_BSI_Rampup_No_Throttle_1000tps_report_20140314_160848.html', 'null', 3, 0, 'None'),
+(233, 284, 2, 77, '2014-03-17 10:49:10', '2014-03-17 10:49:56', '2014-03-17 10:06:34', 'Core_500_MG_Session_Manager_Load_Balancing_report_20140317_104911.html', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(232, 2512, 2, 76, '2014-03-17 10:49:56', '2014-03-17 10:51:03', '2014-03-17 10:06:34', 'Core_427_uCheck_Functionality_report_20140317_104956.html', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(230, 5396, 3, 74, '2014-03-17 10:51:03', '2014-03-17 11:15:55', '2014-03-17 10:06:34', 'Core_424_System_Startup_Shutdown_report_20140317_105103.html', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(231, 1676, 2, 75, '2014-03-17 11:15:55', '2014-03-17 11:48:59', '2014-03-17 10:06:34', 'Core_426_dbsync_dbcheck_Local_DBs_report_20140317_111555.html', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(228, 1600, 2, 72, '2014-03-17 11:48:59', '2014-03-17 11:49:19', '2014-03-17 10:06:34', 'Core_418_Gateway_Authentication_report_20140317_114859.html', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(229, 388, 3, 73, '2014-03-17 11:49:19', '2014-03-17 11:50:37', '2014-03-17 10:06:34', 'Core_419_Scheduler_Event_Pause_Resume_report_20140317_114919.html', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(183, 0, 6, 10, '0000-00-00 00:00:00', '2014-03-14 16:08:28', '2014-03-14 14:06:00', 'None', 'IORS gtsapi mapped drive', 1, 0, 'None'),
 (182, 0, 6, 121, '0000-00-00 00:00:00', '2014-03-14 14:00:09', '2014-03-14 13:59:50', 'None', 'IORS gtsapi mapped drive', 1, 0, 'None'),
-(181, 0, 0, 121, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2014-03-14 13:57:26', '', 'IORS gtsapi mapped drive', 3, 0, 'None'),
-(180, 0, 0, 94, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2014-03-14 13:54:23', '', 'OAT R8.001.210 Regression 24 Hr Cycle', 2, 0, 'None'),
-(179, 0, 0, 93, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2014-03-14 13:54:23', '', 'OAT R8.001.210 Regression 24 Hr Cycle', 2, 0, 'None'),
-(178, 3848, 1, 92, '2014-03-14 13:54:23', '0000-00-00 00:00:00', '2014-03-14 13:54:23', 'None', 'OAT R8.001.210 Regression 24 Hr Cycle', 2, 0, 'None'),
+(181, 0, 6, 121, '0000-00-00 00:00:00', '2014-03-14 16:08:26', '2014-03-14 13:57:26', 'None', 'IORS gtsapi mapped drive', 3, 0, 'None'),
+(180, 0, 6, 94, '0000-00-00 00:00:00', '2014-03-14 15:08:31', '2014-03-14 13:54:23', 'None', 'OAT R8.001.210 Regression 24 Hr Cycle', 2, 0, 'None'),
+(179, 0, 6, 93, '0000-00-00 00:00:00', '2014-03-14 15:08:29', '2014-03-14 13:54:23', 'None', 'OAT R8.001.210 Regression 24 Hr Cycle', 2, 0, 'None'),
+(178, 3848, 2, 92, '2014-03-14 13:54:23', '2014-03-14 15:00:28', '2014-03-14 13:54:23', 'OAT_58_24h_Cycle_Trading_Start_of_Day_Failure_report_20140314_135423.html', 'OAT R8.001.210 Regression 24 Hr Cycle', 2, 0, 'None'),
 (176, 2320, 4, 10, '2014-03-14 13:42:47', '2014-03-14 14:04:28', '2014-03-14 13:42:47', 'None', 'IORS gtsapi mapped drive', 1, 0, 'None'),
-(177, 0, 0, 120, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2014-03-14 13:42:47', '', 'IORS gtsapi mapped drive', 1, 0, 'None');
+(177, 0, 6, 120, '0000-00-00 00:00:00', '2014-03-14 16:08:24', '2014-03-14 13:42:47', 'None', 'IORS gtsapi mapped drive', 1, 0, 'None'),
+(193, 3200, 2, 121, '2014-03-14 17:24:42', '2014-03-14 17:52:33', '2014-03-14 17:24:42', '24_Adapter_3_BSI_Steady_No_Throttle_40tps_report_20140314_172442.html', 'IORS gtsapi mapped drive', 3, 0, 'None'),
+(194, 3856, 2, 10, '2014-03-14 18:15:09', '2014-03-14 18:51:01', '2014-03-14 18:15:09', '1_Adapter_RampUp_1000tps_report_20140314_181509.html', 'null', 9, 0, 'None'),
+(227, 3852, 3, 71, '2014-03-17 11:50:37', '2014-03-17 12:13:20', '2014-03-17 10:06:34', 'Core_417_SetPartitionSync_Wait_and_Release_report_20140317_115037.html', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(225, 5336, 2, 69, '2014-03-17 12:13:20', '2014-03-17 12:36:16', '2014-03-17 10:06:34', 'Core_415_Change_Product_State_Script_report_20140317_121320.html', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(226, 1540, 2, 70, '2014-03-17 12:36:16', '2014-03-17 12:48:05', '2014-03-17 10:06:34', 'Core_416_DB_Cleanups_report_20140317_123616.html', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(224, 1992, 2, 102, '2014-03-17 12:48:05', '2014-03-17 13:38:41', '2014-03-17 10:03:35', 'OAT_38_ME_Failure_report_20140317_124805.html', 'OAT R8.001.210 Regression MarketData', 2, 0, 'None'),
+(223, 1932, 2, 99, '2014-03-17 10:03:35', '2014-03-17 10:49:10', '2014-03-17 10:03:35', 'OAT_21_ME_Failover_report_20140317_100336.html', 'OAT R8.001.210 Regression MarketData', 2, 0, 'None'),
+(199, 1860, 4, 118, '2014-03-15 11:24:05', '2014-03-15 11:26:56', '2014-03-15 11:24:05', 'None', 'OAT Morning Rotation', 2, 0, 'None'),
+(200, 0, 6, 93, '0000-00-00 00:00:00', '2014-03-15 11:27:10', '2014-03-15 11:24:25', 'None', 'OAT R8.001.210 Regression 24 Hr Cycle', 2, 0, 'None'),
+(201, 0, 6, 94, '0000-00-00 00:00:00', '2014-03-15 11:27:12', '2014-03-15 11:24:25', 'None', 'OAT R8.001.210 Regression 24 Hr Cycle', 2, 0, 'None'),
+(202, 1992, 2, 118, '2014-03-15 12:54:08', '2014-03-15 13:43:39', '2014-03-15 12:54:01', 'OAT_Morning_Rotation_report_20140315_125408.html', 'OAT Morning Rotation', 2, 0, 'None'),
+(203, 1892, 2, 119, '2014-03-15 13:43:39', '2014-03-15 14:02:08', '2014-03-15 12:54:59', 'OAT_ISE_Apps_Rotate_All_report_20140315_134339.html', 'ISE Apps Rotation', 2, 0, 'None'),
+(204, 1488, 2, 93, '2014-03-15 14:02:08', '2014-03-15 14:43:05', '2014-03-15 12:55:22', 'OAT_62_24h_Cycle_Trading_Open_Failure_report_20140315_140208.html', 'OAT R8.001.210 Regression 24 Hr Cycle', 2, 0, 'None'),
+(205, 956, 2, 94, '2014-03-15 14:43:05', '2014-03-15 15:25:04', '2014-03-15 12:55:22', 'OAT_63_24h_Cycle_Trading_Open_Failure_report_20140315_144305.html', 'OAT R8.001.210 Regression 24 Hr Cycle', 2, 0, 'None'),
+(206, 1336, 2, 109, '2014-03-15 15:25:04', '2014-03-15 16:27:12', '2014-03-15 12:56:37', 'OAT_84_RefData_Pope_Failure_report_20140315_152504.html', 'OAT R8.001.210 Regression RefData', 2, 0, 'None'),
+(207, 5288, 2, 115, '2014-03-15 16:27:12', '2014-03-15 16:28:40', '2014-03-15 12:58:45', 'OAT_93_eventCheck_Functionality_report_20140315_162713.html', 'OAT R8.001.210 Regression StandardOps', 2, 0, 'None'),
+(208, 3600, 2, 116, '2014-03-15 16:28:40', '2014-03-15 16:30:09', '2014-03-15 12:58:45', 'OAT_94_piCheck_Functionality_report_20140315_162841.html', 'OAT R8.001.210 Regression StandardOps', 2, 0, 'None'),
+(209, 3784, 3, 98, '2014-03-15 16:30:09', '2014-03-15 16:33:38', '2014-03-15 13:00:22', 'OAT_20_Gateway_Failure_report_20140315_163009.html', 'OAT R8.001.210 Regression MarketData', 2, 0, 'None'),
+(210, 2528, 3, 99, '2014-03-15 16:33:38', '2014-03-15 17:07:44', '2014-03-15 13:00:22', 'OAT_21_ME_Failover_report_20140315_163339.html', 'OAT R8.001.210 Regression MarketData', 2, 0, 'None'),
+(211, 5792, 2, 100, '2014-03-15 17:07:44', '2014-03-15 19:05:48', '2014-03-15 13:00:22', 'OAT_30_Mdd_Failover_report_20140315_170744.html', 'OAT R8.001.210 Regression MarketData', 2, 0, 'None'),
+(212, 2308, 3, 101, '2014-03-15 19:05:48', '2014-03-15 20:24:36', '2014-03-15 13:00:22', 'OAT_33_MDS_LVC_Failover_report_20140315_190548.html', 'OAT R8.001.210 Regression MarketData', 2, 0, 'None'),
+(213, 5524, 3, 102, '2014-03-15 20:24:36', '2014-03-15 20:58:39', '2014-03-15 13:00:22', 'OAT_38_ME_Failure_report_20140315_202436.html', 'OAT R8.001.210 Regression MarketData', 2, 0, 'None'),
+(214, 1920, 2, 103, '2014-03-15 20:58:39', '2014-03-15 22:58:48', '2014-03-15 13:00:22', 'OAT_39_Mdd_Failure_report_20140315_205839.html', 'OAT R8.001.210 Regression MarketData', 2, 0, 'None'),
+(215, 5076, 3, 104, '2014-03-15 22:58:48', '2014-03-16 00:37:43', '2014-03-15 13:00:22', 'OAT_41_MDS_LVC_Failure_report_20140315_225849.html', 'OAT R8.001.210 Regression MarketData', 2, 0, 'None'),
+(216, 5028, 2, 118, '2014-03-17 08:27:35', '2014-03-17 09:19:39', '2014-03-17 08:27:35', 'OAT_Morning_Rotation_report_20140317_082737.html', 'OAT Morning Rotation', 2, 0, 'None'),
+(217, 5496, 2, 119, '2014-03-17 09:19:39', '2014-03-17 09:38:28', '2014-03-17 08:27:54', 'OAT_ISE_Apps_Rotate_All_report_20140317_091940.html', 'OAT ISE Apps Rotation', 2, 0, 'None'),
+(218, 3156, 2, 98, '2014-03-17 09:38:28', '2014-03-17 09:48:01', '2014-03-17 08:28:10', 'OAT_20_Gateway_Failure_report_20140317_093828.html', 'OAT R8.001.210 Regression MarketData', 2, 0, 'None'),
+(219, 0, 6, 99, '0000-00-00 00:00:00', '2014-03-17 09:46:45', '2014-03-17 08:28:10', 'None', 'OAT R8.001.210 Regression MarketData', 2, 0, 'None'),
+(220, 0, 6, 102, '0000-00-00 00:00:00', '2014-03-17 09:46:47', '2014-03-17 08:28:10', 'None', 'OAT R8.001.210 Regression MarketData', 2, 0, 'None'),
+(221, 3968, 3, 37, '2014-03-17 09:33:36', '2014-03-17 09:33:49', '2014-03-17 09:33:36', 'ISE_PT105_report_20140317_093337.html', 'AT2 threads (default)', 4, 0, 'None'),
+(222, 1280, 2, 37, '2014-03-17 09:41:20', '2014-03-17 10:01:37', '2014-03-17 09:41:20', 'ISE_PT105_report_20140317_094120.html', 'AT2 threads (default) - Re-run', 3, 0, 'None'),
+(234, 380, 2, 59, '2014-03-17 13:38:41', '2014-03-17 14:30:12', '2014-03-17 10:07:38', 'Core_431_Matcher_Leader_Failover_report_20140317_133841.html', 'OAT R8.001.210 Regression Core FailureAndRecovery', 2, 0, 'None'),
+(235, 5148, 2, 60, '2014-03-17 14:30:12', '2014-03-17 14:55:27', '2014-03-17 10:07:38', 'Core_432_Pope_Leader_Failover_report_20140317_143012.html', 'OAT R8.001.210 Regression Core FailureAndRecovery', 2, 0, 'None'),
+(236, 1632, 2, 61, '2014-03-17 14:55:27', '2014-03-17 15:23:56', '2014-03-17 10:07:38', 'Core_433_RIB_Leader_Failover_report_20140317_145527.html', 'OAT R8.001.210 Regression Core FailureAndRecovery', 2, 0, 'None'),
+(237, 172, 2, 62, '2014-03-17 15:23:56', '2014-03-17 15:46:35', '2014-03-17 10:07:38', 'Core_434_MDD_Leader_Failover_report_20140317_152356.html', 'OAT R8.001.210 Regression Core FailureAndRecovery', 2, 0, 'None'),
+(238, 1960, 2, 63, '2014-03-17 15:46:35', '2014-03-17 16:16:33', '2014-03-17 10:07:38', 'Core_435_Audit_Trail_Leader_Failover_report_20140317_154635.html', 'OAT R8.001.210 Regression Core FailureAndRecovery', 2, 0, 'None'),
+(239, 5840, 2, 64, '2014-03-17 16:16:33', '2014-03-17 16:31:54', '2014-03-17 10:07:38', 'Core_436_TM_Failover_report_20140317_161633.html', 'OAT R8.001.210 Regression Core FailureAndRecovery', 2, 0, 'None'),
+(240, 5864, 2, 65, '2014-03-17 16:31:54', '2014-03-17 16:39:24', '2014-03-17 10:07:38', 'Core_438_System_Monitor_Failover_report_20140317_163154.html', 'OAT R8.001.210 Regression Core FailureAndRecovery', 2, 0, 'None'),
+(241, 5696, 3, 66, '2014-03-17 16:39:24', '2014-03-17 16:41:47', '2014-03-17 10:07:38', 'Core_439_System_Controller_Failover_report_20140317_163924.html', 'OAT R8.001.210 Regression Core FailureAndRecovery', 2, 0, 'None'),
+(242, 2172, 2, 67, '2014-03-17 16:41:47', '2014-03-17 16:48:34', '2014-03-17 10:07:38', 'Core_440_Session_Manager_Failover_report_20140317_164147.html', 'OAT R8.001.210 Regression Core FailureAndRecovery', 2, 0, 'None'),
+(243, 368, 2, 68, '2014-03-17 16:48:34', '2014-03-17 16:57:33', '2014-03-17 10:07:38', 'Core_457_Status_Manager_Failover_report_20140317_164834.html', 'OAT R8.001.210 Regression Core FailureAndRecovery', 2, 0, 'None'),
+(244, 3508, 2, 37, '2014-03-17 11:01:34', '2014-03-17 11:17:31', '2014-03-17 11:01:34', 'ISE_PT105_report_20140317_110134.html', 'Re-run for verification', 4, 0, 'None'),
+(245, 6084, 2, 71, '2014-03-17 16:59:57', '2014-03-17 17:26:14', '2014-03-17 16:59:57', 'Core_417_SetPartitionSync_Wait_and_Release_report_20140317_165957.html', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(246, 5236, 4, 73, '2014-03-18 10:28:08', '2014-03-18 10:28:15', '2014-03-18 10:28:08', 'None', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(247, 5412, 2, 118, '2014-03-18 10:30:30', '2014-03-18 11:06:07', '2014-03-18 10:30:30', 'OAT_Morning_Rotation_report_20140318_103030.html', 'OAT Morning Rotation', 2, 0, 'None'),
+(248, 3136, 3, 73, '2014-03-18 11:06:07', '2014-03-18 11:07:19', '2014-03-18 10:30:43', 'Core_419_Scheduler_Event_Pause_Resume_report_20140318_110607.html', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(249, 5364, 2, 73, '2014-03-18 11:10:04', '2014-03-18 11:17:16', '2014-03-18 11:10:04', 'Core_419_Scheduler_Event_Pause_Resume_report_20140318_111004.html', 'OAT R8.001.210 Regression Core StandardOps', 2, 0, 'None'),
+(250, 6012, 2, 119, '2014-03-18 11:17:16', '2014-03-18 11:35:41', '2014-03-18 11:10:16', 'OAT_ISE_Apps_Rotate_All_report_20140318_111716.html', 'ISE Apps Rotate All', 2, 0, 'None'),
+(251, 2332, 2, 56, '2014-03-18 14:32:09', '2014-03-18 14:41:47', '2014-03-18 14:32:09', 'Rotate_PAT_report_20140318_143210.html', 'Prepare PAT Env', 3, 0, 'None'),
+(252, 5776, 3, 118, '2014-03-19 08:40:23', '2014-03-19 08:40:37', '2014-03-19 08:40:23', 'OAT_Morning_Rotation_report_20140319_084024.html', 'OAT Morning Rotation', 2, 0, 'None'),
+(253, 5404, 2, 118, '2014-03-19 08:41:36', '2014-03-19 09:15:45', '2014-03-19 08:41:36', 'OAT_Morning_Rotation_report_20140319_084136.html', 'OAT Morning Rotation', 2, 0, 'None'),
+(254, 1316, 2, 119, '2014-03-19 09:15:45', '2014-03-19 09:33:56', '2014-03-19 08:41:49', 'OAT_ISE_Apps_Rotate_All_report_20140319_091545.html', 'OAT ISE Apps Rotate All', 2, 0, 'None');
 
 -- --------------------------------------------------------
 
@@ -657,7 +811,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_name` varchar(20) NOT NULL,
   `user_email` varchar(30) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `user`
@@ -671,4 +825,5 @@ INSERT INTO `user` (`user_id`, `user_name`, `user_email`) VALUES
 (5, 'Qiaoqi', 'qzhou@ise.com'),
 (6, 'Sanjukta', 'sghosh@ise.com'),
 (7, 'Daniel', 'dsapienza@ise.com'),
-(8, 'Girish', 'gganeshan@ise.com');
+(8, 'Girish', 'gganeshan@ise.com'),
+(9, 'Andy', 'alin@ise.com');

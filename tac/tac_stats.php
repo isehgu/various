@@ -133,7 +133,7 @@
 									</span> of OAT regression tests are available through TAC.
 								</p>
 								<br><br>
-                <h3>The more we add, the more we save.</h3>
+                <h3>The more we add, the more we save!</h3>
               </div>
             </div>
 						
@@ -148,8 +148,8 @@
                 <tr>
                   <th>Week Of</th>
 									<th>Test Executed</th>
-                  <th>Decrease in Email</th>
-                  <th>Decrease in Lync</th>
+                  <th>Reduction in Email</th>
+                  <th>Reduction in Lync</th>
 									<th>Minutes Rescued</th>
                 </tr>
               </thead>
@@ -297,17 +297,17 @@
 				
 				<div class="wrapper" id="overview">
 					<h3>TAC aims to help turn test automation into a completely bottleneck-free
-					workflow, in the easiest, simplest, and most user-friendly fashion possible.
+					process, in the easiest, simplest, and most user-friendly fashion possible.
 					</h3>
 					<br>
 					<div class="overview_list">
-						<p>Given that focus, TAC is implemented as a web application using html, php, and a python based back-end with a MySQL database.
+						<p>With that focus, TAC is implemented as a web application using html, php, and a python based back-end with a MySQL database.
 Within TAC's own realm, it focuses on 4 ANYs -- <strong id="any">ANYONE, ANYTHING, ANYWHERE and ANYTIME.</strong>
 						</p>
 						
 						<ul>
 							<li>Test Request -- Make it so easy and simple that test request can be initiated by anyone or anything, from anywhere.</li>
-							<li>Tester -- Remove tester from test execution as a bottleneck. No need to wait for someone to run a test. Request test anytime and have it run.</li>
+							<li>Requester -- Remove tester from test execution as a bottleneck. No need to wait for someone to run a test. Request test anytime and have it run.</li>
 							<li>Test Environment -- No more downtime. Tests are run anywhere as long as there's available environment that meets test requirement.</li>
 							<li>Test Result -- Make all test results accessible by anyone, from anywhere.</li>
 						</ul>
@@ -320,8 +320,8 @@ Within TAC's own realm, it focuses on 4 ANYs -- <strong id="any">ANYONE, ANYTHIN
 						
 					<div class="overview_list">
 						<ul>
-							<li>Test Requester -- Be it your desk, you home pc, or a laptop in a conference room, as long as you can access TAC website, you can put in test request. For external tools or scripts, TAC aims to be RESTful. A simple GET is all that it takes to put in a test request.</li>
-							<li>Tester -- No more waiting on someone to kick off tests. Simply checkbox the tests you want, and click Run.</li>
+							<li>Test Request -- Be it your desk, you home pc, or a laptop in a conference room, as long as you can access TAC website, you can put in test request. For external tools or scripts, TAC aims to be RESTful. A simple GET is all that it takes to put in a test request.</li>
+							<li>Requester -- No more waiting on someone to kick off tests. Simply checkbox the tests you want, and click Run.</li>
 							<li>Test Environment -- Tests for OAT and PAT can run simultaneously. Tests for the same environment would queue if there's ongoing test. All tests are automatically queued if environment is locked (upgrade/downgrade, config change, etc), and released once environment is unlocked.</li>
 							<li>Test Result -- Test result summaries are emailed to requester and displayed on TAC website. (canceled, killed, complete-fail, complete-pass) Links to detailed test reports are provided, and accessible on TAC website as well.</li>
 						</ul>
