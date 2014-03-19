@@ -100,7 +100,7 @@
 				<table class="table">
 						<thead>
 								<tr>
-									<th>Test Suite Name</th>
+									<th class='col-md-6 col-sm-6'>Test Suite Name</th>
 									<th>Description</th>
 								</tr>			
 						</thead>
@@ -124,7 +124,7 @@
 					<table class="table">
 						<thead>
 								<tr>
-									<th>Test Name</th>
+									<th class='col-md-6 col-sm-6'>Test Name</th>
 									<th>Description</th>
 								</tr>					
 						</thead>

@@ -443,6 +443,143 @@
 		$row = $result->fetch_assoc();
 		return $row['user_id'];
 	}
+	
+	//Get total number of emails saved
+	function f_totalEmails()
+	{
+		global $db;
+		$sql_query = "select email_count_multiplier as e_count,num_tests_executed as t_count from stats_for_web order by id desc limit 1";
+		$result = $db->query($sql_query) or die($db->error);
+		$row = $result->fetch_assoc();
+		$email_multipler = $row['e_count']; //email count on per test basis
+		$total_test = $row['t_count'];
+		
+		//total number of email is total_test * email_multipler
+		return round($total_test * $email_multipler);
+	}
+	
+	//Get total number of emails saved
+	function f_totalLync()
+	{
+		global $db;
+		$sql_query = "select lync_count_multiplier as l_count,num_tests_executed as t_count from stats_for_web order by id desc limit 1";
+		$result = $db->query($sql_query) or die($db->error);
+		$row = $result->fetch_assoc();
+		$lync_multipler = $row['l_count']; //email count on per test basis
+		$total_test = $row['t_count'];
+		
+		//total number of lync is total_test * lync_multipler
+		return round($total_test * $lync_multipler);
+	}
+	
+	//Get total minutes saved
+	function f_totalMinute()
+	{
+		global $db;
+		$sql_query = "select num_tests_executed as t_count, email_time_multiplier as e_time, lync_time_multiplier as l_time from stats_for_web order by id desc limit 1";
+		$result = $db->query($sql_query) or die($db->error);
+		$row = $result->fetch_assoc();
+		$total_test = $row['t_count'];
+		$avg_email_time = $row['e_time'];
+		$avg_lync_time = $row['l_time'];
+		
+		//total minutes saved
+		return ($total_test*$avg_email_time + $total_test*$avg_lync_time);
+	}
+	
+	//Get total number of tests run
+	function f_totalTests()
+	{
+		global $db;
+		$sql_query = "select num_tests_executed as t_count from stats_for_web order by id desc limit 1";
+		$result = $db->query($sql_query) or die($db->error);
+		$row = $result->fetch_assoc();
+		$total_test = $row['t_count'];
+		
+		//total number of lync is total_test * lync_multipler
+		return $total_test;
+	}
+	
+	//Get date and test count of the busiest day
+	function f_getBusiestDay()
+	{
+		global $db;
+
+		$sql_query = "select busiest_date, busiest_count from stats_for_web order by id desc limit 1";
+		$result = $db->query($sql_query) or die($db->error);
+		$row = $result->fetch_assoc();
+		$busiest['date'] = $row['busiest_date'];
+		$busiest['test_count'] = $row['busiest_count'];
+		return $busiest;
+	}
+	
+	//Get average test request per day
+	function f_getAverage()
+	{
+		global $db;
+
+		$sql_query = "select avg_daily_requests as average from stats_for_web order by id desc limit 1";
+		$result = $db->query($sql_query) or die($db->error);
+		$row = $result->fetch_assoc();
+		$average = $row['average'];
+
+		return $average;
+	}
+	
+	//Get combine oat and pat coverage
+	function f_getTestCoverage($type)
+	{
+		global $db;
+		if($type == 'total') $sql_query = "select total_coverage as coverage from stats_for_web order by id desc limit 1";
+		elseif($type == 'PAT') $sql_query = "select pat_coverage as coverage from stats_for_web order by id desc limit 1";
+		else  $sql_query = "select oat_coverage as coverage from stats_for_web order by id desc limit 1";
+		$result = $db->query($sql_query) or die($db->error);
+		$row = $result->fetch_assoc();
+		return $row['coverage'];
+	}
+	
+	/*
+	 *Display weekly status table
+		<th>Week Of</th>
+		<th>Decrease in Email</th>
+		<th>Decrease in Lync</th>
+		<th>Total minute rescued</th>
+	*/
+	function f_displayWeeklyTable()
+	{
+		global $db;
+		$sql_query = "select * from stats_weekly order by id desc";
+		$result = $db->query($sql_query) or die($db->error);
+		while($row = $result->fetch_assoc())
+		{
+			$start_date = '';
+			$end_date = '';
+			$test_count = '';
+			$email_saved = '';
+			$email_time_saved = '';
+			$lync_saved = '';
+			$lync_time_saved = '';
+			$total_time_saved = '';
+			
+			$start_date = $row['start_date'];
+			$end_date = $row['end_date'];
+			$test_count = $row['test_count'];
+			$email_saved = round($row['email_count_savings']);
+			$email_time_saved = $row['email_time_savings'];
+			$lync_saved = round($row['lync_count_savings']);
+			$lync_time_saved = $row['lync_time_savings'];
+			$total_time_saved = $row['total_minutes_saved'];
+			echo "
+				<tr>
+					<td><strong>$start_date</strong> <small>to</small> <strong>$end_date</strong></td>
+					<td>$test_count</td>
+					<td>$email_saved</td>
+					<td>$lync_saved</td>
+					<td>$total_time_saved</td>
+				</tr>
+			";
+		}//End of while
+	}
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////

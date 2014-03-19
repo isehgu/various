@@ -40,7 +40,7 @@
 				<table class="table">
 						<thead>
 								<tr>
-									<th>Test Suite Name</th>
+									<th class='col-md-5 col-sm-5'>Test Suite Name</th>
 									<th>Description</th>
 								</tr>			
 						</thead>

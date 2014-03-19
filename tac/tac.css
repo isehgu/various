@@ -94,6 +94,10 @@ body{
 #instruction{
     font-size: 15px;
 }
+#instruction>li{
+    padding-top:10px;
+    padding-bottom: 10px;
+}
 
 #lock_checkbox{
 	padding-left:44px !important;

@@ -39,7 +39,7 @@
         <div class="row">
           <div class="" id="wrapper1">
 						<h1 id="title_header">Test Automation Controller(T.A.C.)</h1>
-						<h3><a href="#overview">Learn more</a> about how T.A.C can make testing bottleneck-free. </h3>
+						<h3><a href="#overview">Learn more</a> about how T.A.C. can make testing bottleneck-free. </h3>
 						
             <!--
 						<h1 id="title_header">T.A.C. launched on 3/6/14</h1>
@@ -64,7 +64,7 @@
 								
 								";				
 								
-							}
+							} //end of if on user cookie check
             ?>
           </div>
         </div>
@@ -73,37 +73,70 @@
           <div class="row">
             <div class="col-sm-4 col-md-4 text-center">
               <div id="box1" class="box">
-                <h3><strong>8686 minutes were rescued</strong></h3>
+                <h3><strong>
+								<?php
+									$total_minute = f_totalMinute();
+									echo $total_minute;
+								?></strong> Minutes Rescued</h3>
                 <br/>
-                <ul class="box_list">
-                  <li>58698 emails eliminated</li>
-                  <li>5688 messenger converstion avoided</li>
-                  <li>6858 phone calls dodged</li>
-                  <li>8969 in-person conversation prevented</li>
-                </ul>
-                <br/>
-                <h3>That is 14+ Hours SAVED!</h3>
+								<p>
+									<span class="standout"><?php echo f_totalEmails() ?></span> emails eliminated. 
+								</p>
+								<p>
+									<span class="standout"><?php echo f_totalLync() ?></span> messenger conversations avoided.
+								</p>
+								<br><br><br>            
+                <h3>That is <strong><?php echo round($total_minute/60,2);?></strong> Hours SAVED!</h3>
               </div>
             </div>
             
             <div class="col-sm-4 col-md-4 text-center">
               <div class="box">
-                <h3><strong>345790 tests executed since launch</strong></h3>
+                <h3><strong><?php echo f_totalTests()?></strong> Tests Executed</h3>
                 <br/>
-								<p>5658 tests were requested by non-testers</p>
-                <p>More tests are being
-                executed than ever because we've removed ourselves as the bottleneck!
-                </p>
+								<p>
+									On <span class="standout">
+										<?php
+											$busiest = f_getBusiestDay();
+											echo $busiest['date'].",";
+										?>
+									</span> TAC's busiest day,
+									<span class="standout">
+										<?php echo $busiest['test_count'];?>
+									</span> tests requests were processed by TAC.
+								</p>
+                <p><span class="standout">
+									<?php echo f_getAverage();?>
+								</span> test requests are processed on an average day.
+								</p>
+						
+								<br>
+								<h3>No testers needed!</h3>	
+              
               </div>
             </div>
             
             <div class="col-sm-4 col-md-4 text-center">
               <div class="box">
-                <h3><strong>85% of OAT and PAT covered</strong></h3>
+                <h3><strong>
+									<?php
+										echo f_getTestCoverage("total")."%";
+									?>
+								</strong> of OAT and PAT regression covered</h3>
                 <br/>
-                <p>The more we add, the more we save.</p>
+								<p>
+									<span class="standout">
+										<?php echo f_getTestCoverage('PAT')."%";?>
+									</span> of PAT regression tests and
+									<span class="standout">
+										<?php echo f_getTestCoverage('OAT')."%";?>
+									</span> of OAT regression tests are available through TAC.
+								</p>
+								<br><br>
+                <h3>The more we add, the more we save.</h3>
               </div>
             </div>
+						
           </div>
         </div>
           
@@ -114,74 +147,18 @@
               <thead>
                 <tr>
                   <th>Week Of</th>
+									<th>Test Executed</th>
                   <th>Decrease in Email</th>
                   <th>Decrease in Lync</th>
-                  <th>Decrease in Call</th>
-                  <th>Decrease in Conversation</th>
-									<th>Total minute rescued</th>
+									<th>Minutes Rescued</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>3/10/14</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-									<td>32423</td>
-                </tr>
-                <tr>
-                  <td>3/10/14</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-									<td>32423</td>
-                </tr>
-                <tr>
-                  <td>3/10/14</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-									<td>32423</td>
-                </tr>
-                <tr>
-                  <td>3/10/14</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-									<td>32423</td>
-                </tr>
-                <tr>
-                  <td>3/10/14</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-									<td>32423</td>
-                </tr>
-                <tr>
-                  <td>3/10/14</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-									<td>32423</td>
-                </tr>
-                <tr>
-                  <td>3/10/14</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-                  <td>32423</td>
-									<td>32423</td>
-                </tr>
+                <?php f_displayWeeklyTable()?>
               </tbody>
             </table>
           </div>
-          
+          <!--
           <div id="monthly" class="stat_box">
             
             <table class="table table-hover">
@@ -313,7 +290,7 @@
               </tbody>
             </table>
           </div>
-          
+          -->
         </div>
         
         
@@ -338,13 +315,13 @@ Within TAC's own realm, it focuses on 4 ANYs -- <strong id="any">ANYONE, ANYTHIN
 					</div>	
 					
 					<br><br>
-					<h3>As young as TAC is (2 weeks old), it already made significant progress on all of the objectives.</h3>
+					<h3>In TAC's infancy (2 weeks old), it already made significant progress on all of the objectives.</h3>
 					<br>
 						
 					<div class="overview_list">
 						<ul>
 							<li>Test Requester -- Be it your desk, you home pc, or a laptop in a conference room, as long as you can access TAC website, you can put in test request. For external tools or scripts, TAC aims to be RESTful. A simple GET is all that it takes to put in a test request.</li>
-							<li>Tester -- No more tester involvement in test execution itself. Test requests are first come first serve. We (the testers) don't dedicate when your tests get run, you do.</li>
+							<li>Tester -- No more waiting on someone to kick off tests. Simply checkbox the tests you want, and click Run.</li>
 							<li>Test Environment -- Tests for OAT and PAT can run simultaneously. Tests for the same environment would queue if there's ongoing test. All tests are automatically queued if environment is locked (upgrade/downgrade, config change, etc), and released once environment is unlocked.</li>
 							<li>Test Result -- Test result summaries are emailed to requester and displayed on TAC website. (canceled, killed, complete-fail, complete-pass) Links to detailed test reports are provided, and accessible on TAC website as well.</li>
 						</ul>

@@ -36,7 +36,7 @@ body {
   border:2px solid #428bca !important;
   background-image: none !important;
   background-color: #fff;
-  padding:5px 15px 5px 15px;
+  padding:30px 15px 5px 15px;
   border-radius: 8px 8px 8px 8px;
   -moz-border-radius: 8px 8px 8px 8px;
   -webkit-border-radius: 8px 8px 8px 8px;
@@ -71,6 +71,7 @@ body {
   -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  
 }
 table{
   margin-bottom: 0 !important;
@@ -107,4 +108,8 @@ table{
 .overview_list>ul>li{
   font-size:15px;
   margin-bottom:10px;
+}
+.standout{
+  font-size: 1.25em;
+  
 }
