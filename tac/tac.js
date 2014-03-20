@@ -268,7 +268,7 @@ $(document).ready(function(){
     $.ajax({
       type: 'get',
       url:  'env_action.php',
-      data: 'action=lock&eid='+eid+'&reason='+escapeHtml(reason),
+      data: 'action=lock&eid='+eid+'&reason='+encodeURIComponent(reason),
       success: function(data){
         if(data == 'ok')
         {
@@ -283,7 +283,7 @@ $(document).ready(function(){
               console.log(count);
             }
           });//end of env count ajax
-          $('#lock_reason_display_'+eid).text(escapeHtml(reason));
+          $('#lock_reason_display_'+eid).text(reason);
           $('#lock_user_display_'+eid).text(user);
         }//end of if
         else{
