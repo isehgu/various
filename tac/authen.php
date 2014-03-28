@@ -6,7 +6,7 @@
   if(f_userAuthen($user))
   {
     setcookie("user", $user, time()+60*60*24*180); //6 months expiration on that cookie
-    header('Location: tac_stats.php');
+    header('Location: index.php');
   }
   else
   {

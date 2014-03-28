@@ -155,7 +155,7 @@
 			
 			echo "<tr id='p_$rid'>
 							<td>$env</td>
-							<td><a title='Kill' id='$rid' href='action.php?action=kill&rid=$rid' class='btn btn-danger btn-xs test_kill_btn'><span class='glyphicon glyphicon-remove'></span></a></td>
+							<td><a title='Kill' id='$rid' href='test_action.php?action=kill&rid=$rid' class='btn btn-danger btn-xs test_kill_btn'><span class='glyphicon glyphicon-remove'></span></a></td>
 							<td>$rid</td>
 							<td>$label</td>
 							<td>$name</td>
@@ -202,7 +202,7 @@
 			
 			echo "<tr id='q_$rid'>
 							<td>$env</td>
-							<td><a title='Cancel' id='$rid' href='action.php?action=cancel&rid=$rid' class='btn btn-warning btn-xs test_cancel_btn'><span class='glyphicon glyphicon-remove'></span></a></td>
+							<td><a title='Cancel' id='$rid' href='test_action.php?action=cancel&rid=$rid' class='btn btn-warning btn-xs test_cancel_btn'><span class='glyphicon glyphicon-remove'></span></a></td>
 							<td>$rid</td>
 							<td>$label</td>
 							<td>$name</td>

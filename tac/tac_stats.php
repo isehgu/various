@@ -39,7 +39,7 @@
         <div class="row">
           <div class="" id="wrapper1">
 						<h1 id="title_header">Test Automation Controller(T.A.C.)</h1>
-						<h3><a href="#overview">Learn more</a> about how T.A.C. can make testing bottleneck-free. </h3>
+						<h3>A test collaboration system that removes bottlenecks from testing. <a href="#overview">Learn more.</a></h3>
 						
             <!--
 						<h1 id="title_header">T.A.C. launched on 3/6/14</h1>
@@ -296,7 +296,7 @@
         
 				
 				<div class="wrapper" id="overview">
-					<h3>TAC aims to help turn test automation into a completely bottleneck-free
+					<h3>TAC is a test collaboration system. It aims to help turn automated testing into a completely bottleneck-free
 					process, in the easiest, simplest, and most user-friendly fashion possible.
 					</h3>
 					<br>
@@ -315,7 +315,7 @@ Within TAC's own realm, it focuses on 4 ANYs -- <strong id="any">ANYONE, ANYTHIN
 					</div>	
 					
 					<br><br>
-					<h3>In TAC's infancy (2 weeks old), it already made significant progress on all of the objectives.</h3>
+					<h3>In TAC's infancy, it already made significant progress on all of the objectives.</h3>
 					<br>
 						
 					<div class="overview_list">

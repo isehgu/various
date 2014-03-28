@@ -159,7 +159,7 @@ $(document).ready(function(){
     if (answer) {
       $.ajax({
         type: 'get',
-        url:  'action.php',
+        url:  'test_action.php',
         data: 'action=kill&rid='+rid+'&pwd='+pwd,
         success: function(data){
           if(data == 'ok')
@@ -212,7 +212,7 @@ $(document).ready(function(){
     var tr_selector = '#q_'+rid;
     $.ajax({
       type: 'get',
-      url:  'action.php',
+      url:  'test_action.php',
       data: 'action=cancel&rid='+rid,
       success: function(data){
         if(data == 'ok')

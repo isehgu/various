@@ -43,10 +43,10 @@
 				</div>
 				<ul class="nav nav-sidebar">
 					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#main">Test Selection <span id="test_stat" class="badge pull-right"><?php echo f_statCount('test');?></span></a></li>
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#progress">Test in Progress <span id="progress_stat" class="badge pull-right"><?php echo f_statCount('progress');?></span></a></li>
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#queue">Test in Queue <span id="queue_stat" class="badge pull-right"><?php echo f_statCount('queue');?></span></a></li>
+					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#progress">Tests in Progress <span id="progress_stat" class="badge pull-right"><?php echo f_statCount('progress');?></span></a></li>
+					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#queue">Tests in Queue <span id="queue_stat" class="badge pull-right"><?php echo f_statCount('queue');?></span></a></li>
 					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#history">Test History <span id="history_stat" class="badge pull-right"><?php echo f_statCount('history');?></span></a></li>
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#env">Env Setting <span id="env_stat" class="badge pull-right"><?php echo f_statCount('env');?></span></a></li>
+					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#env">Environment Settings <span id="env_stat" class="badge pull-right"><?php echo f_statCount('env');?></span></a></li>
 					<li><a href="http://asg.ise.com/tac/tac_stats.php">Accolades</a></li>
 					<li><a href="http://ic-aoc01/isxfiles/">Release Register</a></li>
 					
