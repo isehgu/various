@@ -1,0 +1,49 @@
+.navbar-btn{
+  margin-left:10px !important;
+}
+.wrapper {
+  box-shadow: inset 0px 1px 0px 0px rgba(0,0,0,0.05), inset 0px 2px 3px 0px rgba(0,0,0,0.1);
+  text-align: center;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+#wrapper_date {
+  box-shadow: inset 0px 1px 0px 0px rgba(0,0,0,0.05), inset 0px 2px 3px 0px rgba(0,0,0,0.1);
+  text-align: center;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+.border-box{
+  border:1px solid red !important;
+}
+.wrapper_hide{
+  display:none;
+}
+.navbar_btn_hide{
+  display:none; 
+}
+body{
+  padding-bottom: 70px;
+}
+
+.btn-danger.active{
+  background-color:#7F1F1C !important;
+}
+
+.btn-success.active{
+  background-color: #2B5C2B !important;
+}
+.checkout_header{
+  margin-top:2px;
+}
+.daterange{
+  font-size:28px; font-weight:bold;
+}
+.date_box{
+  margin-top:2px;
+  margin-left:0px;
+}
+#from_text{
+  padding-left:0;
+}
