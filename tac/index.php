@@ -19,7 +19,7 @@
             <script src="js/jquery-1.11.0.min.js"></script>
             <script src="js/bootstrap.min.js"></script>
 						<script src="js/jquery.cookie.js"></script>
-						<script src="tac.js"></script>
+						<script async src="tac.js"></script>
     </head>	
     <body>
 	<nav id="topnav" class="navbar navbar-default navbar-fixed-top navbar-inverse">
