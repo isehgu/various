@@ -47,8 +47,9 @@
 					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#queue">Tests in Queue <span id="queue_stat" class="badge pull-right"><?php echo f_statCount('queue');?></span></a></li>
 					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#history">Test History <span id="history_stat" class="badge pull-right"><?php echo f_statCount('history');?></span></a></li>
 					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#env">Environment Settings <span id="env_stat" class="badge pull-right"><?php echo f_statCount('env');?></span></a></li>
-					<li><a href="http://asg.ise.com/tac/tac_stats.php">Accolades</a></li>
-					<li><a href="http://ic-aoc01/isxfiles/">Release Register</a></li>
+					<li><a href="http://asg.ise.com/tac/tac_stats.php" target="_blank">Accolades</a></li>
+					<li><a href="http://ic-aoc01/isxfiles/" target="_blank">Release Register</a></li>
+					<li><a href="http://asg.ise.com/tap/ASG_Library_Keywords_Docs.html" target="_blank">Keyword Docs</a></li>
 					
 					<!--
 					<li><a class="sidelink" href="http://localhost/tac/index.php#main">Test Selection <span id="test_stat" class="badge"><?php echo f_statCount('test');?></span></a></li>
