@@ -213,40 +213,56 @@
 		}//End of while
 	}//End of f_tableQueue
 	
-	//Input:	none
+	//Input:	$user -- user who views the history
+	//				$rownumber -- number of history entries to display. 
 	//Output:	echo out the html needed to display a table of test history, those not in queue, or in progress.
 	//				These fields are displayed -- RequestID,Label,TestName,Status,RequestTime,StartTime,EndTime,Report
-	function f_tableHistory()
+	function f_tableHistory($user,$rownumber)
 	{
 		global $db;
+    $approval_array = array(0=>'Pending Approval',1=>'Approved',2=>'Not Approved',3=>'Approval Not Required');
 		$stat_array = array(2=>'Completed-pass',3=>'Completed-fail',4=>'Killed',5=>'Sys Error',6=>'Cancelled');
-		$sql_query = "select tr.test_id,tr.request_id,tr.label,tc.test_name,tr.status,tr.request_timestamp,tr.start_timestamp,tr.end_timestamp,tr.report
-								from test_request as tr,test_case as tc where tr.status not in (0,1) and tr.test_id = tc.test_id order by tr.end_timestamp desc limit 300";
+		
+		if($rownumber == 'all')
+		{
+			$sql_query = "select tr.test_id,tr.request_id,tr.label,tc.test_name,tr.status,tr.start_timestamp,tr.end_timestamp,tr.report,tr.approval_status
+								from test_request as tr,test_case as tc where tr.status not in (0,1) and tr.test_id = tc.test_id order by tr.end_timestamp desc";
+		}
+		else
+		{
+			$sql_query = "select tr.test_id,tr.request_id,tr.label,tc.test_name,tr.status,tr.start_timestamp,tr.end_timestamp,tr.report,tr.approval_status
+								from test_request as tr,test_case as tc where tr.status not in (0,1) and tr.test_id = tc.test_id order by tr.end_timestamp desc limit $rownumber";
+		}
+		
 		$result = $db->query($sql_query) or die($db->error);
     while($row = $result->fetch_assoc())
 		{
 			$rid='';
 			$label='';
 			$name='';
-			$rtime='';
+			#$rtime='';
 			$stime='';
 			$etime='';
 			$status='';
 			$report='';
+      $astatus='';
 			
 			$test_id='';
 			$env='';
 			
 			$color_class = '';
+      
+      $comment_count = 0;
 			
 			$rid = $row['request_id'];
 			$label = $row['label'];
 			$name = $row['test_name'];
 			$status = $row['status'];
-			$rtime = $row['request_timestamp'];
+			#$rtime = $row['request_timestamp'];
 			$stime = $row['start_timestamp'];
 			$etime = $row['end_timestamp'];
 			$report = $row['report'];
+      $astatus = $row['approval_status'];
 			
 			if($status == 2) $color_class = 'bg-success';
 			elseif ($status == 3) $color_class = 'bg-danger';
@@ -255,15 +271,18 @@
 			
 			$test_id = $row['test_id'];
 			$env = f_getEnv($test_id);
-			echo "<tr>
-							<td>$env</td>
-							<td>$rid</td>
-							<td>$label</td>
-							<td>$name</td>
-							<td class='$color_class'>$stat_array[$status]</td>
-							<td>$rtime</td>
-							<td>$stime</td>
-							<td>$etime</td>
+      
+      $comment_count = f_getCommentCount($rid);
+      
+			echo "<tr class='test_history_row' title='$comment_count comment(s) made. Double Click to view' data-rid='$rid'>
+							<td class='test_clickable'>$env</td>
+							<td class='test_clickable'>$rid</td>
+							<td class='test_clickable'>$label</td>
+							<td class='test_clickable'>$name</td>
+							<td class='test_clickable $color_class'>$stat_array[$status]</td>
+							<td class='test_clickable'>$stime</td>
+							<td class='test_clickable'>$etime</td>
+
 			";
 			if(!$report || $report == 'None')
 			{
@@ -273,10 +292,28 @@
 			{
 				$report = 'http://asg.ise.com/reports/' . $report;
 				echo "
-					<td><a href='$report' target='_blank'>Link to Report</a></td>
-					</tr>
+					<td><a title='Click for report' href='$report' target='_blank'>Link to Report</a></td>
 				";
 			}
+      
+      echo "
+        <td>
+          <form class='approval_form'>
+            <select title='Select approval status' id='approval_select_$rid' class='form-control approval_status_select' name='approval_status'>
+      ";
+              foreach($approval_array as $key=>$value)
+              {
+                if($key == $astatus) echo "<option value='$key' selected>$value</option>";
+                else echo "<option value='$key'>$value</option>";
+              }
+              
+      echo "
+            </select>
+            <input type='hidden' name='rid' value='$rid'>
+          </form>
+        </td>
+      </tr>
+      ";
 		}//End of while
 	}//End of f_tableHistory
 	
@@ -314,6 +351,35 @@
 		}//End of while
 	}//End of f_tableEnv
 	
+	//Input:	none
+	//Output:	echo out the html needed to display a table of agents and their statuses
+	function f_tableAgents()
+	{
+		global $db;
+
+		$sql_query = "select * from agents order by agent_name";
+		$result = $db->query($sql_query) or die($db->error);
+    while($row = $result->fetch_assoc())
+		{
+			$aid = $row['agent_id'];
+			$name = $row['agent_name'];
+			$status = $row['status'];
+			$timestamp = $row['timestamp'];
+			
+			if($status == 0)
+                $status = "Unknown";
+            elseif($status == 1)
+                $status = "Running";
+            elseif($status == 2)
+                $status = "Down";
+			echo "<tr>
+							<td>$name</td>
+							<td>$status</td>
+							<td>$timestamp</td>
+						</tr>";
+		}//End of while
+	}//End of f_tableAgents
+	
 	function f_statCount($type)
 	{
 		global $db;
@@ -335,6 +401,7 @@
 	function f_historyRow($rid)
 	{
 		global $db;
+    $approval_array = array(0=>'Pending Approval',1=>'Approved',2=>'Not Approved',3=>'Approval Not Required');
 		$stat_array = array(2=>'Completed-pass',3=>'Completed-fail',4=>'Killed',5=>'Sys Error',6=>'Cancelled');
 		$sql_query = "select tr.test_id,tr.request_id,tr.label,tc.test_name,tr.status,tr.request_timestamp,tr.start_timestamp,tr.end_timestamp,tr.report
 								from test_request as tr,test_case as tc where request_id = $rid";
@@ -353,6 +420,8 @@
 		$env='';
 		
 		$color_class = '';
+    
+    $comment_count = 0;
 		
 		$rid = $row['request_id'];
 		$label = $row['label'];
@@ -366,20 +435,22 @@
 		$test_id = $row['test_id'];
 		$env = f_getEnv($test_id);
 		
+    $comment_count = f_getCommentCount($rid);
+    
 		if($status == 2) $color_class = 'bg-success';
 		elseif ($status == 3) $color_class = 'bg-danger';
 		elseif ($status == 5) $color_class = 'bg-warning';
 		else $color_class = 'bg-info';
 		
-		$output = "<tr>
-						<td>$env</td>
-						<td>$rid</td>
-						<td>$label</td>
-						<td>$name</td>
-						<td class='$color_class'>$stat_array[$status]</td>
-						<td>$rtime</td>
-						<td>$stime</td>
-						<td>$etime</td>
+    
+		$output = "<tr class='test_history_row' title='$comment_count comment(s) made. Double Click to view' data-rid='$rid'>
+							<td class='test_clickable'>$env</td>
+							<td class='test_clickable'>$rid</td>
+							<td class='test_clickable'>$label</td>
+							<td class='test_clickable'>$name</td>
+							<td class='test_clickable $color_class'>$stat_array[$status]</td>
+							<td class='test_clickable'>$stime</td>
+							<td class='test_clickable'>$etime</td>
 						";
 			if(!$report || $report == 'None')
 			{
@@ -390,9 +461,28 @@
 				$report = 'http://asg.ise.com/reports/' . $report;
 				$output .= "
 					<td><a href='$report' target='_blank'>Link to Report</a></td>
-					</tr>
 				";
 			}
+      
+      $output .= "
+                  <td>
+                    <form class='approval_form'>
+                      <select title='Select approval status' id='approval_select_$rid' class='form-control approval_status_select' name='approval_status'>
+                ";
+                
+      foreach($approval_array as $key=>$value)
+      {
+        if($key == $astatus) $output .= "<option value='$key' selected>$value</option>";
+        else $output .= "<option value='$key'>$value</option>";
+      }
+              
+      $output .= "
+                        </select>
+                        <input type='hidden' name='rid' value='$rid'>
+                      </form>
+                    </td>
+                  </tr>
+                ";
 		return $output;
 	}//end of f_history
 	
@@ -579,7 +669,54 @@
 				</tr>
 			";
 		}//End of while
-	}
+	} //end of f_displayWeeklyTable()
+  
+  //Base on the request id given, find the total number of comments exist for this rid
+  function f_getCommentCount($rid)
+  {
+    global $db;
+		$sql_query = "select count(*) as count from test_comments where test_request_id = $rid";
+		$result = $db->query($sql_query) or die($db->error);
+		$row = $result->fetch_assoc();
+    $count = $row['count'];
+    return $count;
+  }
+  
+  //Base on the request ID given, display its comment in descending order
+  //The output will be part of the modal-body div
+  function f_displayTestDetail($rid)
+  {
+    global $db;
+    $sql_query = "select * from test_comments where test_request_id = $rid order by comment_id desc";
+    $result = $db->query($sql_query) or die($db->error);
+    while($row=$result->fetch_assoc())
+    {
+      $uid = 0;
+      $username = '';
+      $comment = '';
+      $timestamp = '';
+      $comment_info = '';
+      
+      $uid = $row['user_id'];
+      $username = f_getUserFromId($uid);
+      $comment = $row['comment'];
+      $timestamp = $row['timestamp'];
+      $comment_info = $username.'@'.$timestamp;
+      
+      //Now the html
+      echo"
+        <div class='row single_comment_box'>
+          <div class='comment_text col-md-8'>
+            $comment
+          </div>
+          <div class='comment_info col-md-4 pull-left'>
+            $comment_info
+          </div>
+        </div>
+        
+      ";
+    }//end of while
+  }
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////

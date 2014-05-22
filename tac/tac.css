@@ -61,8 +61,8 @@ body{
 #progress,#queue,#history,#env{
     padding-top:110px;
 }
-#main{
-    padding-top:80px;
+#test_selection{
+    padding-top:110px;
 }
 .inline_header{
     display:inline;
@@ -110,4 +110,29 @@ body{
 }
 .search_input{
     padding-right:0;
+}
+.approval_status_select{
+    width:170px;
+}
+.test_clickable{
+    cursor: pointer;
+}
+.comment_text{
+    font-size:16px;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 3px solid #a399a3;
+    padding:5px;
+}
+.comment_info{
+    font-size:10px;
+    vertical-align: middle;
+    margin-top:15px;
+}
+.single_comment_box{
+    margin-bottom: 22px;
+}
+#complete_history_view{
+    margin-top: -175px !important;
 }

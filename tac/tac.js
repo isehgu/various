@@ -342,4 +342,56 @@ $(document).ready(function(){
     window.location.reload(true);
   });
   
+  //Approval status
+  $('.approval_status_select').change(function(){
+    var formData = $(this).parent('form').serialize();
+    $.get('approval.php',formData,function(data)
+    {
+      console.log(data);
+    });
+  });
+  
+  //Test Detail
+  $('tr').on('dblclick','.test_clickable',function(){
+    var rid = $(this).parent('tr').attr('data-rid');
+    //console.log(rid);
+    var header = '<h4>Test Request ID: '+rid+'</h4>';
+    $('#test_modal_header').html(header);
+    $.ajax({
+      type: 'post',
+      url:  'test_detail.php',
+      data: 'rid='+rid,
+      success: function(data){
+        $('#test_modal_body').html(data);
+      }
+    });//end of ajax
+    $('#modal_footer_rid_input').val(rid);
+    $('#test_detail').modal('show');
+  });
+  
+  $('table').on('click','.test_history_row',function(){
+    $('.test_history_row').css('background-color','#fff');
+    $(this).css('background-color','#E9F4FF');
+    //console.log('color should change');
+  });
+  //Comment form
+  $('#comment_form').submit(function(event){
+    var formData = $(this).serialize();
+    var rid = $('#modal_footer_rid_input').val();
+    $.post('comment_update.php',formData,function(data){
+      
+      //console.log(data);
+      //redrawing the entire modal body
+      $.ajax({
+        type: 'post',
+        url:  'test_detail.php',
+        data: 'rid='+rid,
+        success: function(data){
+          $('#test_modal_body').html(data);
+        }
+      });//end of ajax
+    });//end of post
+    $('#new_comment_input').val('');
+    return false;
+  });
 });

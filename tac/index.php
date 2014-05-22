@@ -2,6 +2,7 @@
 	require_once "base_function.php";
 	f_dbConnect();
 	if(!isset($_COOKIE['user'])){header('Location: tac_stats.php');}
+	$user = $_COOKIE['user'];
 ?>
 	
 
@@ -42,12 +43,13 @@
 					</ul>
 				</div>
 				<ul class="nav nav-sidebar">
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#main">Test Selection <span id="test_stat" class="badge pull-right"><?php echo f_statCount('test');?></span></a></li>
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#progress">Tests in Progress <span id="progress_stat" class="badge pull-right"><?php echo f_statCount('progress');?></span></a></li>
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#queue">Tests in Queue <span id="queue_stat" class="badge pull-right"><?php echo f_statCount('queue');?></span></a></li>
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#history">Test History <span id="history_stat" class="badge pull-right"><?php echo f_statCount('history');?></span></a></li>
-					<li><a class="sidelink" href="http://asg.ise.com/tac/index.php#env">Environment Settings <span id="env_stat" class="badge pull-right"><?php echo f_statCount('env');?></span></a></li>
-					<li><a href="http://asg.ise.com/tac/tac_stats.php" target="_blank">Accolades</a></li>
+					<li><a class="sidelink" href="#test_selection">Test Selection <span id="test_stat" class="badge pull-right"><?php echo f_statCount('test');?></span></a></li>
+					<li><a class="sidelink" href="#progress">Tests in Progress <span id="progress_stat" class="badge pull-right"><?php echo f_statCount('progress');?></span></a></li>
+					<li><a class="sidelink" href="#queue">Tests in Queue <span id="queue_stat" class="badge pull-right"><?php echo f_statCount('queue');?></span></a></li>
+					<li><a class="sidelink" href="#history">Test History <span id="history_stat" class="badge pull-right">200</span></a></li>
+					<li><a class="sidelink" href="history_complete.php" target="_blank">Complete History <span id="history_stat" class="badge pull-right"><?php echo f_statCount('history');?></span></a></li>
+					<li><a class="sidelink" href="#env">Environment Settings <span id="env_stat" class="badge pull-right"><?php echo f_statCount('env');?></span></a></li>
+					<li><a href="tac_stats.php" target="_blank">Accolades</a></li>
 					<li><a href="http://ic-aoc01/isxfiles/" target="_blank">Release Register</a></li>
 					<li><a href="http://asg.ise.com/tap/ASG_Library_Keywords_Docs.html" target="_blank">Keyword Docs</a></li>
 					
@@ -78,19 +80,18 @@
 			</blockquote>
 		</div>
 			
-				
-			<div id="test_with_lock" class="row">
-				<div id="lock_checkbox" class="col-md-5 col-sm-5 checkbox">
-					<label><input type='checkbox' name='env_lock' value='1' placeholder='Label Your Test Request' title='Feature not yet available'>
-                        Lock env with test
-                    </label>
+			<div id="test_selection">	
+				<div id="test_with_lock" class="row">
+					<div id="lock_checkbox" class="col-md-5 col-sm-5 checkbox">
+						<label><input type='checkbox' name='env_lock' value='1' placeholder='Label Your Test Request' title='Feature not yet available'>
+													Lock env with test
+											</label>
+					</div>
+					<div id="lock_reason_input" class='col-md-7 col-sm-7 pull-left'>
+						<input class='form-control' type='text' name='lock_reason' placeholder='Lock Reason'>
+					</div>
 				</div>
-				<div id="lock_reason_input" class='col-md-7 col-sm-7 pull-left'>
-					<input class='form-control' type='text' name='lock_reason' placeholder='Lock Reason'>
-				</div>
-			</div>
-			<hr>
-			<br>
+				<hr>
 		
 				<h2 class="sub-header inline_header">Test Suites</h2>
 					<div class="search_input pull-right col-xs-5">
@@ -143,8 +144,8 @@
 							-->
 						</tbody>
 					</table>
-			</form>
-			
+				</form>
+			</div>
 			<div id="progress">
 				<h2 class="sub-header inline_header">Test in Progress</h2>
 				<div class="search_input pull-right col-xs-5">
@@ -212,14 +213,14 @@
 							<th>Label</th>
 							<th>Test Name</th>
 							<th>Test Status</th>
-							<th>Request Time</th>
 							<th>Start Time</th>
 							<th>End Time</th>
 							<th>Report</th>
+							<th>Approval</th>
 						</tr>
 					</thead>
 					<tbody id="history_searchable">
-						<?php f_tableHistory(); ?>
+						<?php f_tableHistory($user,200); ?>
 					</tbody>
 				</table>
 			</div>
@@ -241,8 +242,43 @@
 					</tbody>
 				</table>
 			</div>
+	
+			
+			<div id="agents">
+				<h2 class="sub-header">Robot Agents</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Agent</th>
+							<th>Status</th>
+							<th>Since</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php f_tableAgents() ?>
+					</tbody>
+				</table>
+			</div>
 		</div><!-- end of main-->
 	</div>
-    </body>
-	
+   
+		
+		<div class="modal fade" id="test_detail" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div id="test_modal_header" class="modal-header">
+						<h4>Header</h4>
+					</div>
+					<div id="test_modal_body" class="modal-body">
+						
+					</div>
+					<div id="test_modal_footer" class="modal-footer">
+						<form id="comment_form" action="#">
+							<input id="new_comment_input" name="new_comment" class="form-control" placeholder="Enter new comment here">
+							<input id="modal_footer_rid_input" name="rid" type="hidden" value="">
+						</form>
+					</div>
+				</div>
+			</div>
+	 </body>
 </html>
