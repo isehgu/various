@@ -345,9 +345,21 @@ $(document).ready(function(){
   //Approval status
   $('.approval_status_select').change(function(){
     var formData = $(this).parent('form').serialize();
+    
+    //TAC 1.4 add bg color to td base on status
+    var parent_td_color = '';
+    var status = $(this).val();
+    console.log(status);
+    if(status == 1) parent_td_color = 'bg-success';
+    else if(status == 2) parent_td_color = 'bg-danger';
+    else if(status == 3) parent_td_color = 'bg-info';
+    else parent_td_color = '';
+    var current_selector = $(this);
     $.get('approval.php',formData,function(data)
     {
-      console.log(data);
+      current_selector.closest('td').removeClass('bg-success bg-danger bg-info').addClass(parent_td_color);
+      console.log(parent_td_color);
+      //console.log(data);
     });
   });
   

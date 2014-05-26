@@ -37,6 +37,7 @@
 								<th>Env</th>
 								<th>Request ID</th>
 								<th>Label</th>
+								<th>Requester</th>
 								<th>Test Name</th>
 								<th>Test Status</th>
 								<th>Start Time</th>

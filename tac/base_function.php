@@ -225,7 +225,8 @@
 		
 		if($rownumber == 'all')
 		{
-			$sql_query = "select tr.test_id,tr.request_id,tr.label,tc.test_name,tr.status,tr.start_timestamp,tr.end_timestamp,tr.report,tr.approval_status
+			//TAC 1.4 -- on complete history page, display requester name
+			$sql_query = "select tr.user_id,tr.test_id,tr.request_id,tr.label,tc.test_name,tr.status,tr.start_timestamp,tr.end_timestamp,tr.report,tr.approval_status
 								from test_request as tr,test_case as tc where tr.status not in (0,1) and tr.test_id = tc.test_id order by tr.end_timestamp desc";
 		}
 		else
@@ -246,6 +247,8 @@
 			$status='';
 			$report='';
       $astatus='';
+			$user='';
+			
 			
 			$test_id='';
 			$env='';
@@ -264,10 +267,19 @@
 			$report = $row['report'];
       $astatus = $row['approval_status'];
 			
+			if($rownumber == 'all') $user = f_getUserFromId($row['user_id']);
+			
 			if($status == 2) $color_class = 'bg-success';
 			elseif ($status == 3) $color_class = 'bg-danger';
 			elseif ($status == 5) $color_class = 'bg-warning';
 			else $color_class = 'bg-info';
+			
+			//TAC 1.4 -- status color
+			$status_color = '';
+			if($astatus == 1) $status_color = 'bg-success';
+			elseif ($astatus == 2) $status_color = 'bg-danger';
+			elseif ($astatus == 3) $status_color = 'bg-info';
+			else $status_color = '';
 			
 			$test_id = $row['test_id'];
 			$env = f_getEnv($test_id);
@@ -278,6 +290,9 @@
 							<td class='test_clickable'>$env</td>
 							<td class='test_clickable'>$rid</td>
 							<td class='test_clickable'>$label</td>
+			";
+			if($rownumber == 'all') echo "<td class='test_clickable'>$user</td>";
+			echo "				
 							<td class='test_clickable'>$name</td>
 							<td class='test_clickable $color_class'>$stat_array[$status]</td>
 							<td class='test_clickable'>$stime</td>
@@ -297,7 +312,7 @@
 			}
       
       echo "
-        <td>
+        <td class='$status_color'>
           <form class='approval_form'>
             <select title='Select approval status' id='approval_select_$rid' class='form-control approval_status_select' name='approval_status'>
       ";
@@ -442,7 +457,13 @@
 		elseif ($status == 5) $color_class = 'bg-warning';
 		else $color_class = 'bg-info';
 		
-    
+    //TAC 1.4 -- status color
+		$status_color = '';
+		if($astatus == 1) $status_color = 'bg-success';
+		elseif ($astatus == 2) $status_color = 'bg-danger';
+		elseif ($astatus == 3) $status_color = 'bg-info';
+		else $status_color = '';
+		
 		$output = "<tr class='test_history_row' title='$comment_count comment(s) made. Double Click to view' data-rid='$rid'>
 							<td class='test_clickable'>$env</td>
 							<td class='test_clickable'>$rid</td>
@@ -465,7 +486,7 @@
 			}
       
       $output .= "
-                  <td>
+                  <td class='$status_color'>
                     <form class='approval_form'>
                       <select title='Select approval status' id='approval_select_$rid' class='form-control approval_status_select' name='approval_status'>
                 ";
@@ -687,8 +708,17 @@
   function f_displayTestDetail($rid)
   {
     global $db;
-    $sql_query = "select * from test_comments where test_request_id = $rid order by comment_id desc";
-    $result = $db->query($sql_query) or die($db->error);
+		//TAC 1.4 -- requester display
+		$detail_sql_query = "select * from test_request where request_id = $rid limit 1";
+		$result = $db->query($detail_sql_query) or die($db->error);
+		$row=$result->fetch_assoc();
+		$user = f_getUserFromId($row['user_id']);
+		echo "<p><strong>Requester: $user</strong></p>";
+		
+		
+		//Comment extraction
+    $comment_sql_query = "select * from test_comments where test_request_id = $rid order by comment_id desc";
+    $result = $db->query($comment_sql_query) or die($db->error);
     while($row=$result->fetch_assoc())
     {
       $uid = 0;
