@@ -136,3 +136,6 @@ body{
 #complete_history_view{
     margin-top: -175px !important;
 }
+#env_config{
+    margin-top:-75px !important;
+}

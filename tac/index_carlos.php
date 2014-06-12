@@ -1,5 +1,5 @@
 <?php
-	require_once "base_function.php";
+	require_once "base_function_carlos.php";
 	f_dbConnect();
 	if(!isset($_COOKIE['user'])){header('Location: tac_stats.php');}
 	$user = $_COOKIE['user'];
@@ -260,6 +260,7 @@
 					</tbody>
 				</table>
 			</div>
+            <a href="http://asg.ise.com/tac/Temp" target="_blank">PAT Reports</a>
 		</div><!-- end of main-->
 	</div>
    

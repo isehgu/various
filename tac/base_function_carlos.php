@@ -305,10 +305,17 @@
 			}
 			else
 			{
-				$report = 'http://asg.ise.com/reports/' . $report;
-				echo "
-					<td><a title='Click for report' href='$report' target='_blank'>Link to Report</a></td>
-				";
+                if($env === 'PAT '){
+                    $report = 'http://asg.ise.com/reports/' . $report;
+                    echo "<td>
+                            <a title='Click for report' href='$report' target='_blank'>Link to Report</a>
+                            <a title='Click for PAT results' href='http://asg.ise.com/tac/Temp' target='_blank'>PAT Reports</a>
+                          </td>";
+                }
+                else{
+                    $report = 'http://asg.ise.com/reports/' . $report;
+                    echo "<td><a title='Click for report' href='$report' target='_blank'>Link to Report</a></td>";
+                }
 			}
       
       echo "
@@ -353,7 +360,7 @@
 			$status = $row['status'];
 			$reason = $row['reason'];
 			$uid = $row['user_id'];
-			if($uid) $user = f_getUserFromId($uid);
+			$user = f_getUserFromId($uid);
 			
 			if($status == 0) $action_button = "<a id='$eid' href='env_action.php?eid=$eid&action=lock' class='btn btn-danger btn-xs env_lock_btn'>Lock it</a>";
 			else $action_button = "<a id='$eid' href='env_action.php?eid=$eid&action=unlock' class='btn btn-success btn-xs env_unlock_btn'>Unlock it</a>";
