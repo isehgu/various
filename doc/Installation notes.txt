@@ -1,0 +1,64 @@
+Robot Master/Remote Server
+1.       Map the FTP drive:
+a.       net use * \\ix-ftp01.inf.ise.com\eftroot /user:prod\{your Test domain username}
+ 
+2.       Map the J drive:
+a.       net use j: \\office.iseoptions.com\iseusersroot\ise_shared
+ 
+3.       Create a checkout of the Robot files in SVN:
+a.       http://v-db-svn01/svn/repos/ISE/ASGScripts/TestAutomation/trunk/RobotFramework
+ 
+4.       Install Python and Python Modules:
+a.       J:\ASG\RobotFramework\Installation_Files\python-2.6.4.msi
+b.      J:\ASG\RobotFramework\Installation_Files\MySQL-python-1.2.4.win32-py2.6.exe
+c.       J:\ASG\RobotFramework\Installation_Files\lxml-2.3.win32-py2.6.exe
+ 
+5.       Add python to PATH environment variable so that ‘python’ and ‘pybot’ can be called from any directory.
+a.       Right-Click 'My Computer' -> Advanced System Settings -> Advanced Tab ->
+Environment Variables -> Path -> Edit... -> To the end of Variable value, add:
+C:\Python26; (or where ever Python is installed)
+C:\Python26\Scripts; (for pybot)
+ 
+6.       Create a new PYTHONPATH system environment variable so that all of the Robot python files and modules are visible to your python installation.
+a.       Right-Click 'My Computer' -> Advanced System Settings -> Advanced Tab ->
+Environment Variables -> New... (under System variables) ->
+Variable Name: PYTHONPATH
+Variable Value: <YOUR-SVN-CHECKOUT> (top of robot directory)
+
+
+Robot Master 
+7.       Install Robot
+a.       J:\ASG\RobotFramework\Installation_Files\robotframework-2.8.1.win32.exe
+b.      Test the installation by running 'pybot --help' from the cmd prompt
+
+Robot Remote Server
+7.       Run Robot Remote Server
+a.       Find the Windows Batch File that will launch Robot Remote Server and double click that batch file -- <svn checkout folder>/ASGLibrary/start_ASGLibrary_server.bat
+--------------------------------------------
+To run robot test locally --
+1. In TSV's library, you would need to set it to 
+ ASGLibrary.ASGLibrary.ASGLibrary
+We don't run it as remote server, because if it's remote server, robot will take a long time to connect to it, and get all the libraries imported.
+
+2. To run test, from the test folder --
+python smart_pybot.py -s Dummyhan
+Keep in mind, smart_pybot would search all folder under /RobotFramework/Tests, and pattern match anything that matches Dummyhan and run that test. This pattern match is NOT case-sensitive.
+
+----------
+To run robot test remotely--
+Step
+1. Run <svn checkout folder>/ASGLibrary/start_ASGLibrary_server.bat
+
+2. In TSV's library, you would need to set it to 
+Library           Remote    tc-pat211.test.ise.com:${PORT}    WITH NAME    tc-pat211
+
+3. Any keyword should be preceeded with the hostname, since we don't know which remote server has that keyword. 
+tc-pat211.sendOrder
+
+Question -- what happens if keyword doesn't have server name?
+
+4. To run test, from the master server's test folder
+python smart_pybot.py -s <test name>
+
+
+
